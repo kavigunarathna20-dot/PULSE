@@ -4,6 +4,7 @@
    DO NOT ADD PAGE-SPECIFIC STYLES HERE
    ================================================ */
 
+
 /* ROOT VARIABLES - Color Palette */
 :root {
     /* Primary Color */
@@ -54,6 +55,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     height: 68px;
     border-bottom: 0.5px solid var(--light-border);
 }
@@ -135,6 +139,15 @@ h2 {
     font-weight: var(--font-weight-bold);
     color: var(--dark-text);
     margin-bottom: 16px;
+}
+
+.Headings {
+    font-size: 50px;
+    font-family:'Times New Roman', Times, serif;
+    color: var(--dark-text);
+    color: #07424d;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 h3 {
