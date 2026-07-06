@@ -14,6 +14,85 @@
         font-size: 50px;
         color: #2e7d32;
       }
+
+      .progress-container {
+    width: 80%;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 80%;
+    margin-left: 23%;
+    height: 25px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: #1e88e5;
+    transition: 0.5s;
+}
+
+#progressText {
+    display: inline;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 57%;
+    font-weight: bold;
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  #intro {
+    text-align: center;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+
+  /* Answers */
+/* Container */
+.profile-row {
+    display: flex;
+    flex-direction: column;   /* Stack boxes vertically */
+    align-items: center;      /* Center the boxes */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Answer Boxes */
+.profile-box {
+    width: 80%;
+    max-width: 600px;
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    text-align: center;
+
+    border: 1px solid #0016e0;
+    border-radius: 12px;
+    padding: 20px;
+
+    background: #47f8b7;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.profile-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-color: #0016e0;
+}
+
     </style>
 
   </head>
@@ -38,12 +117,12 @@
 
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
-        <a href="index.html" class="nav-link active">Home</a>
+        <a href="HomePage.html" class="nav-link">Home</a>
         <a href="gallery.html" class="nav-link">Gallery</a>
         <a href="mental-health.html" class="nav-link">AIS</a>
         <a href="physical-activity.html" class="nav-link">Feedback</a>
         <a href="nutrition.html" class="nav-link">Team</a>
-        <a href="team.html" class="nav-link">Profile</a>
+        <a href="./UserProfile.html" class="nav-link active">Profile</a>
         <a href="team.html" class="nav-link">Sitemap</a>
       </nav>
     </header>
@@ -67,10 +146,16 @@
     <button onclick="resetProfile()">Reset Profile</button>
     <br>
   </div>
+  <br>
 
-  <div class="msg">
-  <h3 id="progress">Completion: <span id="progress-percentage">0</span>%</h3>
-  </div>
+<div class="progress-container">
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    
+    </div>
+        <span id="progressText">Completion: 0%</span>
+</div>
   <p id="status">Status: Not started</p>
 
 
@@ -80,6 +165,10 @@
   </div>
 
 </main>
+
+
+
+
 
 
     <!-- ================================================
@@ -104,19 +193,19 @@
           </p>
         </div>
 
-        <!-- Footer Section 2: Quick Links -->
+        <!-- Footer Section 2: Quick Links
         <div class="footer-section">
           <h3>Quick Links</h3>
           <nav class="footer-nav">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="gallery.html" class="nav-link">Gallery</a>
             <a href="mental-health.html" class="nav-link">AIS</a>
             <a href="physical-activity.html" class="nav-link">Feedback</a>
             <a href="nutrition.html" class="nav-link">Team</a>
-            <a href="team.html" class="nav-link">Profile</a>
+            <a href="te" class="nav-link">Profile</a>
             <a href="team.html" class="nav-link">Sitemap</a>
           </nav>
-        </div>
+        </div> -->
 
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
@@ -146,5 +235,8 @@
         <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
+
+    <script src="Script.js"></script>
+
   </body>
   </html>>
