@@ -1,47 +1,261 @@
 :root {
-    --; /* primary - header/footer/headings */
-    --; /* links, buttos */
-    --; /* accent */
-    --; /* highlight/hover */
-    --; /* background */
-    --; /* text */
+    --primary:     #4C9F38;   /* green  — header, footer, buttons, links   */
+    --secondary:   #1A7BBF;   /* blue   — accents, hover states            */
+    --neutral-bg:  #F4F9F4;   /* page background                          */
+    --card-bg:     #ffffff;   /* card / surface background                */
+    --text-ink:    #2C2C2C;   /* body text colour                         */
 }
 
+ /* Typography */
+  --font-display: "Poppins", Arial, sans-serif;
+  --font-body: "Inter", Arial, sans-serif;
+
+  /* Layout */
+  --max-width: 1100px;
+  --radius-md: 10px;
+  --shadow-soft: 0 4px 14px rgba(44, 44, 44, 0.1);
+}
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;600;700&display=swap');
+
+/* ---------- Reset / base ---------- */
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: blue;
-    background: white;
-    line-height: 1.6;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-ink);
+  background: var(--neutral-bg);
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4 {
-    font-family: "Lora", georgia, serif;
-    color: cream;
+  font-family: var(--font-display);
+  color: var(--primary);
+  line-height: 1.25;
+  margin-top: 0;
 }
 
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { color: var(--secondary); }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Header & Navigation ---------- */
 header {
-    background: blueviolet;
-    color: aqua;
-    padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
 }
 
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
+.site-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-bottom: 0.5rem;
 }
 
-footer {
-    background: blueviolet;
-    color: aqua;
-    padding: 2rem 1.5rem;
+/* Logo wrapper — logo.svg is a solid green badge (Option A style),
+   designed for white backgrounds. Since the header itself is green,
+   we add a white rounded backing here so the badge stays visible. */
+.site-identity .logo-circle {
+  height: 46px;
+  width: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.site-identity .logo-circle img {
+  height: 100%;
+  width: 100%;
+}
+
+.site-identity .logo-circle img {
+  height: 26px;
+  width: 26px;
+}
+
+.site-identity .site-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.site-identity .site-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.site-identity .site-subtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 0.25rem;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
 }
 
+nav a {
+  display: inline-block;
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Active page indicator — apply class="active" to the current page's link */
+nav a.active {
+  border-bottom: 3px solid #ffffff;
+}
+
+/* ---------- Main content area ---------- */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* ---------- Cards (shared component) ---------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(44, 44, 44, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(44, 44, 44, 0.15);
+}
+
+.card img {
+  border-radius: calc(var(--radius-md) - 4px);
+  margin-bottom: 0.75rem;
+}
+
+.card h3 {
+  margin-bottom: 0.4rem;
+}
+
+.card-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  margin-top: 26rem;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  padding: 0.15rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-col a:hover { color: #ffffff; text-decoration: underline; }
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .site-identity { flex-wrap: wrap; }
+  nav ul { gap: 0.1rem; }
+  nav a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+}
