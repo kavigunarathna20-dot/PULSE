@@ -1,5 +1,6 @@
-<!DOCTYPE html>
- <head>
+<!doctype html>
+<html>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -8,99 +9,343 @@
     />
     <title>PULSE - Good Health & Well-Being</title>
     <link rel="stylesheet" href="global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <style>
-      #prog {
-        font-size: 50px;
+      /* ==========================================
+   PAGE INTRODUCTION
+========================================== */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      #intro {
+        text-align: center;
+        font-size: 22px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+
+      /* ==========================================
+   PROGRESS SECTION CONTAINER
+========================================== */
+
+      #progress {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      /* ==========================================
+   STEP INDICATOR
+========================================== */
+
+      .step-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .step-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-weight: bold;
+      }
+
+      .completed .step-circle {
+        background: #4caf50;
+        color: white;
+      }
+
+      .active .step-circle {
+        border: 4px solid #2196f3;
+        color: #2196f3;
+      }
+
+      .upcoming .step-circle {
+        border: 3px solid #cccccc;
+        color: #cccccc;
+      }
+
+      .step-line {
+        width: 70px;
+        height: 3px;
+        background: #4caf50;
+        margin: 0 15px;
+      }
+
+      /* ==========================================
+   GREEN PROGRESS CARD
+========================================== */
+
+      .green-card {
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      /* ==========================================
+   MODERN PROGRESS BAR
+========================================== */
+
+      .modern-progress-bar {
+        position: relative;
+
+        width: 100%;
+        height: 40px;
+
+        background: rgba(255, 255, 255, 0.2);
+
+        border-radius: 30px;
+        overflow: hidden;
+      }
+
+      #progressFill {
+        width: 0%;
+        height: 100%;
+
+        background: #66bb6a;
+
+        transition: width 0.5s ease;
+      }
+
+      #progressText {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+
+        z-index: 10;
+      }
+
+      #motivationalText {
+        color: white;
+        font-size: 20px;
+        font-family: monospace;
+        font-style: italic;
+        padding: 10px;
+      }
+
+      /* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+      #button {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 20px 0;
+      }
+
+      #button button {
+        padding: 12px 20px;
+
+        border: none;
+        border-radius: 25px;
+
+        background: #4caf50;
+        color: white;
+
+        font-weight: bold;
+        cursor: pointer;
+
+        transition: 0.3s ease;
+      }
+
+      .insight-btn {
+        background: #4caf50;
+        color: white;
+        border: none;
+
+        padding: 14px 28px;
+        border-radius: 10px;
+
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+      }
+
+      .insight-btn:hover {
+        background: #3f9c44;
+        transform: translateY(-2px);
+      }
+
+      #button button:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .reset-btn {
+        background: #d32f2f !important;
+      }
+
+      #healthInsights {
+        display: none;
+        max-width: 850px;
+        margin: 20px auto;
+        flex-direction: column;
+
+        text-align: left;
+        align-items: flex-start;
+      }
+
+      #healthInsights h3 {
+        color: #2e7d32;
+        margin-bottom: 10px;
+      }
+
+      #healthInsights ul {
+        padding-left: 25px;
+      }
+
+      #healthInsights li {
+        margin-bottom: 8px;
+      }
+
+      /* ==========================================
+   SECTION HEADINGS
+========================================== */
+
+      .section-heading {
+        text-align: center;
+        margin-top: 35px;
+      }
+
+      /* ==========================================
+   PROFILE SUMMARY CARDS
+========================================== */
+
+      .summary-grid {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .summary-card {
+        width: 280px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+      }
+
+      #interestBox,
+      #actionBox,
+      #confirmation-card {
+        display: none;
+      }
+
+      .summary-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .summary-card h3 {
         color: #2e7d32;
       }
 
-      .progress-container {
-    width: 80%;
-    margin: 20px 0;
-}
+      /* ==========================================
+   CONFIRMATION CARD
+========================================== */
 
-.progress-bar {
-    width: 80%;
-    margin-left: 23%;
-    height: 25px;
-    background: #ddd;
-    border-radius: 20px;
-    overflow: hidden;
-}
+      #confirmation-card {
+        display: none;
+        margin-top: 20px;
+      }
 
-#progressFill {
-    width: 0%;
-    height: 100%;
-    background: #1e88e5;
-    transition: 0.5s;
-}
+      .success-card {
+        max-width: 850px;
+        margin: 30px auto;
 
-#progressText {
-    display: inline;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-left: 57%;
-    font-weight: bold;
-}
+        display: flex;
+        align-items: center;
+        gap: 24px;
 
-#button {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
+        background: #fff;
+        padding: 30px;
 
-  #intro {
-    text-align: center;
-    font-size: 18px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
+        border-radius: 18px;
+        border-left: 8px solid #4caf50;
 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
 
-  /* Answers */
-/* Container */
-.profile-row {
-    display: flex;
-    flex-direction: column;   /* Stack boxes vertically */
-    align-items: center;      /* Center the boxes */
-    gap: 20px;
-    margin-top: 20px;
-}
+      .success-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-/* Answer Boxes */
-.profile-box {
-    width: 80%;
-    max-width: 600px;
-    color: blue;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    text-align: center;
+      .success-content h3 {
+        margin: 0 0 10px;
+        color: #17324d;
+        font-size: 32px;
+        font-weight: 700;
+      }
 
-    border: 1px solid #0016e0;
-    border-radius: 12px;
-    padding: 20px;
+      .success-content p {
+        margin: 0 0 20px;
+        color: #5f6c7b;
+        font-size: 18px;
+      }
 
-    background: #47f8b7;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      .success-icon {
+        width: 70px;
+        height: 70px;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        border-radius: 50%;
 
-/* Hover Effect */
-.profile-box:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border-color: #0016e0;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        background: #4caf50;
+        color: white;
+
+        font-size: 30px;
+        font-weight: bold;
+      }
     </style>
-
   </head>
+
   <body>
     <!-- ================================================
-         HEADER & NAVIGATION
-         DO NOT MODIFY: This is part of the shared template
-         ================================================ -->
+      HEADER & NAVIGATION
+      DO NOT MODIFY: This is part of the shared template
+      ================================================ -->
     <header>
       <div class="logo">
         <!-- Logo: Replace src with your logo image path -->
@@ -114,7 +359,6 @@
           <p>Good Health & Well-Being</p>
         </div>
       </div>
-
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
         <a href="HomePage.html" class="nav-link">Home</a>
@@ -126,55 +370,157 @@
         <a href="team.html" class="nav-link">Sitemap</a>
       </nav>
     </header>
-
     <!-- ================================================
-         MAIN CONTENT AREA
-         Students add their page content here
-         Keep this structure intact
-         ================================================ -->
+      MAIN CONTENT AREA
+      Students add their page content here
+      Keep this structure intact
+      ================================================ -->
+
     <main>
+      <h1 class="Headings">Build Your Health Profile</h1>
 
-      <h1 class="Headings">Build Your Health Profile</h2>
+      <p id="intro">
+        Complete your personal profile to personalize your wellness journey.
+      </p>
 
-  <p id="intro">This page collects your details step-by-step using prompts.</p>
-  <br>
-  <div id="button">
-    <button onclick="startProfile()">Start / Continue Profile</button>
-    <button onclick="step1()">Revisit Step 1</button>
-    <button onclick="step2()">Revisit Step 2</button>
-    <button onclick="step3()">Revisit Step 3</button>
-    <button onclick="resetProfile()">Reset Profile</button>
-    <br>
-  </div>
-  <br>
+      <!-- ==========================================
+         PROGRESS SECTION
+    ========================================== -->
 
-<div class="progress-container">
+      <section id="progress">
+        <div class="step-indicator">
+          <div class="step active" id="step1Indicator">
+            <div class="step-circle">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+              <h4>STEP 1</h4>
+              <span>Basics</span>
+            </div>
+          </div>
 
-    <div class="progress-bar">
-        <div id="progressFill"></div>
-    
-    </div>
-        <span id="progressText">Completion: 0%</span>
-</div>
-  <p id="status">Status: Not started</p>
+          <div class="step-line"></div>
 
+          <div class="step upcoming" id="step2Indicator">
+            <div class="step-circle">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div>
+              <h4>STEP 2</h4>
+              <span>Interests</span>
+            </div>
+          </div>
 
+          <div class="step-line"></div>
 
-  <div id="profile-output">
-    <h3>Your Profile (Updates Progressively)</h3>
-  </div>
+          <div class="step upcoming" id="step3Indicator">
+            <div class="step-circle">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div>
+              <h4>STEP 3</h4>
+              <span>Actions</span>
+            </div>
+          </div>
+        </div>
 
-</main>
+        <div class="green-card">
+          <h3 id="currentStepTitle">STEP 1: BASICS</h3>
 
+          <div class="modern-progress-bar">
+            <div id="progressFill"></div>
+            <span id="progressText">0% Complete</span>
+          </div>
 
+          <br />
 
+          <p id="motivationalText">
+            Complete your profile to personalize your health journey.
+          </p>
+        </div>
+      </section>
 
+      <!-- ==========================================
+         ACTION BUTTONS
+    ========================================== -->
 
+      <div id="button">
+        <button onclick="startProfile()">Start / Continue Profile</button>
+
+        <button onclick="step1()">Revisit Step 1</button>
+
+        <button onclick="step2()">Revisit Step 2</button>
+
+        <button onclick="step3()">Revisit Step 3</button>
+
+        <button class="reset-btn" onclick="resetProfile()">
+          Reset Profile
+        </button>
+      </div>
+
+      <!-- ==========================================
+         PROFILE SUMMARY
+    ========================================== -->
+
+      <h2 class="section-heading">PROFILE SUMMARY</h2>
+
+      <div class="summary-grid">
+        <div class="summary-card" id="basicBox">
+          <h3>📋 BASICS</h3>
+
+          <p>Name: -</p>
+          <p>Username: -</p>
+          <p>Location: -</p>
+        </div>
+
+        <div class="summary-card" id="interestBox">
+          <h3>❤️ INTERESTS</h3>
+
+          <p>Interest: -</p>
+          <p>SDG Topic: -</p>
+          <p>Preference: -</p>
+        </div>
+
+        <div class="summary-card" id="actionBox">
+          <h3>🎯 ACTIONS</h3>
+
+          <p>Goal: -</p>
+          <p>Action: -</p>
+          <p>Commitment: -</p>
+        </div>
+      </div>
+
+      <!-- ==========================================
+     CONFIRMATION CARD
+========================================== -->
+
+      <div id="confirmation-card">
+        <div class="success-card">
+          <div class="success-icon">✓</div>
+
+          <div class="success-content">
+            <h3>PROFILE VERIFIED &amp; COMPLETE!</h3>
+
+            <p>Congratulations! Your health profile is fully completed.</p>
+
+            <button type="button" class="insight-btn" onclick="showInsights()">
+              View Your Health Insights
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+     HEALTH INSIGHTS
+========================================== -->
+
+      <div id="healthInsights" class="success-card"></div>
+    </main>
 
     <!-- ================================================
-         FOOTER
-         DO NOT MODIFY: Keep this structure for consistency
-         ================================================ -->
+      FOOTER
+      DO NOT MODIFY: Keep this structure for consistency
+      ================================================ -->
     <footer>
       <div class="footer-content">
         <!-- Footer Section 1: Logo & Description -->
@@ -192,26 +538,24 @@
             the University of Westminster.
           </p>
         </div>
-
         <!-- Footer Section 2: Quick Links
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <nav class="footer-nav">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="gallery.html" class="nav-link">Gallery</a>
-            <a href="mental-health.html" class="nav-link">AIS</a>
-            <a href="physical-activity.html" class="nav-link">Feedback</a>
-            <a href="nutrition.html" class="nav-link">Team</a>
-            <a href="te" class="nav-link">Profile</a>
-            <a href="team.html" class="nav-link">Sitemap</a>
-          </nav>
-        </div> -->
-
+            <div class="footer-section">
+              <h3>Quick Links</h3>
+              <nav class="footer-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="mental-health.html" class="nav-link">AIS</a>
+                <a href="physical-activity.html" class="nav-link">Feedback</a>
+                <a href="nutrition.html" class="nav-link">Team</a>
+                <a href="te" class="nav-link">Profile</a>
+                <a href="team.html" class="nav-link">Sitemap</a>
+              </nav>
+            </div> -->
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
           <p class="student-info">
-            Developed by: <strong>[Student Name]</strong>
+            Developed by: <strong>Chamindu Sewmika</strong>
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
@@ -228,15 +572,12 @@
           </nav>
         </div>
       </div>
-
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>© 2026 PULSE — University of Westminster Group Project</span>
         <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
-
     <script src="Script.js"></script>
-
   </body>
-  </html>>
+</html>
