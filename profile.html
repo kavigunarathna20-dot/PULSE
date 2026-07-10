@@ -98,11 +98,15 @@
 ========================================== */
 
       .green-card {
-        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        background: linear-gradient(135deg, #434c4e 0%, #0f6b5a 100%);
         color: white;
         padding: 25px;
         border-radius: 15px;
         text-align: center;
+      }
+
+      #currentStepTitle {
+        color: rgb(223, 255, 251);
       }
 
       /* ==========================================
@@ -160,22 +164,24 @@
       #button {
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: 35px;
         flex-wrap: wrap;
         margin: 20px 0;
       }
 
       #button button {
-        padding: 12px 20px;
+        padding: 12px 30px;
 
         border: none;
         border-radius: 25px;
 
-        background: #4caf50;
+        background: #205f2d;
         color: white;
 
+        font-family: Tahoma;
         font-weight: bold;
         cursor: pointer;
+        font-size: 17px;
 
         transition: 0.3s ease;
       }
@@ -447,11 +453,11 @@
       <div id="button">
         <button onclick="startProfile()">Start / Continue Profile</button>
 
-        <button onclick="step1()">Revisit Step 1</button>
+        <button onclick="step1()">Step 1</button>
 
-        <button onclick="step2()">Revisit Step 2</button>
+        <button onclick="step2()">Step 2</button>
 
-        <button onclick="step3()">Revisit Step 3</button>
+        <button onclick="step3()">Step 3</button>
 
         <button class="reset-btn" onclick="resetProfile()">
           Reset Profile
@@ -558,9 +564,11 @@
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
-            <a href="page-editor.html" class="footer-link">Page Editor ↗</a>
+            <a href="./pageEditor_ST4.html" class="footer-link"
+              >Page Editor ↗</a
+            >
             <a
-              href="https://validator.w3.org/"
+              href="./validation_ST4.html"
               class="footer-link"
               target="_blank"
               >Validation ↗</a

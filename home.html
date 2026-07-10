@@ -146,17 +146,6 @@
         transform: translateY(0);
       }
 
-      .content-box {
-        height: 220px;
-        border-radius: 20px;
-
-        position: relative;
-        overflow: hidden;
-
-        cursor: pointer;
-        transition: 0.3s ease;
-      }
-
       .content-boxes {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -185,6 +174,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        width: 300px;
+        border-radius: 20px;
+
+        position: relative;
+        overflow: hidden;
+
+        cursor: pointer;
+        transition: 0.3s ease;
       }
       .content-box::before {
         content: "";
@@ -205,7 +203,7 @@
       }
 
       .topic-image {
-        width: 300px;
+        width: 500px;
         object-fit: contain;
         margin-bottom: 15px;
       }
@@ -226,10 +224,12 @@
         padding: 20px;
       }
 
-      .overlay h3 {
+      .overlay a {
         color: rgb(0, 0, 0);
         font-size: 25px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        font-style: italic;
+        font-family: 'Franklin Gothic Medium';
       }
 
       .overlay p {
@@ -389,7 +389,7 @@
                 alt="Healthcare Access"
                 class="topic-image"
               />
-              <h3>Student 1</h3>
+              <a href="./content_ST_1.html">Student 1</a>
               <p>Mental Health & Well-being</p>
             </div>
           </div>
@@ -401,7 +401,7 @@
                 alt="Healthcare Access"
                 class="topic-image"
               />
-              <h3>Student 2</h3>
+              <a href="./content_ST_2.html">Student 2</a>
               <p>Physical Activity & Exercise</p>
             </div>
           </div>
@@ -414,7 +414,7 @@
                 class="topic-image"
               />
 
-              <h3>Student 3</h3>
+              <a href="./content_ST_3.html">Student 3</a>
               <p>Nutrition, Diet and Healthy Eating</p>
             </div>
           </div>
@@ -427,7 +427,7 @@
                 class="topic-image"
               />
 
-              <h3>Student 4</h3>
+              <a href="./content_ST_4.html">Student 4</a>
               <p>Access to Healthcare</p>
             </div>
           </div>
