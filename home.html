@@ -170,7 +170,7 @@
       }
 
       .content-box {
-        height: 250px; /* Fixed height */
+        height: 350px; /* Fixed height */
         width: 100%; /* Equal width */
 
         border-radius: 20px;
@@ -204,6 +204,12 @@
         -webkit-backdrop-filter: blur(6px);
       }
 
+      .topic-image {
+        width: 300px;
+        object-fit: contain;
+        margin-bottom: 15px;
+      }
+
       .overlay {
         position: relative;
         z-index: 2;
@@ -212,7 +218,7 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
 
         text-align: center;
@@ -221,15 +227,13 @@
       }
 
       .overlay h3 {
-        color: white;
-        font-size: 3rem;
+        color: rgb(0, 0, 0);
+        font-size: 25px;
         margin-bottom: 15px;
-
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       }
 
       .overlay p {
-        color: white;
+        color: rgb(2, 56, 29);
         font-size: 1.2rem;
         max-width: 250px;
         line-height: 1.5;
@@ -380,29 +384,51 @@
         <div class="content-boxes">
           <div class="content-box">
             <div class="overlay">
+              <img
+                src="./images/stu1_cont.png"
+                alt="Healthcare Access"
+                class="topic-image"
+              />
               <h3>Student 1</h3>
-              <p>Import</p>
+              <p>Mental Health & Well-being</p>
             </div>
           </div>
 
           <div class="content-box">
             <div class="overlay">
+              <img
+                src="./images/stu2_cont.png"
+                alt="Healthcare Access"
+                class="topic-image"
+              />
               <h3>Student 2</h3>
-              <p>Health Challenges and Risks</p>
+              <p>Physical Activity & Exercise</p>
             </div>
           </div>
 
           <div class="content-box">
             <div class="overlay">
+              <img
+                src="./images/stu3_cont.png"
+                alt="Healthcare Access"
+                class="topic-image"
+              />
+
               <h3>Student 3</h3>
-              <p>Healthy Lifestyle Solutions</p>
+              <p>Nutrition, Diet and Healthy Eating</p>
             </div>
           </div>
 
           <div class="content-box">
             <div class="overlay">
+              <img
+                src="./images/stu4_cont.png"
+                alt="Healthcare Access"
+                class="topic-image"
+              />
+
               <h3>Student 4</h3>
-              <p>Community Health Initiatives</p>
+              <p>Access to Healthcare</p>
             </div>
           </div>
         </div>
