@@ -292,6 +292,7 @@
         }
 
         #gallery-grid {
+<<<<<<< Updated upstream
           grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
           gap: 16px;
           padding: 0 20px 30px;
@@ -299,6 +300,190 @@
 
         .filter-bar {
           padding: 10px 20px 20px;
+=======
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 0 40px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card.reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-card.hidden {
+            display: none;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(76, 159, 56, 0.18);
+        }
+
+        .gallery-thumb {
+            position: relative;
+            width: 100%;
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-card:hover .gallery-thumb img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+
+        .gallery-category {
+            background: rgba(76, 159, 56, 0.85);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+
+        .gallery-info {
+            padding: 16px 18px;
+        }
+
+        .gallery-info h3 {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-bottom: 6px;
+        }
+
+        .gallery-info p {
+            font-size: 13px;
+            color: var(--medium-text);
+            line-height: 1.5;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display:none;
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 1000;
+            justify-content:center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .model-overlay.open{
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 18px;
+            max-width: 750px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-text {
+            padding: 24px 28px;
+        }
+
+        .modal-caption {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            color: var(--medium-text);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            #gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 16px;
+                padding: 0 20px 30px;
+            }
+
+            .gallery-hero h2 {
+                font-size: 30px;
+            }
+
+            .filter-bar {
+                padding: 10px 20px 20px;
+            }
+>>>>>>> Stashed changes
         }
       }
     </style>
@@ -336,7 +521,19 @@
     </header>
     <main>
 
+<<<<<<< Updated upstream
         <main>
+=======
+        <div class="filter-bar">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Mental Health">Mental Health</button>
+            <button class="filter-btn" data-category="Physical Fitness">Physical Fitness</button>
+            <button class="filter-btn" data-category="Nutrition">Nutrition</button>
+            <button class="filter-btn" data-category="Community">Community</button>
+            <button class="filter-btn" data-category="Healthcare">Healthcare</button>
+            <button class="filter-btn" data-category="Safety">Safety</button>
+        </div>
+>>>>>>> Stashed changes
 
   <div class="gallery-hero">
     <h2>Health &amp; Well-Being Gallery</h2>
@@ -346,6 +543,7 @@
     </p>
   </div>
 
+<<<<<<< Updated upstream
   <div class="filter-bar">
     <button class="filter-btn active" data-category="All">All</button>
     <button class="filter-btn" data-category="Mental Health">
@@ -388,6 +586,158 @@
         >
         <div class="gallery-overlay">
           <span class="gallery-category">Physical Fitness</span>
+=======
+        <div id="gallery-grid">
+
+            <div class="gallery-card reveal"
+                 data-category="Mental Health"
+                 data-title="Mental Health"
+                 data-desc="Mental health is essential for overall well-being. Taking time to manage stress, express emotions, and seek support when needed can improve focus, relationships, and quality of life. Small daily habits such as mindfulness, relaxation, and maintaining a healthy routine can make a significant difference."
+                 data-img="./images/mindfulness.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/mindfulness.jpg" alt="Person meditating quietly in a calm space">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Mental Health</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Mindfulness &amp; Mental Health</h3>
+                    <p>Small daily habits that build resilience and calm.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Physical Fitness"
+                 data-title="Physical Fitness"
+                 data-desc="Regular physical activity strengthens the body, improves heart health, and boosts energy levels. Activities like walking, cycling, stretching, or playing sports help reduce stress, improve mood, and increase overall fitness. Aim for at least 30 minutes of moderate exercise most days of the week."
+                 data-img="./images/active.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/active.jpg" alt="Group exercising together outdoors">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Physical Fitness</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Active Living</h3>
+                    <p>Movement that strengthens body and mind alike.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Nutrition"
+                 data-title="Nutrition"
+                 data-desc="A balanced diet provides the nutrients your body and brain need to function effectively. Eating plenty of fruits, vegetables, whole grains, lean proteins, and staying hydrated supports concentration, immunity, and long-term health. Limiting sugary snacks and processed foods can also improve energy and well-being."
+                 data-img="./images/nutrition.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/nutrition.jpg" alt="Colourful balanced meal with vegetables and grains">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Nutrition</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Nutrition &amp; Hydration</h3>
+                    <p>Fuel that supports focus and long-term health.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Community"
+                 data-title="Community"
+                 data-desc="Being part of a supportive community promotes a sense of belonging and improves mental and emotional health. Spending time with family, friends, classmates, or volunteering helps build meaningful relationships, encourages teamwork, and creates a positive environment where everyone can thrive."
+                 data-img="./images/community.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/community.jpg" alt="Group of friends supporting each other, sitting together">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Community</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Community Support</h3>
+                    <p>Connection as one of the strongest predictors of well-being.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Mental Health"
+                 data-title="Sleep &amp; Recovery"
+                 data-desc="Consistent, quality sleep allows the brain to consolidate memory and regulate emotion. Students who sleep under 6 hours regularly show measurable declines in focus, mood, and academic performance within just a few weeks."
+                 data-img="./images/sleep.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/sleep.jpg" alt="Person sleeping peacefully in a dark, calm bedroom">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Mental Health</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Sleep &amp; Recovery</h3>
+                    <p>Rest as the foundation everything else is built on.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Nutrition"
+                 data-title="Hydration"
+                 data-desc="Proper hydration supports concentration, energy, and physical performance. Even mild dehydration can measurably reduce short-term cognitive function — making water one of the simplest, most overlooked tools for daily well-being."
+                 data-img="./images/hydration.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/hydration.jpg" alt="Person drinking water from a bottle">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Nutrition</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Hydration</h3>
+                    <p>A simple daily habit with an outsized impact.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Healthcare"
+                 data-title="Preventive Healthcare"
+                 data-desc="Regular checkups and screenings catch health issues early, often before symptoms appear. Building a habit of preventive care — rather than only seeking help once something feels wrong — leads to better long-term outcomes and lower treatment costs."
+                 data-img="./images/healthcare.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/healthcare.jpg" alt="Healthcare professional in a clinical setting">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Healthcare</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Preventive Healthcare</h3>
+                    <p>Catching issues early through regular checkups.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal"
+                 data-category="Healthcare"
+                 data-title="Immunization"
+                 data-desc="Vaccination remains one of the most cost-effective public health interventions available, preventing millions of illnesses and deaths each year. Staying up to date with recommended immunizations protects both individuals and the wider community."
+                 data-img="./images/immunization.jpg">
+                <div class="gallery-thumb">
+                    <img src="./images/immunization.jpg" alt="Healthcare worker administering a vaccination">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Healthcare</span>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Immunization</h3>
+                    <p>A proven tool for protecting individual and public health.</p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="gallery-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close">&times;</button>
+                <img class="modal-image" src="" alt="">
+                <div class="modal-text">
+                    <div class="modal-caption"></div>
+                    <div class="modal-description"></div>
+                </div>
+            </div>
+>>>>>>> Stashed changes
         </div>
       </div>
 
