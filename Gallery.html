@@ -385,7 +385,7 @@
     <!-- Scroll Reveal -->
     <script>
       function reveal() {
-        const reveals = document.querySelectorAll(".card");
+        const reveals = document.querySelectorAll(".gallery-card");
 
         reveals.forEach((item) => {
           const windowHeight = window.innerHeight;
@@ -393,7 +393,7 @@
           const visiblePoint = 100;
 
           if (elementTop < windowHeight - visiblePoint) {
-            item.classList.add("active");
+            item.classList.add("visible");
           }
         });
       }
