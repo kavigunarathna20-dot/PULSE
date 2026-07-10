@@ -343,11 +343,11 @@ function showInsights() {
   let tips = [];
 
   if (profile.goal !== "") {
-    tips.push(`🎯 Stay focused on your goal: ${profile.goal}`);
+    tips.push(`🎯 Stay focused on your goal: <strong>${profile.goal}</strong>`);
   }
 
   if (profile.interest !== "") {
-    tips.push(`❤️ Continue exploring your interest in ${profile.interest}.`);
+    tips.push(`❤️ Continue exploring your interest in <strong>${profile.interest}</strong>`);
   }
 
   tips.push("💧 Drink at least 8 glasses of water daily.");
