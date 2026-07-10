@@ -12,80 +12,39 @@
 
     <style>
       #main-heading {
-        font-size: 60px;
-        text-decoration: underline;
+        font-size: 80px;
+        line-height: 1.4;
         font-weight: 700;
         color: #004d00;
         margin-bottom: 20px;
+
+        text-align: left;
+        padding: 60px 90px 10px;
+        font: size 50px;
+        font-family:'poppins',sans-serif;
       }
       #sub {
-        font-size: 40px;
+        padding: 0px 0px 0px 100px ;
+        font-size: 30px;
         font-family: Georgia;
         font-style: italic;
-        text-align: center;
+        text-align: left;
         color: rgb(17, 69, 73);
       }
-      #intro_text {
-        font-family: "Franklin Gothic Medium";
-        font-size: 20px;
-      }
-
-      .main_card {
-        max-width: 1200px;
-        margin: 40px auto;
-        position: relative;
-        padding: 60px 40px;
-
-        background-color: #ffffff; /* White background */
-        border: 4px solid #28a745; /* Green border */
-
-        border-radius: 20px;
-        text-align: center;
-
-        box-shadow:
-          0 0 0 8px #e8f5e9,
-          8 0 6px 18px rgba(0, 0, 0, 0.1);
-      }
-
-      .main_card h1 {
-        color: #006400;
-        font-size: 4rem;
-        margin-bottom: 20px;
-      }
-
       .main_card p {
         color: #555;
         font-size: 1.5rem;
         line-height: 1.6;
       }
 
-      .features {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        gap: 100px;
-        margin-top: 50px;
-        flex-wrap: nowrap;
-        color: #006400;
-        font-weight: 600;
-      }
-      .features span {
-        padding: 12px 24px;
-        border: 2px solid #249241;
-        border-radius: 50px;
-        background: rgb(212, 241, 223);
-        color: #040374;
-        white-space: nowrap;
-        font-size: 20px;
-      }
-
       #mission {
-        background: #ccf6fc;
-        color: rgb(0, 68, 255);
-        border: solid rgb(0, 68, 255);
+        background: #e7faed;
+        color: #4c9f38;
+        border: solid #004d00;
 
         padding: 15px 28px;
         border-radius: 10px;
+        margin-left: 270px;
 
         font-size: 20px;
         font-weight: 600;
@@ -98,7 +57,7 @@
       }
 
       #goals {
-        padding: 60px 5%;
+        padding: 60px;
         text-align: center;
       }
 
@@ -319,29 +278,17 @@
 
     <main>
       <div class="main_card">
-        <h1 id="main-heading">Healthy Lives, Stronger Communities</h1>
+        <h1 id="main-heading">Healthy Lives<br />Stronger<br />Communities</h1>
 
         <p id="sub">
-          Promoting physical health, mental well-being, and healthier lifestyles
-          for a sustainable future.
+          Promoting physical health, mental well-being <br>and healthier lifestyles
+          for a sustainable future
         </p>
         <br />
-        <p id="intro_text">
-          <b>
-            Discover how healthier lifestyles, mental wellness, and community
-            action can contribute to a better future for everyone.
-          </b>
-        </p>
-        <br /><br />
+        <br />
+        <br>
 
         <a href="#goals" id="mission"># ExploreOurMission</a>
-        <br />
-        <div class="features">
-          <span>❤️ Physical Health</span>
-          <span>🧠 Mental Wellness</span>
-          <span>🌍 Community Care</span>
-        </div>
-      </div>
 
       <section id="goals">
         <br />
