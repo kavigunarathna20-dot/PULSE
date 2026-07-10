@@ -272,20 +272,18 @@ footer {
 
   border-top: 0.5px solid var(--light-border);
 
-  padding: 28px 40px 16px;
+  padding: 28px 250px 16px;
 
   margin-top: 40px;
 }
 
 .footer-content {
-  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+}
 
-  margin: 0 auto 16px;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 28px;
+.footer-section:last-child {
+  margin-left: auto;
 }
 
 .footer-section h3 {
