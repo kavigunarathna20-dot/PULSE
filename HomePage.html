@@ -176,6 +176,108 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      .content-box {
+        height: 220px;
+        border-radius: 20px;
+
+        position: relative;
+        overflow: hidden;
+
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .content-boxes {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 30px;
+
+        padding-left: 40px;
+        padding-right: 40px;
+
+        margin-top: 30px;
+      }
+
+      .content-box {
+        height: 250px; /* Fixed height */
+        width: 100%; /* Equal width */
+
+        border-radius: 20px;
+
+        background: rgba(255, 255, 255, 0.15);
+
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        border: 4px solid rgba(0, 0, 0, 0.3);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        /* Dark transparent layer */
+        background: rgba(255, 255, 255, 0.15);
+
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: nowrap;
+
+        /* Blur effect */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      .overlay {
+        position: relative;
+        z-index: 2;
+
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+        height: 100%;
+        padding: 20px;
+      }
+
+      .overlay h3 {
+        color: white;
+        font-size: 3rem;
+        margin-bottom: 15px;
+
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .overlay p {
+        color: white;
+        font-size: 1.2rem;
+        max-width: 250px;
+        line-height: 1.5;
+
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .content-box:hover {
+        transform: translateY(-8px);
+      }
+
+      #exp {
+        text-align: center;
+        font-family: "Gill Sans MT";
+        font-size: 60px;
+        color: #040374;
+      }
     </style>
   </head>
   <body>
@@ -315,7 +417,36 @@
       </section>
 
       <section id="ind_content">
-        <div class="main_card"></div>
+        <h2 id="exp">Explore Our Content Pages</h2>
+        <div class="content-boxes">
+          <div class="content-box">
+            <div class="overlay">
+              <h3>Student 1</h3>
+              <p>Importance of Good Health and Well-Being</p>
+            </div>
+          </div>
+
+          <div class="content-box">
+            <div class="overlay">
+              <h3>Student 2</h3>
+              <p>Health Challenges and Risks</p>
+            </div>
+          </div>
+
+          <div class="content-box">
+            <div class="overlay">
+              <h3>Student 3</h3>
+              <p>Healthy Lifestyle Solutions</p>
+            </div>
+          </div>
+
+          <div class="content-box">
+            <div class="overlay">
+              <h3>Student 4</h3>
+              <p>Community Health Initiatives</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
