@@ -176,6 +176,7 @@ h2 {
 }
 
 .Headings {
+  margin-top: 30px;
   font-size: 50px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -186,6 +187,17 @@ h2 {
   margin-bottom: 20px;
   padding-top: 30px;
   margin-left: 20px;
+}
+
+.cont-headings{
+  padding: 25px;
+  font-size: 60px;
+  font-family:'Arial Narrow Bold';
+  text-align: left;
+  text-decoration: underline;
+
+  color: #02083b;
+
 }
 
 h3 {
@@ -375,13 +387,12 @@ footer {
   padding-top: 12px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   font-size: 10px;
   color: var(--medium-text);
-
-  border-top: 0.5px solid var(--light-border);
 }
+
 
 /* ================================================
    IMAGES & MEDIA

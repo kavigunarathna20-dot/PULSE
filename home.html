@@ -25,7 +25,7 @@
       .main_logo img {
         width: 650px;
         height: auto;
-        max-width: 90vw;  /* 90% of viewport width */
+        max-width: 90vw; /* 90% of viewport width */
       }
 
       /* ========================
@@ -44,7 +44,7 @@
         .main_logo img {
           width: 500px;
         }
-        
+
         #main-heading {
           font-size: 60px;
           padding: 40px 60px 10px;
@@ -60,24 +60,24 @@
           text-align: center;
           margin-bottom: 30px;
         }
-        
+
         .main_logo img {
           width: 100%;
           max-width: 400px;
         }
-        
+
         #main-heading {
           font-size: 50px;
           padding: 30px 40px 10px;
           text-align: center;
         }
-        
+
         #sub {
           font-size: 20px;
           padding-left: 40px;
           text-align: center;
         }
-        
+
         #mission {
           margin-left: 0;
           display: block;
@@ -94,42 +94,42 @@
           width: 100%;
           max-width: 300px;
         }
-        
-      #main-heading {
-        font-size: 40px;
-        padding: 20px 20px 10px;
-        text-align: center;
-      }
-      
-      #sub {
-        font-size: 16px;
-        padding-left: 20px;
-        text-align: center;
-      }
-      
-      #mission {
-        margin-left: 0;
-        display: block;
-        width: fit-content;
-        margin: 20px auto;
-        font-size: 16px;
-      }
-    }
 
-    /* ========================
+        #main-heading {
+          font-size: 40px;
+          padding: 20px 20px 10px;
+          text-align: center;
+        }
+
+        #sub {
+          font-size: 16px;
+          padding-left: 20px;
+          text-align: center;
+        }
+
+        #mission {
+          margin-left: 0;
+          display: block;
+          width: fit-content;
+          margin: 20px auto;
+          font-size: 16px;
+        }
+      }
+
+      /* ========================
       SMALL MOBILE (below 480px)
       ======================== */
-    @media (max-width: 479px) {
-      .main_logo img {
-        width: 100%;
-        max-width: 250px;
+      @media (max-width: 479px) {
+        .main_logo img {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        #main-heading {
+          font-size: 32px;
+          padding: 15px 15px 10px;
+        }
       }
-      
-      #main-heading {
-        font-size: 32px;
-        padding: 15px 15px 10px;
-      }
-    }
       #main-heading {
         font-size: 80px;
         line-height: 1.4;
@@ -253,27 +253,23 @@
       .content-boxes {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 15px;  /* ✅ Reduced from 30px */
-        padding-left: 20px;  /* ✅ Reduced from 40px */
-        padding-right: 20px;  /* ✅ Reduced from 40px */
+        gap: 15px; /* ✅ Reduced from 30px */
+        padding-left: 20px; /* ✅ Reduced from 40px */
+        padding-right: 20px; /* ✅ Reduced from 40px */
         margin-top: 30px;
       }
 
       .content-box {
-        height: 300px;  /* ✅ Reduced from 350px */
-        width: 100%;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 4px solid rgba(0, 0, 0, 0.3);
+        min-height: 330px;
+        /* background: rgba(255, 255, 255, 0.15); */
         display: flex;
         justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
+        align-items: flex-start;
+        padding: 20px;
         transition: 0.3s ease;
+        border: 5px solid #b3b3b3;
+        border-radius: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .content-box:hover {
@@ -311,38 +307,31 @@
       }
 
       .topic-image {
-        width: 500px;
+        width: 100%;
+        max-width: 220px;
         object-fit: contain;
-        margin-bottom: 15px;
+        height: auto;
       }
 
       .overlay {
-        position: relative;
-        z-index: 2;
-
-        height: 100%;
-
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
-
         text-align: center;
-        height: 100%;
-        padding: 20px;
+        gap: 20px;
       }
 
       .overlay a {
-        color: rgb(0, 0, 0);
-        font-size: 25px;
+        color: rgb(28, 83, 62);
+        font-size: 30px;
         margin-bottom: 10px;
         font-style: italic;
-        font-family: 'Franklin Gothic Medium';
+        font-family: "Franklin Gothic Medium";
       }
 
       .overlay p {
         color: rgb(2, 56, 29);
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         max-width: 250px;
         line-height: 1.5;
 
@@ -357,6 +346,31 @@
         text-align: center;
         font-size: 60px;
         color: #004d00;
+      }
+      .content-box:nth-child(1) {
+        opacity: 0;
+        transform: translateX(-80px);
+      }
+
+      .content-box:nth-child(2) {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+
+      .content-box:nth-child(3) {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+
+      .content-box:nth-child(4) {
+        opacity: 0;
+        transform: translateX(80px);
+      }
+
+      .content-box.active {
+        opacity: 1;
+        transform: translate(0);
+        transition: all 0.8s ease;
       }
     </style>
   </head>
@@ -498,7 +512,7 @@
                 class="topic-image"
               />
               <a href="./content_ST_1.html">Student 1</a>
-              <p>Mental Health & Well-being</p>
+              <p>Mental Health and Well-being</p>
             </div>
           </div>
 
@@ -510,7 +524,7 @@
                 class="topic-image"
               />
               <a href="./content_ST_2.html">Student 2</a>
-              <p>Physical Activity & Exercise</p>
+              <p>Physical Activity and Exercise</p>
             </div>
           </div>
 
@@ -573,16 +587,15 @@
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
-            <a href="page-editor.html" class="footer-link">Page Editor ↗</a>
-            <a
-              href="https://validator.w3.org/"
-              class="footer-link"
-              target="_blank"
+            <a href="./pageEditor_ST1.html" class="footer-link"
+              >Page Editor ↗</a
+            >
+            <a href="./validation_ST1.html" class="footer-link" target="_blank"
               >Validation ↗</a
             >
-            <a href="accessibility.html" class="footer-link"
+            <!-- <a href="accessibility.html" class="footer-link"
               >Accessibility Statement ↗</a
-            >
+            > -->
           </nav>
         </div>
       </div>
@@ -590,14 +603,13 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>© 2026 PULSE — University of Westminster Group Project</span>
-        <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
 
     <!-- Scroll Reveal -->
     <script>
       function reveal() {
-        const reveals = document.querySelectorAll(".card");
+        const reveals = document.querySelectorAll(".card, .content-box, #exp");
 
         reveals.forEach((item) => {
           const windowHeight = window.innerHeight;
