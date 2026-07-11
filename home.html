@@ -25,7 +25,111 @@
       .main_logo img {
         width: 650px;
         height: auto;
+        max-width: 90vw;  /* 90% of viewport width */
       }
+
+      /* ========================
+        LAPTOP/DESKTOP (1400px+)
+        ======================== */
+      @media (min-width: 1400px) {
+        .main_logo img {
+          width: 650px;
+        }
+      }
+
+      /* ========================
+        LARGE SCREEN (1200px - 1399px)
+        ======================== */
+      @media (max-width: 1399px) {
+        .main_logo img {
+          width: 500px;
+        }
+        
+        #main-heading {
+          font-size: 60px;
+          padding: 40px 60px 10px;
+        }
+      }
+
+      /* ========================
+        TABLET (768px - 1199px)
+        ======================== */
+      @media (max-width: 1199px) {
+        .main_logo {
+          position: static;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        
+        .main_logo img {
+          width: 100%;
+          max-width: 400px;
+        }
+        
+        #main-heading {
+          font-size: 50px;
+          padding: 30px 40px 10px;
+          text-align: center;
+        }
+        
+        #sub {
+          font-size: 20px;
+          padding-left: 40px;
+          text-align: center;
+        }
+        
+        #mission {
+          margin-left: 0;
+          display: block;
+          width: fit-content;
+          margin: 20px auto;
+        }
+      }
+
+      /* ========================
+        MOBILE (480px - 767px)
+        ======================== */
+      @media (max-width: 767px) {
+        .main_logo img {
+          width: 100%;
+          max-width: 300px;
+        }
+        
+      #main-heading {
+        font-size: 40px;
+        padding: 20px 20px 10px;
+        text-align: center;
+      }
+      
+      #sub {
+        font-size: 16px;
+        padding-left: 20px;
+        text-align: center;
+      }
+      
+      #mission {
+        margin-left: 0;
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        font-size: 16px;
+      }
+    }
+
+    /* ========================
+      SMALL MOBILE (below 480px)
+      ======================== */
+    @media (max-width: 479px) {
+      .main_logo img {
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      #main-heading {
+        font-size: 32px;
+        padding: 15px 15px 10px;
+      }
+    }
       #main-heading {
         font-size: 80px;
         line-height: 1.4;
@@ -149,57 +253,61 @@
       .content-boxes {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-
-        gap: 30px;
-
-        padding-left: 40px;
-        padding-right: 40px;
-
+        gap: 15px;  /* ✅ Reduced from 30px */
+        padding-left: 20px;  /* ✅ Reduced from 40px */
+        padding-right: 20px;  /* ✅ Reduced from 40px */
         margin-top: 30px;
       }
 
       .content-box {
-        height: 350px; /* Fixed height */
-        width: 100%; /* Equal width */
-
+        height: 300px;  /* ✅ Reduced from 350px */
+        width: 100%;
         border-radius: 20px;
-
         background: rgba(255, 255, 255, 0.15);
-
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-
         border: 4px solid rgba(0, 0, 0, 0.3);
-
         display: flex;
         justify-content: center;
         align-items: center;
-
-        width: 300px;
-        border-radius: 20px;
-
         position: relative;
         overflow: hidden;
-
         cursor: pointer;
         transition: 0.3s ease;
       }
-      .content-box::before {
-        content: "";
-        position: absolute;
-        inset: 0;
 
-        /* Dark transparent layer */
-        background: rgba(255, 255, 255, 0.15);
+      .content-box:hover {
+        transform: translateY(-8px);
+      }
 
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: nowrap;
+      /* ========================
+        RESPONSIVE DESIGN
+        ======================== */
 
-        /* Blur effect */
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
+      @media (max-width: 1200px) {
+        .content-boxes {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .content-box {
+          height: 280px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .content-boxes {
+          grid-template-columns: 1fr;
+          gap: 15px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .content-box {
+          height: 250px;
+        }
       }
 
       .topic-image {
