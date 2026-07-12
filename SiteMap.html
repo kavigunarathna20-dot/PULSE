@@ -11,9 +11,114 @@
     <link rel="stylesheet" href="global.css" />
 
     <style>
+      .sitemap-section {
+        padding: 40px;
+        background: linear-gradient(135deg, #eef8ff, #f9fffa);
+        border-radius: 25px;
+      }
 
+      .sitemap-header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .sitemap-title-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        background: white;
+        padding: 20px 40px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .sitemap-title-card h1 {
+        margin: 0;
+        font-size: 42px;
+        color: #0e4f44;
+      }
+
+      .sitemap-title-card p {
+        margin: 5px 0 0;
+        color: #666;
+      }
+
+      .sitemap-svg {
+        width: 100%;
+      }
+
+      .connector {
+        stroke: #4db6ac;
+        stroke-width: 5;
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .node {
+        cursor: pointer;
+      }
+
+      .node rect {
+        rx: 20;
+        ry: 20;
+
+        transition: all 0.3s ease;
+
+        filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+      }
+
+      .home-node rect {
+        fill: #ffffff;
+        stroke: #26a69a;
+        stroke-width: 4;
+      }
+
+      .content-node rect {
+        fill: #fdfdfd;
+        stroke: #66bb6a;
+        stroke-width: 3;
+      }
+
+      .nav-node rect {
+        fill: #ffffff;
+        stroke: #29b6f6;
+        stroke-width: 3;
+      }
+
+      .node:hover rect {
+        transform: translateY(-5px);
+        filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.18));
+      }
+
+      .node text {
+        fill: #1f2937;
+        font-size: 22px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        pointer-events: none;
+      }
+
+      .sub-text {
+        font-size: 16px;
+        fill: #777;
+        font-weight: 500;
+      }
+
+      svg a:focus rect {
+        stroke: #004d40;
+        stroke-width: 5;
+      }
+
+      @media (max-width: 1200px) {
+        .sitemap-title-card h1 {
+          font-size: 30px;
+        }
+      }
     </style>
-
   </head>
   <body>
     <!-- ================================================
@@ -42,7 +147,7 @@
         <a href="./feedback.html" class="nav-link">Feedback</a>
         <a href="./team.html" class="nav-link">Team</a>
         <a href="./profile.html" class="nav-link">Profile</a>
-        <a href="./sitemap.html" class="nav-link active ">Sitemap</a>
+        <a href="./sitemap.html" class="nav-link active">Sitemap</a>
       </nav>
     </header>
 
@@ -51,30 +156,152 @@
          Students add their page content here
          Keep this structure intact
          ================================================ -->
+    <h1 class="Headings">Sitemap</h1>
     <main>
+      <section class="sitemap-section">
+        <svg viewBox="0 0 1600 950" class="sitemap-svg">
+          <!-- ===== CONNECTORS ===== -->
 
-        <h1 class="Headings">Sitemap</h1>
-      <!-- INSERT YOUR PAGE CONTENT HERE -->
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, delectus?
-      Consectetur ea laborum tempora obcaecati adipisci vel aspernatur sint
-      atque voluptate quos maiores voluptatum optio inventore vitae id, neque
-      laudantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-      esse harum, nam explicabo fugit sit nobis similique quaerat ipsa aliquid
-      enim ipsam repellat ea error, soluta dolore! Minus, beatae exercitationem.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, suscipit
-      maxime molestias est quasi tempora quas aliquid placeat! Voluptatem
-      voluptatum voluptatibus necessitatibus deserunt nulla delectus sed minima
-      voluptates eos non?Lorem ipsum dolor sit amet consectetur, adipisicing
-      elit. Quos ipsa, praesentium tenetur porro recusandae magnam sit, alias
-      libero, autem vel itaque vero dolor ducimus expedita nostrum veritatis
-      distinctio a laboriosam! Lorem ipsum, dolor sit amet consectetur
-      adipisicing elit. Necessitatibus doloribus in nesciunt atque voluptatum
-      asperiores cupiditate ducimus nemo odio dicta dolorem sapiente, cumque
-      delectus amet totam velit accusantium minus Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Voluptatem libero obcaecati necessitatibus
-      consequuntur. Fugit sunt deserunt rerum dolorem, est beatae nulla sequi
-      earum doloremque maxime molestiae tempore illo dignissimos
-      <!-- END OF PAGE CONTENT -->
+          <!-- Home -->
+          <line class="connector" x1="800" y1="220" x2="800" y2="290" />
+
+          <!-- Home to Content -->
+          <line class="connector" x1="450" y1="350" x2="1150" y2="350" />
+
+          <line class="connector" x1="800" y1="290" x2="800" y2="350" />
+
+          <line class="connector" x1="450" y1="350" x2="450" y2="420" />
+          <line class="connector" x1="700" y1="350" x2="700" y2="420" />
+          <line class="connector" x1="950" y1="350" x2="950" y2="420" />
+          <line class="connector" x1="1150" y1="350" x2="1150" y2="420" />
+
+          <!-- Content to Navigation -->
+          <line class="connector" x1="800" y1="350" x2="800" y2="600" />
+
+          <!-- Navigation Bar -->
+          <line class="connector" x1="250" y1="600" x2="1350" y2="600" />
+
+          <line class="connector" x1="300" y1="600" x2="300" y2="670" />
+          <line class="connector" x1="500" y1="600" x2="500" y2="670" />
+          <line class="connector" x1="700" y1="600" x2="700" y2="670" />
+          <line class="connector" x1="900" y1="600" x2="900" y2="670" />
+          <line class="connector" x1="1100" y1="600" x2="1100" y2="670" />
+          <line class="connector" x1="1300" y1="600" x2="1300" y2="670" />
+
+          <!-- ===== HOME ===== -->
+
+          <a href="./home.html">
+            <g class="node home-node">
+              <title>Home Page</title>
+              <rect x="650" y="220" width="300" height="70" />
+
+              <text x="800" y="265" text-anchor="middle">🏠 HOME</text>
+            </g>
+          </a>
+
+          <!-- ===== CONTENT PAGES ===== -->
+
+          <a href="./content_ST_1.html">
+            <g class="node content-node">
+              <rect x="330" y="420" width="240" height="85" />
+
+              <text x="450" y="455" text-anchor="middle">🧠 Mental Health</text>
+
+              <text x="450" y="485" text-anchor="middle" class="sub-text">
+                Student 1
+              </text>
+            </g>
+          </a>
+
+          <a href="./content_ST_2.html">
+            <g class="node content-node">
+              <rect x="580" y="420" width="240" height="85" />
+
+              <text x="700" y="455" text-anchor="middle">
+                🏃 Physical Activity
+              </text>
+
+              <text x="700" y="485" text-anchor="middle" class="sub-text">
+                Student 2
+              </text>
+            </g>
+          </a>
+
+          <a href="./content_ST_3.html">
+            <g class="node content-node">
+              <rect x="830" y="420" width="240" height="85" />
+
+              <text x="950" y="455" text-anchor="middle">🥗 Nutrition</text>
+
+              <text x="950" y="485" text-anchor="middle" class="sub-text">
+                Student 3
+              </text>
+            </g>
+          </a>
+
+          <a href="./content_ST_4.html">
+            <g class="node content-node">
+              <rect x="1030" y="420" width="240" height="85" />
+
+              <text x="1150" y="455" text-anchor="middle">🏥 Healthcare</text>
+
+              <text x="1150" y="485" text-anchor="middle" class="sub-text">
+                Student 4
+              </text>
+            </g>
+          </a>
+
+          <!-- ===== NAVIGATION PAGES ===== -->
+
+          <a href="./gallery.html">
+            <g class="node nav-node">
+              <title>Gallery</title>
+              <rect x="180" y="670" width="240" height="75" />
+              <text x="300" y="715" text-anchor="middle">🖼 Gallery</text>
+            </g>
+          </a>
+
+          <a href="./ais.html">
+            <g class="node nav-node">
+              <title>Action Impact Simulator</title>
+              <rect x="380" y="670" width="240" height="75" />
+              <text x="500" y="715" text-anchor="middle">📊 AIS</text>
+            </g>
+          </a>
+
+          <a href="./feedback.html">
+            <g class="node nav-node">
+              <title>Feedback</title>
+              <rect x="580" y="670" width="240" height="75" />
+              <text x="700" y="715" text-anchor="middle">Feedback</text>
+            </g>
+          </a>
+
+          <a href="./team.html">
+            <g class="node nav-node">
+              <title>Team</title>
+              <rect x="780" y="670" width="240" height="75" />
+              <text x="900" y="715" text-anchor="middle">Team</text>
+            </g>
+          </a>
+
+          <a href="./profile.html">
+            <g class="node nav-node">
+              <title>User Profile</title>
+              <rect x="980" y="670" width="240" height="75" />
+              <text x="1100" y="715" text-anchor="middle">Profile</text>
+            </g>
+          </a>
+
+          <a href="./sitemap.html">
+            <g class="node nav-node">
+              <title>Sitemap</title>
+              <rect x="1180" y="670" width="240" height="75" />
+              <text x="1300" y="715" text-anchor="middle">🗺 Sitemap</text>
+            </g>
+          </a>
+        </svg>
+      </section>
     </main>
 
     <!-- ================================================
@@ -117,7 +344,7 @@
         <div class="footer-section">
           <h3>This Page</h3>
           <p class="student-info">
-            Developed by: <strong>[Student Name]</strong>
+            Developed by: <strong>Chamindu Wijesinghe</strong>
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
@@ -143,4 +370,4 @@
     </footer>
   </body>
 </html>
->
+
