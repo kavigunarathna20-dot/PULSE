@@ -11,7 +11,196 @@
     <link rel="stylesheet" href="global.css" />
 
     <style>
+      .healthcare-page {
+        max-width: 1300px;
+        margin: auto;
+        padding: 40px;
+      }
 
+      .hero-section {
+        text-align: center;
+        padding: 60px 30px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #e8f5e9, #f5fff7);
+        margin-bottom: 50px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #4c9f38;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .hero-section h1 {
+        font-size: 60px;
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+
+      .hero-section p {
+        font-size: 18px;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 25px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+      }
+
+      .stat-card h2 {
+        font-size: 45px;
+      }
+
+      .info-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .info-card {
+        background: white;
+        padding: 35px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .info-card h2 {
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+
+      .info-card ul {
+        margin-top: 20px;
+        padding-left: 25px;
+      }
+
+      .info-card li {
+        margin-bottom: 10px;
+      }
+
+      .process-section {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .process-section h2 {
+        color: #07424d;
+        margin-bottom: 35px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+      }
+
+      .process-step {
+        background: white;
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .process-step span {
+        width: 60px;
+        height: 60px;
+        background: #4c9f38;
+        color: white;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .sdg-section {
+        background: linear-gradient(135deg, #4c9f38, #63b851);
+        color: white;
+        border-radius: 30px;
+        padding: 50px;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .sdg-section h2,
+      .sdg-section p {
+        color: white;
+      }
+
+      .cta-section {
+        text-align: center;
+        background: white;
+        border-radius: 25px;
+        padding: 50px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .cta-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #4c9f38;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: #3a7a2c;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 40px;
+        }
+
+        .info-section {
+          grid-template-columns: 1fr;
+        }
+
+        .healthcare-page {
+          padding: 20px;
+        }
+      }
+
+      .info-card,
+      .process-step,
+      .cta-section {
+        transition: all 0.3s ease;
+      }
+
+      .info-card:hover,
+      .process-step:hover,
+      .cta-section:hover {
+        transform: translateY(-5px);
+      }
     </style>
   </head>
   <body>
@@ -35,7 +224,7 @@
 
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
-        <a href="./home.html" class="nav-link active">Home</a>
+        <a href="./home.html" class="nav-link">Home</a>
         <a href="./gallery.html" class="nav-link">Gallery</a>
         <a href="./ais.html" class="nav-link">AIS</a>
         <a href="./feedback.html" class="nav-link">Feedback</a>
@@ -52,9 +241,144 @@
          ================================================ -->
 
     <main>
+      <section class="healthcare-page">
+        <div class="hero-section">
+          <div class="hero-content">
+            <span class="tag">SDG 3 • Good Health & Well-Being</span>
 
-            <h1 class="cont-headings">Access to Healthcare</h1>
-      
+            <h1>Access to Healthcare</h1>
+
+            <p>
+              Access to healthcare is a fundamental human right that ensures
+              individuals can obtain timely, affordable, and quality medical
+              services. Equal healthcare access promotes healthier communities,
+              reduces disease burdens, and improves overall well-being.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h2>🏥</h2>
+            <h3>Healthcare Services</h3>
+            <p>
+              Quality healthcare facilities should be available and accessible
+              to everyone.
+            </p>
+          </div>
+
+          <div class="stat-card">
+            <h2>💊</h2>
+            <h3>Affordable Treatment</h3>
+            <p>
+              Cost should never be a barrier to receiving essential healthcare
+              services.
+            </p>
+          </div>
+
+          <div class="stat-card">
+            <h2>🌍</h2>
+            <h3>Universal Coverage</h3>
+            <p>
+              Universal Health Coverage aims to provide healthcare for all
+              individuals.
+            </p>
+          </div>
+        </div>
+
+        <section class="info-section">
+          <div class="info-card">
+            <h2>Why Healthcare Access Matters</h2>
+
+            <p>
+              Access to healthcare enables early diagnosis, effective treatment,
+              disease prevention, and better management of chronic conditions.
+              Communities with reliable healthcare systems experience improved
+              life expectancy and higher standards of living.
+            </p>
+
+            <ul>
+              <li>Early disease detection and treatment</li>
+              <li>Improved maternal and child health</li>
+              <li>Reduced mortality rates</li>
+              <li>Enhanced physical and mental well-being</li>
+              <li>Longer life expectancy</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h2>Challenges to Healthcare Access</h2>
+
+            <p>
+              Millions of people still face barriers when seeking medical care.
+              Economic limitations, geographic isolation, and healthcare system
+              shortages often prevent individuals from receiving essential
+              services.
+            </p>
+
+            <ul>
+              <li>High healthcare costs</li>
+              <li>Limited healthcare infrastructure</li>
+              <li>Shortage of healthcare professionals</li>
+              <li>Lack of transportation</li>
+              <li>Social and language barriers</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="process-section">
+          <h2>Building Better Healthcare Access</h2>
+
+          <div class="process-grid">
+            <div class="process-step">
+              <span>1</span>
+              <h3>Awareness</h3>
+              <p>Educate communities about available healthcare services.</p>
+            </div>
+
+            <div class="process-step">
+              <span>2</span>
+              <h3>Accessibility</h3>
+              <p>Improve transportation and healthcare availability.</p>
+            </div>
+
+            <div class="process-step">
+              <span>3</span>
+              <h3>Affordability</h3>
+              <p>Reduce financial barriers through health coverage programs.</p>
+            </div>
+
+            <div class="process-step">
+              <span>4</span>
+              <h3>Innovation</h3>
+              <p>Use telemedicine and digital healthcare technologies.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sdg-section">
+          <h2>Healthcare and SDG 3</h2>
+
+          <p>
+            Sustainable Development Goal 3 focuses on ensuring healthy lives and
+            promoting well-being for all. Expanding healthcare access is a key
+            step toward reducing inequalities and creating healthier societies
+            worldwide.
+          </p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Together for Better Health</h2>
+
+          <p>
+            Everyone deserves access to quality healthcare. By supporting
+            healthcare initiatives and promoting health awareness, we can
+            contribute toward a healthier and more equitable future.
+          </p>
+          <br />
+          <a href="https://sdgs.un.org/goals/goal3">About SDG 3 </a>
+        </section>
+      </section>
     </main>
 
     <!-- ================================================
@@ -79,25 +403,11 @@
           </p>
         </div>
 
-        <!-- Footer Section 2: Quick Links -->
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <nav class="footer-nav">
-            <a href="HomePage.html" class="nav-link active">Home</a>
-            <a href="gallery.html" class="nav-link">Gallery</a>
-            <a href="mental-health.html" class="nav-link">AIS</a>
-            <a href="physical-activity.html" class="nav-link">Feedback</a>
-            <a href="nutrition.html" class="nav-link">Team</a>
-            <a href="team.html" class="nav-link">Profile</a>
-            <a href="team.html" class="nav-link">Sitemap</a>
-          </nav>
-        </div>
-
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
           <p class="student-info">
-            Developed by: <strong>[Student Name]</strong>
+            Developed by: <strong>Chamindu Wijesinghe</strong>
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
@@ -107,9 +417,6 @@
               class="footer-link"
               target="_blank"
               >Validation ↗</a
-            >
-            <a href="accessibility.html" class="footer-link"
-              >Accessibility Statement ↗</a
             >
           </nav>
         </div>
@@ -121,6 +428,5 @@
         <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
-
-    </body>
-    </html>
+  </body>
+</html>
