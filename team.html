@@ -96,7 +96,7 @@
          and one as plain ".team-member:hover". They're merged into
          a single working rule here; nothing about the rendered
          result changes, since the broken rule was never firing. */
-      .team-member:hover {
+      .team-member:hover .team-member:focus-within {
         transform: translateY(-12px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
         height: auto;
