@@ -192,14 +192,84 @@
 
       .info-card,
       .process-step,
+      .stat-card,
       .cta-section {
         transition: all 0.3s ease;
       }
 
       .info-card:hover,
       .process-step:hover,
+      .stat-card:hover,
       .cta-section:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .info-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .info-card li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+      }
+
+      .info-card li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4c9f38;
+        font-weight: bold;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .process-step h3,
+      .stat-card h3 {
+        color: #07424d;
+      }
+
+      .process-step p,
+      .stat-card p {
+        font-size: 15px;
+      }
+
+      .tag {
+        letter-spacing: 0.5px;
+      }
+
+      .hero-section {
+        box-shadow: 0 15px 35px rgba(76, 159, 56, 0.1);
+      }
+
+      .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+      }
+
+      .nav-btn {
+        background: #47676e;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 50px;
+        white-space: nowrap;
+        margin: 0px 150px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(76, 159, 56, 0.2);
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-4px);
+        background: #4bc6c0;
+        color: rgb(5, 62, 9);
       }
     </style>
   </head>
@@ -224,7 +294,7 @@
 
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
-        <a href="./home.html" class="nav-link">Home</a>
+        <a href="./home.html" class="nav-link active">Home</a>
         <a href="./gallery.html" class="nav-link">Gallery</a>
         <a href="./ais.html" class="nav-link">AIS</a>
         <a href="./feedback.html" class="nav-link">Feedback</a>
@@ -376,9 +446,20 @@
             contribute toward a healthier and more equitable future.
           </p>
           <br />
-          <a href="https://sdgs.un.org/goals/goal3">About SDG 3 </a>
+          <a
+            href="https://sdgs.un.org/goals/goal3"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-btn"
+          >
+            About SDG 3
+          </a>
         </section>
       </section>
+
+      <div class="page-navigation">
+        <a href="./content_ST_3.html" class="nav-btn"> ← Previous Page </a>
+      </div>
     </main>
 
     <!-- ================================================

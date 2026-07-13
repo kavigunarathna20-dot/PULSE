@@ -8,11 +8,29 @@
       content="PULSE - Feedback & Program Directory - SDG 3: Good Health and Well-Being"
     />
     <title>PULSE - Feedback & Program Directory</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
     <link rel="stylesheet" href="global.css" />
 
     <style>
-      /* Page-specific styles for Feedback page only */
+      /* ============================================================
+         NOTE: Styles below are ordered to match the order elements
+         appear in <main>:
+         1. section (generic padding used by all <section>s on this page)
+         2. .filter-container / .sort-dropdown (program sorting control)
+         3. .programs-container / .program-card (program cards grid)
+         4. .ratings-summary / .reviews-grid / .review-card (ratings section)
+         5. .feedback-form and its fields (feedback form section)
+         Responsive rules are grouped at the end.
 
+         Also note: .section-title below is defined in this page's
+         <style> but none of the headings in the body actually use
+         it (they use class="Headings", styled in global.css) — it's
+         left in place in case a future page reuses it, but it isn't
+         currently applied to anything on this page.
+         ============================================================ */
+
+      /* Leftover/unused on this page — see note above */
       .section-title {
         font-size: 75px;
         font-family: "Poppins", sans-serif;
@@ -25,11 +43,18 @@
           6 0 0 10px rgba(255, 255, 255, 7.6);
       }
 
+      /* ------------------------------------------------------------
+         1. GENERIC SECTION PADDING — applies to all three <section>
+         elements on this page (programs, ratings, feedback form)
+         ------------------------------------------------------------ */
       section {
         padding: 60px 40px;
       }
 
-      /* Sorting/Filtering Dropdown */
+      /* ------------------------------------------------------------
+         2. SORTING/FILTERING DROPDOWN — "Sort by:" control above the
+         programs grid
+         ------------------------------------------------------------ */
       .filter-container {
         display: flex;
         align-items: center;
@@ -68,7 +93,9 @@
       .sort-dropdown:focus {
         outline: none;
         border-color: #3a7a2c;
-        box-shadow: 0 0 0 4px rgba(76, 159, 56, 0.15), 0 4px 12px rgba(76, 159, 56, 0.2);
+        box-shadow:
+          0 0 0 4px rgba(76, 159, 56, 0.15),
+          0 4px 12px rgba(76, 159, 56, 0.2);
       }
 
       .sort-dropdown option {
@@ -77,7 +104,10 @@
         color: #263238;
       }
 
-      /* Programs/Opportunities Cards */
+      /* ------------------------------------------------------------
+         3. PROGRAMS/OPPORTUNITIES CARDS — grid of program cards
+         (Mental Health Support, Fitness Initiative, etc.)
+         ------------------------------------------------------------ */
       .programs-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -127,6 +157,7 @@
         flex-grow: 1;
       }
 
+      /* "Duration / Location" line at the bottom of each card */
       .program-card .meta {
         font-size: 14px;
         color: #888;
@@ -152,8 +183,10 @@
         background: #3a7a2c;
       }
 
-      /* Ratings Summary */
-
+      /* ------------------------------------------------------------
+         4. RATINGS & REVIEWS SECTION — overall score + individual
+         review cards
+         ------------------------------------------------------------ */
       .ratings-summary {
         background: #eaf6ee;
         border-radius: 12px;
@@ -161,6 +194,7 @@
         margin-bottom: 30px;
       }
 
+      /* "4.2 / Overall Rating / Based on 87 reviews" row */
       .overall-rating {
         display: flex;
         align-items: center;
@@ -249,8 +283,9 @@
         text-decoration: underline;
       }
 
-      /* Feedback Form */
-
+      /* ------------------------------------------------------------
+         5. FEEDBACK FORM — "Share Your Feedback" form section
+         ------------------------------------------------------------ */
       .feedback-form {
         background: #eaf6ee;
         border-radius: 12px;
@@ -259,6 +294,23 @@
         margin: 0 auto;
       }
 
+      /* Success banner shown after a valid form submission (see script) */
+      .form-success {
+        background: #c8e6c9;
+        color: #1b5e20;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        display: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .form-success.show {
+        display: block;
+      }
+
+      /* Groups fields into "Personal Details" / "Feedback Details" */
       fieldset {
         border: 2px solid #4c9f38;
         border-radius: 8px;
@@ -278,6 +330,7 @@
         margin-left: -12px;
       }
 
+      /* Wrapper around each label + input pair */
       .form-group {
         margin-bottom: 20px;
       }
@@ -319,17 +372,30 @@
         background-color: rgba(76, 159, 56, 0.02);
       }
 
+      /* Extra focus glow specifically for text-like inputs (adds to the
+         generic :focus rule above rather than replacing it) */
+      .form-group input[type="text"]:focus,
+      .form-group input[type="email"]:focus,
+      .form-group input[type="tel"]:focus,
+      .form-group input[type="date"]:focus {
+        outline: none;
+        border-color: #4c9f38;
+        box-shadow: 0 0 0 3px rgba(76, 159, 56, 0.1);
+      }
+
       .form-group textarea {
         resize: vertical;
         min-height: 120px;
       }
 
+      /* "0/500 characters" counter under the feedback textarea */
       .char-counter {
         font-size: 12px;
         color: #888;
         margin-top: 4px;
       }
 
+      /* Submit/Clear button row */
       .form-buttons {
         display: flex;
         gap: 15px;
@@ -365,6 +431,7 @@
         background: #b8b8b8;
       }
 
+      /* Per-field validation error message (see script's showError/clearError) */
       .form-error {
         color: #d32f2f;
         font-size: 12px;
@@ -382,6 +449,7 @@
         animation: slideIn 0.3s ease;
       }
 
+      /* Small slide-down animation used when an error message appears */
       @keyframes slideIn {
         from {
           opacity: 0;
@@ -393,30 +461,9 @@
         }
       }
 
-      .form-group input[type="text"]:focus,
-      .form-group input[type="email"]:focus,
-      .form-group input[type="tel"]:focus,
-      .form-group input[type="date"]:focus {
-        outline: none;
-        border-color: #4c9f38;
-        box-shadow: 0 0 0 3px rgba(76, 159, 56, 0.1);
-      }
-
-      .form-success {
-        background: #c8e6c9;
-        color: #1b5e20;
-        padding: 15px;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        display: none;
-        font-size: 14px;
-        font-weight: 600;
-      }
-
-      .form-success.show {
-        display: block;
-      }
-
+      /* ============================================================
+         RESPONSIVE / MEDIA QUERIES
+         ============================================================ */
       @media (max-width: 1200px) {
         .programs-container {
           grid-template-columns: repeat(2, 1fr);
@@ -500,13 +547,33 @@
          Students add their page content here
          ================================================ -->
     <main>
+      <!-- Page heading -->
       <h2 class="Headings">Health Programs & Opportunities</h2>
-      <p style="text-align: center; font-size: 16px; color: #555; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-      Discover a variety of programs and initiatives designed to promote physical health, mental well-being, and healthy lifestyles. Whether you're interested in fitness, nutrition, mental wellness, or community engagement, our carefully curated programs offer something for everyone. 
+
+      <!-- Intro paragraph -->
+      <p
+        style="
+          text-align: center;
+          font-size: 16px;
+          color: #555;
+          margin-bottom: 30px;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.8;
+        "
+      >
+        Discover a variety of programs and initiatives designed to promote
+        physical health, mental well-being, and healthy lifestyles. Whether
+        you're interested in fitness, nutrition, mental wellness, or community
+        engagement, our carefully curated programs offer something for everyone.
       </p>
+
+      <!-- ============================================
+           SECTION: Programs & Opportunities
+           Sort dropdown + grid of 4 program cards
+           ============================================ -->
       <section>
-        
-      
         <!-- Sorting/Filtering Dropdown -->
         <div class="filter-container">
           <label for="sortDropdown">Sort by:</label>
@@ -519,11 +586,9 @@
         </div>
 
         <div class="programs-container">
+          <!-- Program 1: Mental Health Support -->
           <div class="program-card">
-            <img
-              src="./images/Mental_health.jpg"
-              alt="Mental Health Support"
-            />
+            <img src="./images/Mental_health.jpg" alt="Mental Health Support" />
             <h3>Mental Health Support</h3>
             <p>
               Access counselling and mental wellness programs for individuals
@@ -532,11 +597,10 @@
             <div class="meta">Duration: 4-12 weeks | Location: Online</div>
             <button>View Program</button>
           </div>
+
+          <!-- Program 2: Fitness Initiative -->
           <div class="program-card">
-            <img
-              src="images/fitness.jpg"
-              alt="Fitness Initiative"
-            />
+            <img src="images/fitness.jpg" alt="Fitness Initiative" />
             <h3>Fitness Initiative</h3>
             <p>
               Join community fitness programs promoting physical health and
@@ -545,11 +609,10 @@
             <div class="meta">Duration: 8 weeks | Location: Various</div>
             <button>View Program</button>
           </div>
+
+          <!-- Program 3: Nutrition Workshop -->
           <div class="program-card">
-            <img
-              src="images/workshop.jpg"
-              alt="Nutrition Workshop"
-            />
+            <img src="images/workshop.jpg" alt="Nutrition Workshop" />
             <h3>Nutrition Workshop</h3>
             <p>
               Learn healthy eating habits and nutritional science from certified
@@ -558,11 +621,10 @@
             <div class="meta">Duration: 6 sessions | Location: Hybrid</div>
             <button>View Program</button>
           </div>
+
+          <!-- Program 4: Volunteer Opportunities -->
           <div class="program-card">
-            <img
-              src="images/volunteer.webp"
-              alt="Volunteer Opportunities"
-            />
+            <img src="images/volunteer.webp" alt="Volunteer Opportunities" />
             <h3>Volunteer Opportunities</h3>
             <p>
               Contribute to community health initiatives and make a positive
@@ -574,7 +636,10 @@
         </div>
       </section>
 
-      <!-- Ratings & Reviews Section -->
+      <!-- ============================================
+           SECTION: Ratings & Reviews
+           Overall score + 3 individual review cards
+           ============================================ -->
       <section class="ratings-section">
         <h2 class="Headings">Program Ratings & Reviews</h2>
         <div class="ratings-summary">
@@ -586,6 +651,7 @@
             </div>
           </div>
           <div class="reviews-grid">
+            <!-- Review 1 -->
             <div class="review-card">
               <div class="review-header">
                 <span class="review-name">Sarah Johnson</span>
@@ -599,6 +665,8 @@
               </div>
               <a href="#" class="see-more-link">See more →</a>
             </div>
+
+            <!-- Review 2 -->
             <div class="review-card">
               <div class="review-header">
                 <span class="review-name">Marcus Lee</span>
@@ -612,6 +680,8 @@
               </div>
               <a href="#" class="see-more-link">See more →</a>
             </div>
+
+            <!-- Review 3 -->
             <div class="review-card">
               <div class="review-header">
                 <span class="review-name">Elena Rodriguez</span>
@@ -629,10 +699,14 @@
         </div>
       </section>
 
-      <!-- Feedback Form Section -->
+      <!-- ============================================
+           SECTION: Feedback Form
+           Validated form for submitting program feedback
+           ============================================ -->
       <section class="feedback-section">
         <h2 class="Headings">Share Your Feedback</h2>
         <div class="feedback-form">
+          <!-- Shown by JS after a successful, validated submission -->
           <div class="form-success" id="successMessage">
             ✓ Thank you for your feedback! We appreciate your input.
           </div>
@@ -739,11 +813,12 @@
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
-          <p class="student-info">Developed by: <strong>Thisumi Dahamsa</strong></p>
+          <p class="student-info">
+            Developed by: <strong>Thisumi Dahamsa</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST3.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST3.html" class="footer-link">Validation ↗</a>
-            <a href="accessibility.html" class="footer-link">Accessibility ↗</a>
           </nav>
         </div>
       </div>
@@ -751,14 +826,21 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>© 2026 PULSE — University of Westminster Group Project</span>
-        <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
 
-    <!-- Form Functionality Script -->
+    <!-- ================================================
+         SCRIPT: Feedback Form Functionality
+         Handles the live character counter, per-field
+         validation, and full form-submission validation
+         for the feedback form above.
+         ================================================ -->
     <script>
       // ============================================
       // CHARACTER COUNTER - Live Update
+      // Updates the "x/500 characters" label as the user types
+      // in the feedback textarea, and changes its color as the
+      // user approaches the 500-character limit.
       // ============================================
       const messageField = document.getElementById("message");
       const charCount = document.getElementById("charCount");
@@ -768,11 +850,11 @@
 
         // Visual feedback: change color as user approaches limit
         if (this.value.length > 400) {
-          charCount.style.color = "#ff9800";
+          charCount.style.color = "#ff9800"; // orange warning
         } else if (this.value.length > 450) {
-          charCount.style.color = "#d32f2f";
+          charCount.style.color = "#d32f2f"; // red, close to limit
         } else {
-          charCount.style.color = "#888";
+          charCount.style.color = "#888"; // default gray
         }
       });
 
@@ -782,7 +864,10 @@
       const feedbackForm = document.getElementById("feedbackForm");
       const successMessage = document.getElementById("successMessage");
 
-      // Helper function to show error with custom message
+      // Shows a validation error message under the given field
+      // (fieldId matches the input's id, and the error div's id
+      // is expected to be `${fieldId}Error`), and highlights the
+      // input in red.
       function showError(fieldId, message) {
         const errorElement = document.getElementById(fieldId + "Error");
         const inputElement = document.getElementById(fieldId);
@@ -799,7 +884,8 @@
         }
       }
 
-      // Helper function to clear error
+      // Clears a previously-shown validation error and removes the
+      // red highlight from the input field.
       function clearError(fieldId) {
         const errorElement = document.getElementById(fieldId + "Error");
         const inputElement = document.getElementById(fieldId);
@@ -815,7 +901,9 @@
         }
       }
 
-      // Real-time validation on input
+      // Real-time validation: check each field as soon as the user
+      // clicks/tabs away from it (on "blur"), rather than waiting
+      // until form submission.
       const formInputs = feedbackForm.querySelectorAll(
         "input, select, textarea",
       );
@@ -863,7 +951,10 @@
         });
       });
 
-      // Form submission validation
+      // Full validation pass run when the form is submitted.
+      // Re-checks every required field, shows/clears errors
+      // accordingly, and only shows the success message + resets
+      // the form if every field passes.
       feedbackForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -973,6 +1064,9 @@
 
       // ============================================
       // SORTING DROPDOWN INTERACTION
+      // Currently just logs the selected sort option;
+      // placeholder for future sorting logic on the
+      // .programs-container cards.
       // ============================================
       const sortDropdown = document.getElementById("sortDropdown");
       if (sortDropdown) {

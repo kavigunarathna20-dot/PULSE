@@ -11,6 +11,265 @@
     <link rel="stylesheet" href="global.css" />
 
     <style>
+      .healthcare-page {
+        max-width: 1300px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 60px 30px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #e8f5e9, #f5fff7);
+        margin-bottom: 50px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #4c9f38;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .hero-section h1 {
+        font-size: 60px;
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+
+      .hero-section p {
+        font-size: 18px;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 25px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+      }
+
+      .stat-card h2 {
+        font-size: 45px;
+      }
+
+      .info-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .info-card {
+        background: white;
+        padding: 35px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .info-card h2 {
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+
+      .info-card ul {
+        margin-top: 20px;
+        padding-left: 25px;
+      }
+
+      .info-card li {
+        margin-bottom: 10px;
+      }
+
+      .process-section {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .process-section h2 {
+        color: #07424d;
+        margin-bottom: 35px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+      }
+
+      .process-step {
+        background: white;
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .process-step span {
+        width: 60px;
+        height: 60px;
+        background: #4c9f38;
+        color: white;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .sdg-section {
+        background: linear-gradient(135deg, #4c9f38, #63b851);
+        color: white;
+        border-radius: 30px;
+        padding: 50px;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .sdg-section h2,
+      .sdg-section p {
+        color: white;
+      }
+
+      .cta-section {
+        text-align: center;
+        background: white;
+        border-radius: 25px;
+        padding: 50px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .cta-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #4c9f38;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: #3a7a2c;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 40px;
+        }
+
+        .info-section {
+          grid-template-columns: 1fr;
+        }
+
+        .healthcare-page {
+          padding: 20px;
+        }
+      }
+
+      .info-card,
+      .process-step,
+      .stat-card,
+      .cta-section {
+        transition: all 0.3s ease;
+      }
+
+      .info-card:hover,
+      .process-step:hover,
+      .stat-card:hover,
+      .cta-section:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .info-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .info-card li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+      }
+
+      .info-card li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4c9f38;
+        font-weight: bold;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .process-step h3,
+      .stat-card h3 {
+        color: #07424d;
+      }
+
+      .process-step p,
+      .stat-card p {
+        font-size: 15px;
+      }
+
+      .tag {
+        letter-spacing: 0.5px;
+      }
+
+      .hero-section {
+        box-shadow: 0 15px 35px rgba(76, 159, 56, 0.1);
+      }
+
+      .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+      }
+
+      .nav-btn {
+        background: #47676e;
+        color: white;
+        padding: 10px 28px;
+        border-radius: 50px;
+        margin: 0px 150px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(76, 159, 56, 0.2);
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-4px);
+        background: #4bc6c0;
+        color: rgb(5, 62, 9);
+      }
     </style>
   </head>
   <body>
@@ -51,9 +310,110 @@
          ================================================ -->
 
     <main>
+      <section class="healthcare-page">
+        <div class="hero-section">
+          <div class="hero-content">
+            <span class="tag">SDG 3 • Good Health & Well-Being</span>
 
-            <h1 class="cont-headings">Physical Health and Exercise</h1>
-      
+            <h1>Physical Activity and Exercise</h1>
+
+            <p>
+              Regular physical activity strengthens the body, improves mental
+              well-being, and reduces the risk of many chronic diseases.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h2>🏃</h2>
+            <h3>Active Lifestyle</h3>
+            <p>Daily movement promotes overall physical fitness.</p>
+          </div>
+
+          <div class="stat-card">
+            <h2>❤️</h2>
+            <h3>Heart Health</h3>
+            <p>Exercise supports healthy cardiovascular function.</p>
+          </div>
+
+          <div class="stat-card">
+            <h2>⚡</h2>
+            <h3>Energy & Fitness</h3>
+            <p>Physical activity boosts stamina and energy levels.</p>
+          </div>
+        </div>
+
+        <section class="info-section">
+          <div class="info-card">
+            <h2>Benefits of Exercise</h2>
+
+            <ul>
+              <li>Improved heart health</li>
+              <li>Stronger muscles and bones</li>
+              <li>Better mental well-being</li>
+              <li>Reduced risk of chronic disease</li>
+              <li>Increased energy levels</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h2>Common Barriers</h2>
+
+            <ul>
+              <li>Lack of time</li>
+              <li>Sedentary lifestyles</li>
+              <li>Poor motivation</li>
+              <li>Limited facilities</li>
+              <li>Excessive screen time</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="process-section">
+          <h2>Encouraging Physical Activity</h2>
+
+          <div class="process-grid">
+            <div class="process-step">
+              <span>1</span>
+              <h3>Education</h3>
+              <p>Teach the importance of exercise.</p>
+            </div>
+
+            <div class="process-step">
+              <span>2</span>
+              <h3>Access</h3>
+              <p>Provide safe spaces for recreation.</p>
+            </div>
+
+            <div class="process-step">
+              <span>3</span>
+              <h3>Participation</h3>
+              <p>Encourage sports and active lifestyles.</p>
+            </div>
+
+            <div class="process-step">
+              <span>4</span>
+              <h3>Consistency</h3>
+              <p>Make exercise a regular habit.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sdg-section">
+          <h2>Physical Activity and SDG 3</h2>
+
+          <p>
+            Exercise promotes healthier lives and contributes directly to
+            achieving SDG 3 through disease prevention and improved well-being.
+          </p>
+        </section>
+      </section>
+
+      <div class="page-navigation">
+        <a href="./content_ST_1.html" class="nav-btn"> ← Previous Page </a>
+        <a href="./content_ST_3.html" class="nav-btn"> Next Page → </a>
+      </div>
     </main>
 
     <!-- ================================================
@@ -76,20 +436,6 @@
             A student project promoting SDG 3 — Good Health and Well-Being at
             the University of Westminster.
           </p>
-        </div>
-
-        <!-- Footer Section 2: Quick Links -->
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <nav class="footer-nav">
-            <a href="HomePage.html" class="nav-link active">Home</a>
-            <a href="gallery.html" class="nav-link">Gallery</a>
-            <a href="mental-health.html" class="nav-link">AIS</a>
-            <a href="physical-activity.html" class="nav-link">Feedback</a>
-            <a href="nutrition.html" class="nav-link">Team</a>
-            <a href="team.html" class="nav-link">Profile</a>
-            <a href="team.html" class="nav-link">Sitemap</a>
-          </nav>
         </div>
 
         <!-- Footer Section 3: Student Information -->
@@ -120,6 +466,5 @@
         <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
-
-    </body>
-    </html>
+  </body>
+</html>

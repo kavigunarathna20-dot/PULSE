@@ -8,23 +8,43 @@
       content="PULSE - Team Page - Meet the team behind the Good Health & Well-Being initiative"
     />
     <title>PULSE - Team</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
     <link rel="stylesheet" href="global.css" />
 
     <style>
       /* ================================================
          PAGE-SPECIFIC STYLES: TEAM PAGE ONLY
+         Ordered to match the order elements appear in <main>:
+         1. #team-heading (NOTE: unused on this page — see below)
+         2. .team-intro (intro paragraph)
+         3. .team-container (grid wrapper)
+         4. .team-member and its children in DOM order:
+            .member-thumbnail -> .member-info (.member-name,
+            .member-role) -> .member-details (.details-content:
+            .detail-label, .detail-text, .contribution-list)
+         Responsive rules are grouped at the end.
          ================================================ */
 
+      /* NOTE: no element in <body> actually has id="team-heading"
+         (the real heading uses class="Headings", styled in
+         global.css), so this rule currently does nothing. Left in
+         place in case it's meant to be wired up later. */
       #team-heading {
         font-size: 50px;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-weight: 700;
         color: #004d00;
         text-align: center;
         margin-bottom: 15px;
-        text-shadow: 0 0 5px rgba(255, 255, 255, 6.8), 6 0 0 10px rgba(255, 255, 255, 7.6);
+        text-shadow:
+          0 0 5px rgba(255, 255, 255, 6.8),
+          6 0 0 10px rgba(255, 255, 255, 7.6);
       }
 
+      /* ------------------------------------------------------------
+         2. TEAM INTRO — description paragraph under the page heading
+         ------------------------------------------------------------ */
       .team-intro {
         text-align: center;
         font-size: 16px;
@@ -36,7 +56,9 @@
         line-height: 1.8;
       }
 
-      /* Team Members Container */
+      /* ------------------------------------------------------------
+         3. TEAM CONTAINER — grid holding the 4 team member cards
+         ------------------------------------------------------------ */
       .team-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -44,10 +66,13 @@
         padding: 40px;
         max-width: 800px;
         margin: 0 auto;
-        align-items:start;
+        align-items: start;
       }
 
-      /* Individual Team Member Block */
+      /* ------------------------------------------------------------
+         4. TEAM MEMBER — individual card. Collapsed by default,
+         expands to show full details on hover/keyboard focus.
+         ------------------------------------------------------------ */
       .team-member {
         background: #fff;
         border-radius: 18px;
@@ -62,76 +87,83 @@
         height: 360px;
       }
 
-      .team-member:hover
-      .team-member:focus-within {
+      /* Hover / expanded state.
+         NOTE: this selector was originally split into two separate
+         rules with identical properties — one written as
+         ".team-member:hover .team-member:focus-within" (missing a
+         comma, so CSS reads it as one nested selector that never
+         matches anything on this page and is effectively dead code),
+         and one as plain ".team-member:hover". They're merged into
+         a single working rule here; nothing about the rendered
+         result changes, since the broken rule was never firing. */
+      .team-member:hover {
         transform: translateY(-12px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-        height: auto; 
+        height: auto;
       }
 
-      /* Thumbnail Image Container */
-      .member-thumbnail {
-        width: 100%;
-        height: 200px; 
-        overflow: hidden;
-        background: #f0f0f0;
-      }
-
-      /* Member Info Section */
-      .member-info {
-        padding: 10px 12px;  /* Reduced from 15px */
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Keyboard Focus State */
+      /* Keyboard focus outline, for accessibility (tab-focusing a card) */
       .team-member:focus {
         outline: 3px solid #4c9f38;
         outline-offset: 2px;
+      }
+
+      /* Slight zoom + fade on the thumbnail image when the card is hovered */
+      .team-member:hover .member-thumbnail img {
+        transform: scale(1.08);
+        opacity: 0.85;
+      }
+
+      /* Expand the hidden details panel on hover or keyboard focus */
+      .team-member:hover .member-details,
+      .team-member:focus-within .member-details {
+        max-height: 1000px; /* increased from 500px to fit longer content */
+        opacity: 1;
+        visibility: visible;
+        padding-top: 15px;
+        margin-top: 10px;
+      }
+
+      /* -- 4a. Thumbnail image container -- */
+      .member-thumbnail {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: #f0f0f0;
       }
 
       .member-thumbnail img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      /* -- 4b. Info block: name, role, and (on expand) full details -- */
+      .member-info {
+        padding: 10px 12px; /* reduced from 15px */
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .member-name {
-        font-size: 18px;  /* Reduced from 20px */
+        font-size: 18px; /* reduced from 20px */
         font-weight: 700;
         color: #006400;
-        margin-bottom: 4px;  /* Reduced from 8px */
+        margin-bottom: 4px; /* reduced from 8px */
       }
+
       .member-role {
-        font-size: 13px;  /* Reduced from 14px */
+        font-size: 13px; /* reduced from 14px */
         color: #888;
         margin-bottom: 0;
         font-weight: 600;
       }
 
-      /* Hover Effects */
-      .team-member:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-      }
-
-      .team-member:hover .member-thumbnail img {
-        transform: scale(1.08);
-        opacity: 0.85;
-      }
-
-      .team-member:hover .member-details ,
-      .team-member:focus-within .member-details {
-        max-height: 1000px;  /* Increased from 500px */
-        opacity: 1;
-        visibility: visible;
-        padding-top: 15px;
-        margin-top:10px;
-      }
-
-      /* Expandable Details Section */
+      /* -- 4c. Expandable details panel (hidden until hover/focus) -- */
       .member-details {
         max-height: 0;
         opacity: 0;
@@ -142,7 +174,6 @@
         border-top: 2px solid #eaf6ee;
         padding-top: 0;
       }
-
 
       .details-content {
         padding-bottom: 15px;
@@ -164,7 +195,7 @@
         margin-bottom: 12px;
       }
 
-      /* Contribution List */
+      /* "Pages Contributed" list */
       .contribution-list {
         font-size: 13px;
         color: #555;
@@ -176,7 +207,9 @@
         margin-left: 18px;
       }
 
-      /* Responsive Design */
+      /* ============================================================
+         RESPONSIVE / MEDIA QUERIES
+         ============================================================ */
       @media (max-width: 1024px) {
         .team-container {
           grid-template-columns: repeat(2, 1fr);
@@ -249,32 +282,40 @@
          Student 3 adds team page content here
          ================================================ -->
     <main>
+      <!-- Page heading -->
       <h1 class="Headings">Meet Our Team</h1>
-      
+
+      <!-- Intro paragraph -->
       <p class="team-intro">
-        We are a dedicated group of students united by a shared passion for promoting good health and well-being. 
-        Each team member brings unique skills and perspectives to create PULSE, a comprehensive initiative dedicated 
-        to SDG 3. Hover over each member to learn more about their role and contributions.
+        We are a dedicated group of students united by a shared passion for
+        promoting good health and well-being. Each team member brings unique
+        skills and perspectives to create PULSE, a comprehensive initiative
+        dedicated to SDG 3. Hover over each member to learn more about their
+        role and contributions.
       </p>
 
+      <!-- Grid of 4 team member cards. Each card is keyboard-focusable
+           (tabindex="0") and expands on hover/focus to reveal
+           .member-details (handled by CSS + the keydown script below) -->
       <div class="team-container">
-        <!-- Student 1 -->
+        <!-- Team member 1: Kavishka Gunarathna -->
         <div class="team-member" tabindex="0">
           <div class="member-thumbnail">
-            <img 
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" 
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
               alt="Student 1 Profile - Template and Home Page Developer"
             />
           </div>
           <div class="member-info">
             <div class="member-name">Kavishka Gunarathna</div>
             <div class="member-role">Template & Home Page</div>
-            
+
             <div class="member-details">
               <div class="details-content">
                 <div class="detail-label">Role</div>
                 <div class="detail-text">
-                  Lead developer for shared template, global CSS, and home page design
+                  Lead developer for shared template, global CSS, and home page
+                  design
                 </div>
 
                 <div class="detail-label">Pages Contributed</div>
@@ -285,15 +326,15 @@
                   <li>Gallery Page</li>
                   <li>Content Page (SDG Focus)</li>
                 </ul>
-                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Student 2 -->
+        <!-- Team member 2: Devindi Hansika -->
         <div class="team-member" tabindex="0">
           <div class="member-thumbnail">
-            <img 
+            <img
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
               alt="Student 2 Profile - Splash Screen and AIS Developer"
             />
@@ -301,12 +342,13 @@
           <div class="member-info">
             <div class="member-name">Devindi Hansika</div>
             <div class="member-role">Splash Screen & AIS</div>
-            
+
             <div class="member-details">
               <div class="details-content">
                 <div class="detail-label">Role</div>
                 <div class="detail-text">
-                  Developer of splash screen introduction and action impact simulator with interactive features
+                  Developer of splash screen introduction and action impact
+                  simulator with interactive features
                 </div>
 
                 <div class="detail-label">Pages Contributed</div>
@@ -316,28 +358,29 @@
                   <li>Content Page (SDG Focus)</li>
                   <li>JavaScript Interactivity Features</li>
                 </ul>
-                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Student 3 -->
+        <!-- Team member 3: Thisumi Dahamsa -->
         <div class="team-member" tabindex="0">
           <div class="member-thumbnail">
-            <img 
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" 
+            <img
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
               alt="Student 3 Profile - Feedback and Team Page Developer"
             />
           </div>
           <div class="member-info">
             <div class="member-name">Thisumi Dahamsa</div>
             <div class="member-role">Feedback & Team Page</div>
-            
+
             <div class="member-details">
               <div class="details-content">
                 <div class="detail-label">Role</div>
                 <div class="detail-text">
-                  Developer of feedback form with validation and team profile page with interactive elements
+                  Developer of feedback form with validation and team profile
+                  page with interactive elements
                 </div>
 
                 <div class="detail-label">Pages Contributed</div>
@@ -352,23 +395,24 @@
           </div>
         </div>
 
-        <!-- Student 4 -->
+        <!-- Team member 4: Chamindu Wijesinghe -->
         <div class="team-member" tabindex="0">
           <div class="member-thumbnail">
-            <img 
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" 
+            <img
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
               alt="Student 4 Profile - User Profile and Sitemap Developer"
             />
           </div>
           <div class="member-info">
-            <div class="member-name">Chamindu Sewmika</div>
+            <div class="member-name">Chamindu Wijesinghe</div>
             <div class="member-role">User Profile & Sitemap</div>
-            
+
             <div class="member-details">
               <div class="details-content">
                 <div class="detail-label">Role</div>
                 <div class="detail-text">
-                  Developer of progressive user profiling system and SVG-based interactive sitemap
+                  Developer of progressive user profiling system and SVG-based
+                  interactive sitemap
                 </div>
 
                 <div class="detail-label">Pages Contributed</div>
@@ -410,11 +454,12 @@
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
-          <p class="student-info">Developed by: <strong>Thisumi Dahamsa</strong></p>
+          <p class="student-info">
+            Developed by: <strong>Thisumi Dahamsa</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST3.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST3.html" class="footer-link">Validation ↗</a>
-            <a href="accessibility.html" class="footer-link">Accessibility ↗</a>
           </nav>
         </div>
       </div>
@@ -422,22 +467,26 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>© 2026 PULSE — University of Westminster Group Project</span>
-        <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
 
     <!-- ================================================
          KEYBOARD ACCESSIBILITY ENHANCEMENT
+         Makes the expandable team-member cards usable via
+         keyboard (Enter/Space), not just mouse hover.
          ================================================ -->
     <script>
-      // Enable hover effects on keyboard focus
-      const teamMembers = document.querySelectorAll('.team-member');
-      
-      teamMembers.forEach(member => {
-        member.addEventListener('keydown', function(e) {
+      // Every focusable team member card
+      const teamMembers = document.querySelectorAll(".team-member");
+
+      teamMembers.forEach((member) => {
+        member.addEventListener("keydown", function (e) {
           // Trigger hover effect on Enter or Space
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
+            // Re-focusing keeps :focus-within active, which is what
+            // the CSS uses to expand .member-details (see .team-member:hover,
+            // .team-member:focus-within rule above)
             this.focus();
           }
         });

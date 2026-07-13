@@ -7,10 +7,60 @@
       name="description"
       content="PULSE - AIS Impact Simulator: Explore how healthy actions contribute to your well-being"
     />
+
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
     <title>PULSE - Impact Simulator</title>
     <link rel="stylesheet" href="global.css" />
 
     <style>
+      /* ============================================================
+         NOTE: Styles below are ordered to match the order elements
+         appear in the document:
+         1. body (page background, changes based on impact level)
+         2. .sim-header (page intro heading + description)
+         3. .card-grid / .card and its children (action selection cards)
+         4. .selected-section (list of actions the user has picked)
+         5. .sim-results (final wellness score + action buttons)
+         Responsive rules are grouped at the end.
+         ============================================================ */
+
+      /* ------------------------------------------------------------
+         1. BODY BACKGROUND
+         The page background image changes depending on the user's
+         calculated impact level (low/medium/high), set via JS adding
+         one of these classes to <body>.
+         ------------------------------------------------------------ */
+      body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: background-image 0.6s ease-in-out;
+      }
+      body.impact-low {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80");
+      }
+      body.impact-medium {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+          url("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1600&q=80");
+      }
+      body.impact-high {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+          url("https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1600&q=80");
+      }
+      /* neutralize any ::before overlay from global.css for these states */
+      body.impact-low::before,
+      body.impact-medium::before,
+      body.impact-high::before {
+        background-color: transparent;
+      }
+
+      /* ------------------------------------------------------------
+         2. SIM HEADER — page heading + intro paragraph
+         ------------------------------------------------------------ */
       .sim-header {
         text-align: center;
         margin-bottom: 2rem;
@@ -27,6 +77,47 @@
         font-size: 18px;
         line-height: 1.8;
       }
+
+      /* ------------------------------------------------------------
+         3. CARD GRID — grid of selectable "healthy action" cards
+         ------------------------------------------------------------ */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      /* Individual action card */
+      .card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        padding: 24px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(76, 159, 56, 0.15);
+      }
+
+      /* Applied by JS when the user selects this card's action */
+      .card.selected {
+        border: 2px solid #2e7d32;
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
+        transform: translateY(-2px);
+      }
+      .card.selected .select-btn {
+        background: #1b5e20;
+      }
+
+      /* "X pts" badge shown at the top of each card */
       .impact-points {
         display: inline-block;
         background: linear-gradient(135deg, #2e7d32, #388e3c);
@@ -37,9 +128,55 @@
         font-size: 0.85rem;
         margin-bottom: 0.75rem;
       }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 14px;
+      }
+      .card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--dark-text);
+        margin-bottom: 8px;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--medium-text);
+        line-height: 1.6;
+        margin-bottom: 6px;
+        flex: 1;
+      }
+
+      /* "Select Action" button inside each card.
+         NOTE: originally declared in two separate blocks (one with
+         just "width: 100%", one with the full button styling) —
+         merged into a single rule here with no change in the
+         properties that end up applied. */
       .card .btn {
         width: 100%;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(76, 159, 56, 0.3);
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 12px;
       }
+      .card .btn:hover {
+        background: var(--primary-color);
+        color: #fff;
+      }
+
+      /* ------------------------------------------------------------
+         4. SELECTED SECTION — list of actions the user has chosen
+         ------------------------------------------------------------ */
       .selected-section {
         max-width: 1100px;
         margin: 2rem auto;
@@ -50,6 +187,8 @@
         color: var(--dark-text);
         margin-bottom: 18px;
       }
+
+      /* Card-like container wrapping the selected-items list */
       .selected-inner {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(8px);
@@ -63,10 +202,13 @@
         margin: 0;
         padding: 0;
       }
+      /* Placeholder/empty-state text ("No actions selected yet", etc.) */
       .selected-inner ul p {
         color: var(--medium-text);
         font-style: italic;
       }
+
+      /* One row per selected action, added dynamically by JS */
       .selected-item {
         display: flex;
         justify-content: space-between;
@@ -85,12 +227,18 @@
         color: #2e7d32;
         font-weight: 700;
       }
+
+      /* ------------------------------------------------------------
+         5. SIM RESULTS — final wellness score + calculate/reset buttons
+         ------------------------------------------------------------ */
       .sim-results {
         text-align: center;
         max-width: 1100px;
         margin: 2rem auto;
         padding: 2rem 40px;
       }
+
+      /* Card-like container wrapping the results content */
       .sim-results-inner {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(8px);
@@ -104,6 +252,7 @@
         color: var(--dark-text);
         margin-bottom: 10px;
       }
+      /* Big total-points number */
       .sim-results-inner h3 {
         font-size: 3rem;
         color: #1b5e20;
@@ -112,6 +261,9 @@
       .sim-results-inner p {
         color: var(--medium-text);
       }
+
+      /* Feedback message shown after "Calculate Impact" is clicked
+         (e.g. "Great job! Your wellness impact is high.") */
       .impact-message {
         font-size: 1.2rem;
         font-weight: 600;
@@ -119,6 +271,8 @@
         min-height: 2rem;
         color: var(--dark-text);
       }
+
+      /* Wrapper for the Calculate/Reset buttons */
       .sim-actions {
         display: flex;
         gap: 1rem;
@@ -143,6 +297,7 @@
         background: var(--primary-color);
         color: #fff;
       }
+      /* "Reset" button uses a neutral/gray style instead of green */
       .sim-actions .btn-secondary {
         background: rgba(255, 255, 255, 0.15);
         border-color: rgba(100, 100, 100, 0.2);
@@ -154,102 +309,9 @@
         border-color: #666;
       }
 
-      .card.selected {
-        border: 2px solid #2e7d32;
-        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
-        transform: translateY(-2px);
-      }
-      .card.selected .select-btn {
-        background: #1b5e20;
-      }
-
-      body {
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        transition: background-image 0.6s ease-in-out;
-      }
-      body.impact-low {
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
-          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80");
-      }
-      body.impact-medium {
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-          url("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1600&q=80");
-      }
-      body.impact-high {
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
-          url("https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1600&q=80");
-      }
-      body.impact-low::before,
-      body.impact-medium::before,
-      body.impact-high::before {
-        background-color: transparent;
-      }
-
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 40px;
-      }
-      .card {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        border-radius: 20px;
-        padding: 24px;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-      }
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 30px rgba(76, 159, 56, 0.15);
-      }
-      .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 14px;
-      }
-      .card h3 {
-        font-size: 17px;
-        font-weight: 700;
-        color: var(--dark-text);
-        margin-bottom: 8px;
-      }
-      .card p {
-        font-size: 13px;
-        color: var(--medium-text);
-        line-height: 1.6;
-        margin-bottom: 6px;
-        flex: 1;
-      }
-      .card .btn {
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(76, 159, 56, 0.3);
-        border-radius: 30px;
-        padding: 10px 20px;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--primary-color);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 12px;
-      }
-      .card .btn:hover {
-        background: var(--primary-color);
-        color: #fff;
-      }
+      /* ============================================================
+         RESPONSIVE / MEDIA QUERIES
+         ============================================================ */
       @media (max-width: 900px) {
         .card-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -312,7 +374,10 @@
          ================================================ -->
 
     <main>
+      <!-- Page heading -->
       <h1 class="Headings">Health Action Impact Simulator</h1>
+
+      <!-- Intro text explaining how the simulator works -->
       <div class="sim-header">
         <p>
           Explore how different healthy actions contribute to your overall
@@ -321,7 +386,11 @@
         </p>
       </div>
 
+      <!-- Grid of selectable action cards. Each card carries
+           data-id/data-points attributes that simulator.js reads
+           when the user clicks "Select Action" -->
       <div class="card-grid" id="sim-grid">
+        <!-- Action 1: Take a 30-Minute Walk (3 pts) -->
         <div class="card" data-id="1" data-points="3">
           <span class="impact-points">3 pts</span>
           <img
@@ -337,6 +406,7 @@
           <button class="btn select-btn" type="button">Select Action</button>
         </div>
 
+        <!-- Action 2: Drink 8 Glasses of Water (2 pts) -->
         <div class="card" data-id="2" data-points="2">
           <span class="impact-points">2 pts</span>
           <img
@@ -352,6 +422,7 @@
           <button class="btn select-btn" type="button">Select Action</button>
         </div>
 
+        <!-- Action 3: Get 7–8 Hours of Sleep (4 pts) -->
         <div class="card" data-id="3" data-points="4">
           <span class="impact-points">4 pts</span>
           <img
@@ -367,6 +438,7 @@
           <button class="btn select-btn" type="button">Select Action</button>
         </div>
 
+        <!-- Action 4: Practice 10 Minutes of Mindfulness (3 pts) -->
         <div class="card" data-id="4" data-points="3">
           <span class="impact-points">3 pts</span>
           <img
@@ -382,6 +454,7 @@
           <button class="btn select-btn" type="button">Select Action</button>
         </div>
 
+        <!-- Action 5: Cook a Home-Made Healthy Meal (3 pts) -->
         <div class="card" data-id="5" data-points="3">
           <span class="impact-points">3 pts</span>
           <img
@@ -397,6 +470,7 @@
           <button class="btn select-btn" type="button">Select Action</button>
         </div>
 
+        <!-- Action 6: Schedule a Routine Health Check-Up (5 pts) -->
         <div class="card" data-id="6" data-points="5">
           <span class="impact-points">5 pts</span>
           <img
@@ -413,6 +487,8 @@
         </div>
       </div>
 
+      <!-- Live-updating list of the actions the user has selected so far,
+           populated by simulator.js -->
       <div class="selected-section">
         <h2>Your Selected Actions</h2>
         <div class="selected-inner">
@@ -420,6 +496,8 @@
         </div>
       </div>
 
+      <!-- Final results: total wellness score, feedback message,
+           and Calculate/Reset controls -->
       <div class="sim-results">
         <div class="sim-results-inner">
           <h2>Your Wellness Score</h2>
@@ -472,10 +550,11 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>&copy; 2026 PULSE — University of Westminster Group Project</span>
-        <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
 
+    <!-- Impact Simulator logic (card selection, score calculation,
+         background theme, reset) lives in this external file -->
     <script src="simulator.js"></script>
   </body>
 </html>
