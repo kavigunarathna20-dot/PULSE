@@ -456,23 +456,70 @@
     </footer>
 
     <script>
+      // Checks every gallery card and adds the "visible" class once
+      // it has scrolled far enough into the viewport, which triggers
+      // the fade/slide-in CSS transition defined for .gallery-card.
       function reveal() {
-        const reveals = document.querySelectorAll(".card, .content-box, #exp");
+        // Select all gallery cards
+        const reveals = document.querySelectorAll(".gallery-card");
 
         reveals.forEach((item) => {
+          // Height of the visible browser window
           const windowHeight = window.innerHeight;
+          // Distance from the top of the viewport to the top of the card
           const elementTop = item.getBoundingClientRect().top;
+          // How many pixels of the card must be visible before it reveals
           const visiblePoint = 100;
 
+          // If the card has scrolled far enough up into view, reveal it
           if (elementTop < windowHeight - visiblePoint) {
-            item.classList.add("active");
+            item.classList.add("visible");
           }
         });
       }
 
+      // Re-check on every scroll event
       window.addEventListener("scroll", reveal);
+      // Run once immediately on page load (in case cards are already in view)
       reveal();
-    </script> 
-    </footer>
+
+      /* =========================
+         Gallery Filter
+         Filters the visible cards based on which category button
+         was clicked (or shows all cards if "All" is selected).
+      ========================= */
+
+      // All filter buttons (All / Mental Health / Physical Fitness / etc.)
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      // All gallery cards to be shown/hidden
+      const cards = document.querySelectorAll(".gallery-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Active button styling: clear "active" from all buttons,
+          // then mark the clicked one as active
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          // Category encoded on the clicked button (e.g. "Nutrition")
+          const selectedCategory = btn.dataset.category;
+
+          cards.forEach((card) => {
+            // Show the card if "All" is selected or its category matches;
+            // otherwise hide it
+            if (
+              selectedCategory === "All" ||
+              card.dataset.category === selectedCategory
+            ) {
+              card.style.display = "block";
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
