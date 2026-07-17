@@ -1,197 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PULSE - Welcome</title>
-    <link rel="stylesheet" href="global.css">
-    <meta http-equiv="refresh" content="4; url=home.html">
+    <link rel="stylesheet" href="global.css" />
+    <meta http-equiv="refresh" content="4; url=home.html" />
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url('images/AIS_bg.png') center/cover no-repeat;
-            font-family: var(--font-family);
-            position: relative;
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("./images/AIS_bg.png")
+          center/cover no-repeat;
+        font-family: var(--font-family);
+        position: relative;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 0;
+      }
+      .splash-container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 2.5rem 3.5rem;
+        max-width: 580px;
+        width: 90%;
+        box-shadow: 0 15px 50px rgba(0, 77, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .splash-container h1 {
+        color: #004d00;
+        font-size: 3.8rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: 4px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+      }
+      .splash-container h1::after {
+        display: none;
+      }
+      .sdg-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #2e7d32, #4c9f38);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .mission {
+        color: #444;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        font-family: Georgia, serif;
+        font-style: italic;
+      }
+      .team-section {
+        margin-bottom: 1.5rem;
+      }
+      .team-section h3 {
+        font-size: 0.9rem;
+        color: #004d00;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .team-member {
+        background: rgba(232, 245, 233, 0.6);
+        border-radius: 8px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #2e7d32;
+        border-left: 3px solid #4caf50;
+        text-align: left;
+      }
+      .team-member .role {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #666;
+        margin-top: 0.15rem;
+      }
+      .loader {
+        width: 44px;
+        height: 44px;
+        border: 4px solid #e8f5e9;
+        border-top-color: #4c9f38;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1.2rem;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.35);
-            z-index: 0;
-        }
+      }
+      .countdown {
+        color: #666;
+        font-size: 1rem;
+        margin: 1rem 0 0.75rem;
+      }
+      .countdown span {
+        color: #4c9f38;
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+      .skip-btn {
+        background: transparent;
+        border: 2px solid #4c9f38;
+        color: #4c9f38;
+        padding: 0.6rem 2.5rem;
+        border-radius: 30px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.25rem;
+      }
+      .skip-btn:hover {
+        background: #4c9f38;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(76, 159, 56, 0.35);
+      }
+      @media (max-width: 600px) {
         .splash-container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 2.5rem 3.5rem;
-            max-width: 580px;
-            width: 90%;
-            box-shadow: 0 15px 50px rgba(0, 77, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+          padding: 2rem 1.5rem;
         }
         .splash-container h1 {
-            color: #004d00;
-            font-size: 3.8rem;
-            margin-bottom: 0.25rem;
-            letter-spacing: 4px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-        }
-        .splash-container h1::after { display: none; }
-        .sdg-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #2e7d32, #4c9f38);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-        }
-        .mission {
-            color: #444;
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            font-family: Georgia, serif;
-            font-style: italic;
-        }
-        .team-section {
-            margin-bottom: 1.5rem;
-        }
-        .team-section h3 {
-            font-size: 0.9rem;
-            color: #004d00;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
+          font-size: 2.8rem;
         }
         .team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
+          grid-template-columns: 1fr;
         }
-        .team-member {
-            background: rgba(232, 245, 233, 0.6);
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #2e7d32;
-            border-left: 3px solid #4caf50;
-            text-align: left;
-        }
-        .team-member .role {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #666;
-            margin-top: 0.15rem;
-        }
-        .loader {
-            width: 44px;
-            height: 44px;
-            border: 4px solid #e8f5e9;
-            border-top-color: #4c9f38;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1.2rem;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .countdown {
-            color: #666;
-            font-size: 1rem;
-            margin: 1rem 0 0.75rem;
-        }
-        .countdown span {
-            color: #4c9f38;
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-        .skip-btn {
-            background: transparent;
-            border: 2px solid #4c9f38;
-            color: #4c9f38;
-            padding: 0.6rem 2.5rem;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.25rem;
-        }
-        .skip-btn:hover {
-            background: #4c9f38;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(76, 159, 56, 0.35);
-        }
-        @media (max-width: 600px) {
-            .splash-container { padding: 2rem 1.5rem; }
-            .splash-container h1 { font-size: 2.8rem; }
-            .team-grid { grid-template-columns: 1fr; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="splash-container">
-        <div class="loader"></div>
-        <h1>PULSE</h1>
-        <span class="sdg-badge">SDG 3 — Good Health & Well-Being</span>
-        <p class="mission">Inspiring healthy lifestyles and universal well-being through awareness, action, and community — because every heartbeat matters.</p>
+      <div class="loader"></div>
+      <h1>PULSE</h1>
+      <span class="sdg-badge">SDG 3 — Good Health & Well-Being</span>
+      <p class="mission">
+        Inspiring healthy lifestyles and universal well-being through awareness,
+        action, and community — because every heartbeat matters.
+      </p>
 
-        <div class="team-section">
-            <h3>Our Team</h3>
-            <div class="team-grid">
-                <div class="team-member">
-                    Kavishka Gunarathna
-                    <span class="role">Template &amp; Home Page</span>
-                </div>
-                <div class="team-member">
-                    Devindi Hansika
-                    <span class="role">Splash Screen &amp; AIS</span>
-                </div>
-                <div class="team-member">
-                    Thisumi Dahamsa
-                    <span class="role">Feedback &amp; Team Page</span>
-                </div>
-                <div class="team-member">
-                    Chamindu Wijesinghe
-                    <span class="role">User Profile &amp; Sitemap</span>
-                </div>
-            </div>
+      <div class="team-section">
+        <h3>Our Team</h3>
+        <div class="team-grid">
+          <div class="team-member">
+            Kavishka Gunarathna
+            <span class="role">Template &amp; Home Page</span>
+          </div>
+          <div class="team-member">
+            Devindi Hansika
+            <span class="role">Splash Screen &amp; AIS</span>
+          </div>
+          <div class="team-member">
+            Thisumi Dahamsa
+            <span class="role">Feedback &amp; Team Page</span>
+          </div>
+          <div class="team-member">
+            Chamindu Wijesinghe
+            <span class="role">User Profile &amp; Sitemap</span>
+          </div>
         </div>
+      </div>
 
-        <p class="countdown">Entering site in <span id="timer">4</span>...</p>
-        <button class="skip-btn" onclick="skipIntro()">Skip Intro</button>
+      <p class="countdown">Entering site in <span id="timer">4</span>...</p>
+      <button class="skip-btn" onclick="skipIntro()">Skip Intro</button>
     </div>
 
     <script>
-        let countdown = 4;
-        const timerDisplay = document.getElementById('timer');
-        function updateTimer() {
-            timerDisplay.textContent = countdown;
-            if (countdown <= 0) {
-                window.location.href = 'home.html';
-                return;
-            }
-            countdown--;
+      let countdown = 4;
+      const timerDisplay = document.getElementById("timer");
+      function updateTimer() {
+        timerDisplay.textContent = countdown;
+        if (countdown <= 0) {
+          window.location.href = "home.html";
+          return;
         }
-        updateTimer();
-        setInterval(updateTimer, 1000);
-        function skipIntro() { window.location.href = 'home.html'; }
+        countdown--;
+      }
+      updateTimer();
+      setInterval(updateTimer, 1000);
+      function skipIntro() {
+        window.location.href = "home.html";
+      }
     </script>
-</body>
+  </body>
 </html>

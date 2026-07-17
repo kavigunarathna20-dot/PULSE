@@ -339,29 +339,6 @@ footer {
   letter-spacing: 1px;
 }
 
-/* ================================================
-   FOOTER NAVIGATION
-================================================ */
-
-.footer-nav,
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.footer-link {
-  font-size: 14px;
-  color: var(--primary-color);
-
-  text-decoration: none;
-
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: var(--primary-dark);
-}
 
 /* ================================================
    FOOTER BOTTOM
