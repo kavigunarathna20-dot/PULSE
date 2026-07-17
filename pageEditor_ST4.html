@@ -9,27 +9,271 @@
     />
     <title>PULSE - Good Health & Well-Being</title>
     <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="css/pageEditor_validator.css" />
-  
+
     <style>
-      a {
-        color: rgb(17, 17, 145);
-      }
-      ul {
-        list-style: none;
-      }
-            ul li {
-              padding-bottom: 7px;
-      }
-      .student{
-        border-radius: 15px;
-        padding: 20px 20px 20px 10px;
-      }
-      .content{
-        border-radius: 15px;
-        padding: 20px 20px 20px 10px;
+      /* ==================================================
+   SECTION ANCHOR OFFSET
+================================================== */
+
+      #profile,
+      #sitemap,
+      #content,
+      #challenge,
+      #compliance,
+      #group,
+      #references {
+        scroll-margin-top: 100px;
       }
 
+      /* ==================================================
+   PAGE LAYOUT
+================================================== */
+
+      .portfolio-container {
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+        background: #edf1ec;
+        padding: 20px;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      /* ==================================================
+   HERO SECTION
+================================================== */
+
+      .hero-section {
+        background: linear-gradient(135deg, #43a047, #66bb6a);
+        text-align: center;
+        color: #fff;
+        padding: 50px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .hero-section h1 {
+        margin: 0;
+        font-size: 2.2rem;
+      }
+
+      .hero-section p {
+        margin-top: 10px;
+        font-size: 1.6rem;
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      /* ==================================================
+   SIDEBAR NAVIGATION
+================================================== */
+
+      .sidebar {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        height: fit-content;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+
+        font-size: 20px;
+        font-family: "Gill Sans MT";
+        color: #333;
+        text-decoration: none;
+
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover,
+      .sidebar .active {
+        background: #8af3d0;
+      }
+
+      /* ==================================================
+   CONTENT CARDS
+================================================== */
+
+      .page-card,
+      .modern-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 6px solid #43a047;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      /* ==================================================
+   HEADINGS & TEXT
+================================================== */
+
+      .page-card h2,
+      .modern-card h2 {
+        color: #2e7d32;
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .page-card h3 {
+        margin-top: 25px;
+        font-size: 24px;
+        color: #1b4332;
+      }
+
+      .page-card p {
+        color: #000;
+        font-size: 18px;
+        line-height: 2;
+      }
+
+      .page-card a {
+        color: #2e7d32;
+        font-weight: 600;
+      }
+
+      /* ==================================================
+   CHALLENGES SECTION
+================================================== */
+
+      .challenge-item {
+        position: relative;
+        margin-bottom: 30px;
+        padding-left: 30px;
+        border-left: 4px solid #43a047;
+      }
+
+      .challenge-item::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: -10px;
+
+        width: 16px;
+        height: 16px;
+
+        background: #137718;
+        border-radius: 50%;
+      }
+
+      .challenge-item h3 {
+        color: #030627;
+        margin-bottom: 10px;
+      }
+
+      .challenge-item p {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      /* ==================================================
+   COMPLIANCE SECTION
+================================================== */
+
+      #compliance {
+        background: #fff;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      #compliance p {
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 18px;
+        text-align: justify;
+      }
+
+      /* ==================================================
+   CONTRIBUTION LOG TABLE
+================================================== */
+
+      .table-container {
+        overflow-x: auto;
+      }
+
+      .meeting-table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .meeting-table th {
+        background: #294f52;
+        color: #fff;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .meeting-table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        vertical-align: top;
+      }
+
+      .meeting-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+
+      .meeting-table tr:hover {
+        background: #f1f8e9;
+      }
+
+      /* ==================================================
+   REFERENCES SECTION
+================================================== */
+
+      .ref-list {
+        padding-left: 25px;
+        line-height: 1.8;
+      }
+
+      .ref-list li {
+        margin-bottom: 16px;
+        text-align: justify;
+      }
+
+      .ref-list a {
+        color: #2e7d32;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .ref-list a:hover {
+        text-decoration: underline;
+      }
+
+      /* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+      @media (max-width: 900px) {
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -53,13 +297,13 @@
 
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
-        <a href="./HomePage.html" class="nav-link active">Home</a>
-        <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="mental-health.html" class="nav-link">AIS</a>
-        <a href="physical-activity.html" class="nav-link">Feedback</a>
-        <a href="nutrition.html" class="nav-link">Team</a>
-        <a href="./UserProfile.html" class="nav-link">Profile</a>
-        <a href="./SiteMap.html" class="nav-link">Sitemap</a>
+        <a href="./home.html" class="nav-link">Home</a>
+        <a href="./gallery.html" class="nav-link">Gallery</a>
+        <a href="./ais.html" class="nav-link">AIS</a>
+        <a href="./feedback.html" class="nav-link">Feedback</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="./profile.html" class="nav-link">Profile</a>
+        <a href="./sitemap.html" class="nav-link">Sitemap</a>
       </nav>
     </header>
 
@@ -68,317 +312,463 @@
          Students add their page content here
          Keep this structure intact
          ================================================ -->
-
     <main>
-      <!-- Update the header and the footer to be consistent with the rest of the pages you implemented Optional -->
+      <div class="portfolio-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <h1>Chamindu Wijesinghe – PULSE</h1>
+          <p>User Profile, Sitemap & Content Page</p>
+        </section>
 
-      <section class="stud">
-        <h2>Chamindu Wijesinghe, PULSE, User Profile, Sitemap</h2>
-      </section>
+        <div class="dashboard">
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <a href="#profile"> User Profile </a>
+            <a href="#sitemap"> Sitemap </a>
+            <a href="#content"> Content </a>
+            <a href="#challenge">Challenges & Lessons Learned</a>
+            <a href="#compliance">Compliance</a>
+            <a href="#group"> Group </a>
+            <a href="#references"> References </a>
+          </aside>
 
-      <div class="container">
-        <!-- Main content area -->
-        <main>
-          <!-- Update those first three sections for the pages you were responsible to implement -->
+          <!-- Main Content -->
 
-          <section>
-            <h2 id="home">User Profile</h2>
-            <h3>Technical Description</h3>
+          <section class="content-grid">
+            <!-- USER PROFILE -->
+            <section class="page-card" id="profile">
+              <h2>User Profile</h2>
 
+              <h3>Technical Description</h3>
+              <p>
+                The User Profile page was developed using semantic HTML elements
+                such as header, main, section and footer to create a clear page
+                structure. CSS Flexbox was used to organise profile information
+                and create a responsive layout. JavaScript was used to collect
+                user details through prompts, update profile information
+                dynamically and calculate profile completion progress. DOM
+                manipulation techniques were used to update content without
+                reloading the page.
+              </p>
 
-            <b>HTML Structure</b>
-The User Profile page was developed using semantic HTML elements including header, nav, main, section, and footer to create a clear and consistent page structure. The main element contains the profile-building interface and the profile display area. Separate sections were used to organise profile information into logical categories, improving readability and maintainability.
-<br><br>
-<b>CSS Techniques</b>
+              <h3>Accessibility</h3>
+              <p>
+                Semantic HTML elements provide meaningful structure for screen
+                readers. Clear headings, sufficient colour contrast and
+                responsive layouts improve accessibility across devices.
+                Keyboard-accessible controls and descriptive text were used
+                throughout the page.
+              </p>
 
-CSS was used to create a clean and responsive layout that matches the visual identity of the website. Flexbox was used to organise profile cards and information panels efficiently across different screen sizes. Consistent colours, spacing, shadows, and border-radius properties were applied to improve visual appeal and usability. Progress indicators and profile sections were styled to provide clear visual feedback during profile completion.
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST4.html">View Validation Results</a>
+              </p>
 
-<br><br>
-<b>JavaScript Interactivity</b>
-JavaScript provides the main functionality of the page. The prompt() method was used to collect user information in multiple stages, following the coursework requirement for a step-by-step profile-building process. User data was stored using JavaScript objects and variables, allowing information to be updated dynamically.
-Functions were created to handle data collection, update profile information, calculate completion percentages, and render content to the page. DOM manipulation techniques such as getElementById() and innerHTML were used to display profile information without reloading the page. Conditional statements were used to manage skipped questions and update the completion progress correctly.
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="./profile.html" target="_blank">
+                  View User Profile Page
+                </a>
+              </p>
+            </section>
 
-<br><br>
-<b>Design Decisions</b>
-A progressive profile-building approach was chosen because it prevents users from becoming overwhelmed by large forms and creates a more interactive experience. The use of JavaScript prompts and dynamic content updates demonstrates effective use of client-side scripting while meeting the project requirements. The progress indicator was included to encourage users to complete their profiles and provide immediate feedback throughout the process.
-<br><br><br>
+            <!-- SITEMAP -->
+            <section class="page-card" id="sitemap">
+              <h2>Sitemap</h2>
 
+              <h3>Technical Description</h3>
+              <p>
+                The Sitemap page was created using SVG elements to visually
+                represent navigation paths within the website. CSS styling was
+                applied to create colour consistency with the PULSE branding
+                while hover effects improve user interaction. Hyperlinks were
+                integrated into the SVG structure to allow direct navigation to
+                website pages.
+              </p>
 
+              <h3>Accessibility</h3>
+              <p>
+                Clear labels, readable typography and structured navigation
+                improve understanding for all users. Colour contrast was
+                carefully selected to maintain readability while SVG elements
+                remain scalable across different screen sizes.
+              </p>
 
-
-            <h3>Accessibility</h3>
-            <p>
-The User Profile page was designed with accessibility in mind to ensure it can be used by a wide range of users. Semantic HTML elements such as header, main, and section provide meaningful structure for screen readers and assistive technologies.
-Clear headings and descriptive labels were used throughout the page to improve navigation and readability. A consistent colour scheme with sufficient contrast was selected to ensure that text remains easy to read. The page uses responsive design techniques so content can adapt to different screen sizes and devices.
-The profile completion progress indicator provides visual feedback that helps users understand their current progress. Instructions and feedback messages are written in simple, descriptive language to improve usability. Keyboard-accessible controls and logical content organisation further enhance the user experience for individuals who rely on assistive technologies.
-            </p>
-
-            <h3>Link to the validation page</h3>
-            <!-- Update the path to link the Page Editor with the splash page -->
-            <p>
-              <a href="validation_ST0.html#splashVal"
-                >Include a link to the validation page</a
-              >, use the marker to jump to the corresponding section of the
-              validation page.
-            </p>
-            <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
-
-            <h3>Link to the page</h3>
-            <p>
-              <a href="./profile.html" target="_blank"
-                >Include a link to the actual page you describe.</a
-              >
-            </p>
-          </section>
-
-          <section>
-            <h2 id="gallery">Gallery Page</h2>
-            <h3>Technical Description</h3>
-            <p>
-              Explain the HTML structure, the CSS techniques used to implement
-              this page, and how interactivity was integrated with JavaScript.
-              Justify the logic and purpose of the key HTML tags, CSS styling
-              choices, and JavaScript functionality, focusing on functionality
-              and design without copying large code sections. Explain the
-              purpose of the main HTML tags, CSS properties, and JavaScript
-              features used. Specify the key HTML tags, CSS properties, and
-              JavaScript elements that create the page structure, styling, and
-              interactivity.
-            </p>
-
-            <h3>Accessibility</h3>
-            <p>
-              Explain how you used to addressed accessibility in this particular
-              page you implemented.
-            </p>
-
-            <h3>Link to the validation page</h3>
-            <!-- Update the path to link the Page Editor with the splash page -->
-            <p>
-              <a href="validation_ST0.html#volunteerVal"
-                >Include a link to the validation page</a
-              >, use the marker to jump to the corresponding section of the
-              validation page.
-            </p>
-            <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
-
-            <h3>Link to the page</h3>
-            <p>
-              <a href="volunteer.html"
-                >Include a link to the actual page you describe.</a
-              >
-            </p>
-          </section>
-
-          <section>
-            <h2 id="content">Content Page</h2>
-            <h3>Technical Description</h3>
-            <p>
-              Explain the HTML structure, the CSS techniques used to implement
-              this page, and how interactivity was integrated with JavaScript.
-              Justify the logic and purpose of the key HTML tags, CSS styling
-              choices, and JavaScript functionality, focusing on functionality
-              and design without copying large code sections. Explain the
-              purpose of the main HTML tags, CSS properties, and JavaScript
-              features used. Specify the key HTML tags, CSS properties, and
-              JavaScript elements that create the page structure, styling, and
-              interactivity.
-            </p>
-
-            <h3>Accessibility</h3>
-            <p>
-              Explain how you used to addressed accessibility in this particular
-              page you implemented.
-            </p>
-
-            <h3>Link to the validation page</h3>
-            <!-- Update the path to link the Page Editor with the splash page -->
-            <p>
-              <a href="validation_ST0.html#contentVal"
-                >Include a link to the validation page</a
-              >, use the marker to jump to the corresponding section of the
-              validation page.
-            </p>
-            <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
-
-            <h3>Link to the page</h3>
-            <p>
-              <a href="content.html"
-                >Include a link to the actual page you describe.</a
-              >
-            </p>
-          </section>
-
-          <section>
-            <h2 id="challenge">Challenges and Lessons Learned</h2>
-            <p>
-              Detail any challenges encountered during the implementation
-              process and explain how they were resolved. Reflect on the lessons
-              learned from overcoming these challenges.
-            </p>
-          </section>
-
-          <section>
-            <h2 id="compliance">Compliance</h2>
-            <p>
-              Discuss how the pages you have created are compliant with Janet
-              regulations governing web page publication. This includes
-              demonstrating your understanding and application of these
-              regulations. Be realistic and truthful.
-              <a
-                href="https://intranet.ecs.westminster.ac.uk/modules/4COSC011W/compliance.html"
-                target="_blank"
-                >See the lecture notes for more details on compliance.</a
-              >
-            </p>
-          </section>
-
-          <section>
-            <h2 id="group">Group Meetings and Individual Contribution Log</h2>
-            <p>
-              Include a Group Meetings and Contribution Log that documents your
-              engagement with group work.
-            </p>
-            Requirements:
-            <ul>
-              <li>A minimum of six (6) group meetings must be recorded.</li>
-              <li>
-                Each student must provide their own account of the meetings.
-              </li>
-              <li>
-                The log must focus on individual contribution, not just group
-                activity.
-              </li>
-            </ul>
-            <p>Feel free to follow the example table structure below:</p>
-
-            <table>
-              <thead>
-                <tr>
-                  <th colspan="6">Group Meetings and Contribution Log</th>
-                </tr>
-                <tr>
-                  <th>Meeting</th>
-                  <th>Date &amp; Time</th>
-                  <th>Format</th>
-                  <th>Objective</th>
-                  <th>Attended</th>
-                  <th>Your Individual Contribution</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>3 Feb 2026</td>
-                  <td>Face-to-face</td>
-                  <td>Agree SDG and assign roles</td>
-                  <td>Yes</td>
-                  <td>
-                    I agreed to take responsibility for the Home Page and
-                    template.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>17 Feb 2026</td>
-                  <td>Online</td>
-                  <td>Review Home Page design</td>
-                  <td>Yes</td>
-                  <td>I suggested the colour palette and card-based layout.</td>
-                </tr>
-
-                <tr>
-                  <td>3</td>
-                  <td>03 Mar 2026</td>
-                  <td>Hybrid</td>
-                  <td>Progress review</td>
-                  <td>No</td>
-                  <td>I reviewed meeting notes and followed up with tasks.</td>
-                </tr>
-
-                <tr>
-                  <td>4</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-
-                <tr>
-                  <td>5</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-
-                <tr>
-                  <td>6</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2 id="ref">References</h2>
-            <p>
-              Provide links to resources you used following a consistent format
-              (e.g., APA, MLA, or a simplified style). For example:<br /><br />
-            </p>
-            <ul class="ref">
-              <li>
-                iStock (2025) <i>iStock.</i> Available at:
-                <a href="#">https://www.istockphoto.com/</a> (Last accessed: 11
-                Feb 2025).
-              </li>
-              <li>
-                Duckett, J., 2011. HTML and CSS: Design and Build Websites,<i
-                  >John Willey&Sons. Inc. Indianappolis.</i
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST4.html"
+                  >Access the Validation Page Here</a
                 >
-              </li>
-            </ul>
-          </section>
+              </p>
 
-          <p class="top"><a href="#top">Go top</a></p>
-        </main>
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="./sitemap.html" target="_blank"> View Sitemap Page </a>
+              </p>
+            </section>
 
-        <!-- Sidebar area -->
-        <aside>
-          <!-- Customize this to the role you undertook. Keep only the list items you were responsible to develop, delete the rest -->
+            <!-- CONTENT PAGE -->
+            <section class="page-card" id="content">
+              <h2>Content Page</h2>
 
-          <h4>Student 4</h4>
-          <ul>
-            <div class="student">
-              <li><a href="">User Profile </a></li>
-              <li><a href="">Sitemap</a></li>
-              <li><a href="">Content</a></li>
+              <h3>Technical Description</h3>
+              <p>
+                The Content Page was developed using semantic HTML and
+                responsive CSS techniques. Structured headings, images and
+                content containers were used to organise information
+                effectively. CSS Grid and Flexbox were applied to ensure content
+                remains visually balanced across devices while maintaining
+                consistency with the project theme.
+              </p>
+
+              <h3>Accessibility</h3>
+              <p>
+                The page uses meaningful heading structures, alternative text
+                for images and responsive layouts. Sufficient colour contrast
+                and clear content organisation improve readability for users
+                with different accessibility needs.
+              </p>
+
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST4.html"> View Validation Results </a>
+              </p>
+
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="content_ST4.html" target="_blank">
+                  View Access to HealthCare Page
+                </a>
+              </p>
+            </section>
+
+            <!-- CHALLENGES -->
+
+            <section class="modern-card" id="challenge">
+              <h2>Challenges & Lessons Learned</h2>
+
+              <div class="challenge-item">
+                <h3>Responsive Layout Design</h3>
+
+                <p>
+                  Creating a layout that displayed correctly across desktops,
+                  tablets and mobile devices was one of the main challenges
+                  during development.
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  CSS Grid, Flexbox and media queries were used to adapt the
+                  layout to different screen sizes.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Responsive design should be considered from the beginning of
+                  the design process rather than added later.
+                </p>
               </div>
-            </ul>
-            <ul>
-              <div class="content">
-            <li><a href="">Challenges and Lessons Learned</a></li>
-            <li><a href="">Compliance</a></li>
-            <li>
-              <a href=""
-                >Group Meetings and Individual Contribution Log</a
-              >
-            </li>
-            <li><a href="">References</a></li>
-          </div>
-          </ul>
-        </aside>
+
+              <div class="challenge-item">
+                <h3>JavaScript Functionality</h3>
+
+                <p>
+                  Implementing dynamic profile generation and progress tracking
+                  required careful organisation of JavaScript functions.
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  The code was divided into reusable functions to improve
+                  readability and maintainability.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Modular programming simplifies debugging and future updates.
+                </p>
+              </div>
+
+              <div class="challenge-item">
+                <h3>Validation and Accessibility</h3>
+
+                <p>
+                  Several HTML validation errors and accessibility concerns were
+                  identified during testing.
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  The W3C Validator was used regularly and accessibility
+                  guidelines were followed when creating page structures.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Regular testing and validation help maintain quality and
+                  standards compliance.
+                </p>
+              </div>
+            </section>
+
+            <!-- COMPLIANCE -->
+            <section class="page-card" id="compliance">
+              <h2>Compliance</h2>
+
+              <p>
+                The pages I developed were designed in accordance with
+                recognised web publishing and accessibility principles. Semantic
+                HTML elements such as <code>header</code>, <code>nav</code>,
+                <code>main</code> and <code>section</code> were used to create a
+                meaningful document structure that can be understood by both
+                users and assistive technologies.
+              </p>
+
+              <p>
+                Accessibility was considered throughout development by using
+                clear heading hierarchies, descriptive link text, alternative
+                text for images and responsive layouts that adapt to different
+                screen sizes. These features help ensure that content remains
+                accessible to a wide range of users.
+              </p>
+
+              <p>
+                The User Profile, Sitemap and Content Page were validated using
+                W3C validation tools to identify and correct HTML and CSS
+                errors. Consistent navigation and a shared visual design were
+                maintained across the website to improve usability and user
+                experience.
+              </p>
+
+              <p>
+                All content included on the pages was created for educational
+                purposes and external resources have been appropriately
+                referenced within the References section. No misleading,
+                offensive or inappropriate content has been included, ensuring
+                the pages meet the standards expected for academic web
+                publication.
+              </p>
+            </section>
+
+            <!-- TIMELINE -->
+            <section class="page-card" id="group">
+              <h2>Group Meetings and Individual Contribution Log</h2>
+
+              <p>
+                The following log records my participation in group meetings and
+                documents my individual contributions throughout the project.
+              </p>
+
+              <div class="table-container">
+                <table class="meeting-table">
+                  <thead>
+                    <tr>
+                      <th>Meeting</th>
+                      <th>Date & Time</th>
+                      <th>Format</th>
+                      <th>Objective</th>
+                      <th>Attended</th>
+                      <th>My Contribution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>08 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Project Kickoff</td>
+                      <td>Yes</td>
+                      <td>
+                        Proposed the progressive User Profile builder concept
+                        and the SVG-based Sitemap design for easy website
+                        navigation.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>2</td>
+                      <td>19 Jun 2026</td>
+                      <td>Online</td>
+                      <td>Template & Design Review</td>
+                      <td>Yes</td>
+                      <td>
+                        Reviewed the shared website template and verified footer
+                        compatibility with the pages assigned to Student 4.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>3</td>
+                      <td>24 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Page Assignment & Content Planning</td>
+                      <td>Yes</td>
+                      <td>
+                        Confirmed responsibility for the User Profile and
+                        Sitemap pages and planned the required functionality and
+                        content structure.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>4</td>
+                      <td>30 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Technical Implementation Check-in</td>
+                      <td>Yes</td>
+                      <td>
+                        Demonstrated the User Profile questionnaire flow and
+                        verified that user information was successfully stored
+                        using localStorage.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>5</td>
+                      <td>10 Jul 2026</td>
+                      <td>Online</td>
+                      <td>Content Development & Integration</td>
+                      <td>Yes</td>
+                      <td>
+                        Completed the profile-building logic and integrated
+                        interactive SVG navigation features into the Sitemap
+                        page.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>6</td>
+                      <td>14 Jul 2026</td>
+                      <td>Physical</td>
+                      <td>Testing & Bug Fixes</td>
+                      <td>Yes</td>
+                      <td>
+                        Improved mobile usability by increasing click target
+                        sizes and fixed issues related to localStorage
+                        persistence.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>17 Jul 2026</td>
+                      <td>Physical</td>
+                      <td>Final Review & Submission Preparation</td>
+                      <td>Yes</td>
+                      <td>
+                        Explained the profile data persistence mechanism and
+                        sitemap navigation functionality during the final
+                        project review and submission preparation.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- REFERENCES -->
+
+            <section class="modern-card full-width" id="references">
+              <h2>References</h2>
+
+              <ul class="ref-list">
+                <li>
+                  Duckett, J. (2011)
+                  <em>HTML and CSS: Design and Build Websites</em>.
+                  Indianapolis: John Wiley &amp; Sons.
+                </li>
+
+                <li>
+                  Mozilla Developer Network (MDN) (2026)
+                  <em>HTML: HyperText Markup Language.</em><br />
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+                    target="_blank"
+                  >
+                    https://developer.mozilla.org/en-US/docs/Web/HTML
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  Mozilla Developer Network (MDN) (2026)
+                  <em>CSS Documentation</em>.<br />
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+                    target="_blank"
+                  >
+                    https://developer.mozilla.org/en-US/docs/Web/CSS
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  Mozilla Developer Network (MDN) (2026)
+                  <em>JavaScript Guide.</em><br />
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+                    target="_blank"
+                  >
+                    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  Mozilla Developer Network (MDN) (2026)
+                  <em>SVG: Scalable Vector Graphics</em>.<br />
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/SVG"
+                    target="_blank"
+                  >
+                    https://developer.mozilla.org/en-US/docs/Web/SVG
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  World Wide Web Consortium (W3C) (2026)
+                  <em>Markup Validation Service</em>.<br />
+                  <a href="https://validator.w3.org/" target="_blank">
+                    https://validator.w3.org/
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  World Wide Web Consortium (W3C) (2026)
+                  <em>Web Accessibility Initiative (WAI)</em>.<br />
+                  <a href="https://www.w3.org/WAI/" target="_blank">
+                    https://www.w3.org/WAI/
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  World Health Organization (WHO) (2026)
+                  <em>Access to Health Services</em>.<br />
+                  <a href="https://www.who.int" target="_blank">
+                    https://www.who.int
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+
+                <li>
+                  United Nations (2026)
+                  <em
+                    >Sustainable Development Goal 3: Good Health and
+                    Well-Being</em
+                  >.<br />
+                  <a href="https://sdgs.un.org/goals/goal3" target="_blank">
+                    https://sdgs.un.org/goals/goal3
+                  </a>
+                  &nbsp;(Accessed: 17 July 2026).
+                </li>
+              </ul>
+            </section>
+            <br />
+          </section>
+        </div>
       </div>
     </main>
-
     <!-- ================================================
          FOOTER
          DO NOT MODIFY: Keep this structure for consistency
@@ -405,19 +795,16 @@ The profile completion progress indicator provides visual feedback that helps us
         <div class="footer-section">
           <h3>This Page</h3>
           <p class="student-info">
-            Developed by: <strong>[Student Name]</strong>
+            Developed by: <strong>Chamindu Wijesinghe</strong>
           </p>
           <nav class="footer-links">
             <!-- EACH STUDENT: Update these links to your own pages -->
-            <a href="page-editor.html" class="footer-link">Page Editor ↗</a>
-            <a
-              href="https://validator.w3.org/"
-              class="footer-link"
-              target="_blank"
-              >Validation ↗</a
+            <a href="./pageEditor_ST4.html" class="footer-link"
+              >Page Editor ↗</a
             >
-            <a href="accessibility.html" class="footer-link"
-              >Accessibility Statement ↗</a
+            &nbsp;&nbsp;
+            <a href="./validation_ST4.html" class="footer-link"
+              >Validation Page ↗</a
             >
           </nav>
         </div>
