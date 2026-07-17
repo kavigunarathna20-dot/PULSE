@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PULSE - A student project promoting SDG 3: Good Health and Well-Being"
+    />
+    <title>PULSE - Good Health & Well-Being</title>
+    <link rel="stylesheet" href="global.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .healthcare-page {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px 0;
+      }
+
+      /* ---------- In-page tab navigation (styled like the reference layout) ---------- */
+      .section-nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #07424d;
+        border-radius: 0 0 14px 14px;
+        margin-bottom: 40px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .section-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .section-nav li {
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .section-nav li:last-child {
+        border-right: none;
+      }
+
+      .section-nav a {
+        display: block;
+        padding: 16px 22px;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.3s;
+      }
+
+      .section-nav a:hover,
+      .section-nav a:focus,
+      .section-nav a.active-link {
+        background: #4c9f38;
+      }
+
+      /* ---------- Page title ---------- */
+      .page-title {
+        text-align: center;
+        margin-bottom: 45px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #4c9f38;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 16px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .page-title h1 {
+        font-size: 42px;
+        color: #07424d;
+      }
+
+      /* ---------- Generic content section (heading, text, full-width image) ---------- */
+      .content-block {
+        margin-bottom: 55px;
+        scroll-margin-top: 90px;
+      }
+
+      .content-block h2 {
+        text-align: center;
+        color: #07424d;
+        font-size: 26px;
+        margin-bottom: 18px;
+      }
+
+      .content-block > p {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 22px;
+        line-height: 1.7;
+      }
+
+      .content-block ul {
+        list-style: none;
+        padding-left: 0;
+        max-width: 650px;
+        margin: 0 auto 22px;
+      }
+
+      .content-block li {
+        position: relative;
+        padding-left: 26px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .content-block li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4c9f38;
+        font-weight: bold;
+      }
+
+      .content-image {
+        display: block;
+        width: 100%;
+        max-height: 340px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        margin-top: 10px;
+      }
+
+      /* ---------- Benefits-style two column checklist ---------- */
+      .benefits-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .benefits-columns h3 {
+        color: #07424d;
+        text-align: center;
+        margin-bottom: 14px;
+        font-size: 17px;
+      }
+
+      .benefits-columns ul {
+        margin: 0;
+      }
+
+      @media (max-width: 620px) {
+        .benefits-columns {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+      }
+
+      /* ---------- Tips-style plain bullet section ---------- */
+      .tips-block ul {
+        text-align: left;
+      }
+
+      /* ---------- SDG banner ---------- */
+      .sdg-section {
+        background: linear-gradient(135deg, #4c9f38, #63b851);
+        color: white;
+        border-radius: 20px;
+        padding: 45px 30px;
+        text-align: center;
+        margin-bottom: 55px;
+        scroll-margin-top: 90px;
+      }
+
+      .sdg-section h2 {
+        color: white;
+        margin-bottom: 18px;
+      }
+
+      .sdg-section p {
+        max-width: 700px;
+        margin: 0 auto 18px;
+        line-height: 1.7;
+      }
+
+      .sdg-section .content-image {
+        max-width: 600px;
+        margin: 15px auto 20px;
+      }
+
+      .back-to-top-link {
+        display: inline-block;
+        margin-top: 5px;
+        color: white;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .back-to-top-link:hover {
+        color: #07424d;
+      }
+
+      /* ---------- Page navigation button ---------- */
+      .page-navigation {
+        display: flex;
+        justify-content: flex-end;
+        margin: 20px 0 50px;
+      }
+
+      .nav-btn {
+        background: #47676e;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 50px;
+        white-space: nowrap;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(76, 159, 56, 0.2);
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-4px);
+        background: #4bc6c0;
+        color: rgb(5, 62, 9);
+      }
+
+      @media (max-width: 768px) {
+        .page-title h1 {
+          font-size: 32px;
+        }
+
+        .healthcare-page {
+          padding: 20px 15px 0;
+        }
+
+        .section-nav a {
+          padding: 12px 14px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================================================
+         HEADER & NAVIGATION
+         DO NOT MODIFY: This is part of the shared template
+         ================================================ -->
+    <header>
+      <div class="logo">
+        <!-- Logo: Replace src with your logo image path -->
+        <img
+          src="./images/logo.jpeg"
+          alt="PULSE Logo - Good Health and Well-Being"
+          class="logo-image"
+        />
+        <div class="logo-text">
+          <h1>PULSE</h1>
+          <p>Good Health & Well-Being</p>
+        </div>
+      </div>
+
+      <!-- Navigation Bar: All team members use these links -->
+      <nav class="main-nav">
+        <a href="./home.html" class="nav-link active">Home</a>
+        <a href="./gallery.html" class="nav-link">Gallery</a>
+        <a href="./ais.html" class="nav-link">AIS</a>
+        <a href="./feedback.html" class="nav-link">Feedback</a>
+        <a href="./team.html" class="nav-link">Team</a>
+        <a href="./profile.html" class="nav-link">Profile</a>
+        <a href="./sitemap.html" class="nav-link">Sitemap</a>
+      </nav>
+    </header>
+
+    <!-- In-page section navigation: internal anchor links required by the coursework -->
+    <nav class="section-nav" aria-label="On this page">
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#why-it-matters">Why It Matters</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#building-better-health">Wellness Tips</a></li>
+        <li><a href="#sdg3-connection">Healthy Habits & SDG 3</a></li>
+      </ul>
+    </nav>
+
+    <!-- ================================================
+         MAIN CONTENT AREA
+         Students add their page content here
+         Keep this structure intact
+         ================================================ -->
+
+    <main>
+      <section class="healthcare-page">
+        <div class="page-title">
+          <span class="tag">SDG 3 • Good Health & Well-Being</span>
+          <h1>Mental Health and Well-being</h1>
+        </div>
+
+        <section class="content-block" id="introduction">
+          <h2>Introduction to Mental Health</h2>
+          <p>
+            Mental health is a vital component of overall well-being. It
+            affects how people think, feel, act, and cope with daily
+            challenges. Supporting mental health creates healthier
+            individuals and stronger communities, and it deserves the same
+            attention and care as physical health.
+          </p>
+          <img
+            src="./images/content-st1-hero.jpg"
+            alt="A person sitting calmly outdoors, reflecting on their mental well-being"
+            class="content-image"
+          />
+        </section>
+
+        <section class="content-block" id="benefits">
+          <h2>Benefits of Good Mental Health</h2>
+          <p>
+            Looking after your mental health brings positive change to both
+            your inner life and the people around you.
+          </p>
+
+          <div class="benefits-columns">
+            <div>
+              <h3>Mind</h3>
+              <ul>
+                <li>Emotional balance</li>
+                <li>Reduced stress and anxiety</li>
+                <li>Improved focus</li>
+                <li>Greater resilience</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Community</h3>
+              <ul>
+                <li>Stronger relationships</li>
+                <li>Better productivity</li>
+                <li>Healthier habits</li>
+                <li>Supportive environments</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-block" id="why-it-matters">
+          <h2>Why Mental Health Matters</h2>
+          <p>
+            Mental health influences education, employment, relationships,
+            and physical health. Good mental well-being improves overall
+            quality of life and helps people cope with everyday challenges.
+          </p>
+
+          <ul>
+            <li>Better emotional resilience</li>
+            <li>Improved productivity</li>
+            <li>Stronger relationships</li>
+            <li>Reduced stress levels</li>
+            <li>Healthier communities</li>
+          </ul>
+
+          <img
+            src="./images/why-mental-health-matters.jpg"
+            alt="Two friends having a supportive conversation over coffee"
+            class="content-image"
+          />
+        </section>
+
+        <section class="content-block" id="challenges">
+          <h2>Challenges to Mental Wellness</h2>
+          <p>
+            Many individuals experience barriers that affect mental
+            well-being and access to support services.
+          </p>
+
+          <ul>
+            <li>Stress and anxiety</li>
+            <li>Depression</li>
+            <li>Social isolation</li>
+            <li>Stigma surrounding mental health</li>
+            <li>Limited access to professional care</li>
+          </ul>
+
+          <img
+            src="./images/mental-health-challenges.jpg"
+            alt="A person looking thoughtfully out of a window, representing the isolation many face"
+            class="content-image"
+          />
+        </section>
+
+        <section class="content-block tips-block" id="building-better-health">
+          <h2>Building Better Mental Health</h2>
+          <p>Small, consistent steps make the biggest difference over time.</p>
+
+          <ul>
+            <li><strong>Awareness</strong> — promote understanding of mental health issues.</li>
+            <li><strong>Self-care</strong> — practise healthy habits and stress management.</li>
+            <li><strong>Support</strong> — seek help from trusted individuals and professionals.</li>
+            <li><strong>Community</strong> — create supportive and inclusive environments.</li>
+            <li>Set realistic daily goals and celebrate small wins.</li>
+            <li>Make time for rest, movement, and activities you enjoy.</li>
+          </ul>
+        </section>
+
+        <section class="sdg-section" id="sdg3-connection">
+          <h2>Mental Health and SDG 3</h2>
+
+          <p>
+            SDG 3 promotes well-being for all, including mental health
+            awareness, prevention, and access to support services.
+            Recognising mental health as a core part of overall health means
+            communities must invest in accessible counselling, education,
+            and early intervention for people of every age.
+          </p>
+
+          <img
+            src="./images/sdg3-community-support.jpg"
+            alt="A diverse community group supporting one another, reflecting SDG 3 goals"
+            class="content-image"
+          />
+
+          <p>
+            <a href="#introduction" class="back-to-top-link">↑ Back to top of page</a>
+          </p>
+        </section>
+      </section>
+
+      <div class="page-navigation">
+        <a href="./content_ST2.html" class="nav-btn"> Next Page → </a>
+      </div>
+    </main>
+
+    <!-- ================================================
+         FOOTER
+         DO NOT MODIFY: Keep this structure for consistency
+         ================================================ -->
+    <footer>
+      <div class="footer-content">
+        <!-- Footer Section 1: Logo & Description -->
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
+            <span class="footer-brand">PULSE</span>
+          </div>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
+        </div>
+
+
+        <!-- Footer Section 3: Student Information -->
+        <div class="footer-section">
+          <h3>This Page</h3>
+          <p class="student-info">
+            Developed by: <strong>[Student Name]</strong>
+          </p>
+          <nav class="footer-links">
+            <!-- EACH STUDENT: Update these links to your own pages -->
+            <a href="page-editor.html" class="footer-link">Page Editor ↗</a>
+            <a
+              href="https://validator.w3.org/"
+              class="footer-link"
+              target="_blank"
+              >Validation ↗</a
+            >
+            <a href="accessibility.html" class="footer-link"
+              >Accessibility Statement ↗</a
+            >
+          </nav>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <span>© 2026 PULSE — University of Westminster Group Project</span>
+        <span>SDG 3: Good Health and Well-Being</span>
+      </div>
+    </footer>
+
+    <!-- ================================================
+         PAGE SCRIPT
+         Highlights the matching section-nav link as the
+         visitor scrolls through each section
+         ================================================ -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var navLinks = document.querySelectorAll(".section-nav a");
+        var sections = [];
+
+        navLinks.forEach(function (link) {
+          var targetId = link.getAttribute("href").slice(1);
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            sections.push({ id: targetId, el: targetEl, link: link });
+          }
+        });
+
+        if (sections.length === 0 || !("IntersectionObserver" in window)) {
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              var match = sections.find(function (s) {
+                return s.el === entry.target;
+              });
+              if (!match) return;
+
+              if (entry.isIntersecting) {
+                navLinks.forEach(function (link) {
+                  link.classList.remove("active-link");
+                });
+                match.link.classList.add("active-link");
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "-40% 0px -50% 0px",
+            threshold: 0,
+          }
+        );
+
+        sections.forEach(function (s) {
+          observer.observe(s.el);
+        });
+      });
+    </script>
+  </body>
+</html>
