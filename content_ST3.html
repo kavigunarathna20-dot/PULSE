@@ -5,295 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PULSE - A student project promoting SDG 3: Good Health and Well-Being"
+      content="PULSE - Nutrition, Diet and Healthy Eating: Importance, essential nutrients, tips and meal planning."
     />
-    <title>PULSE - Good Health & Well-Being</title>
+    <title>PULSE - Nutrition & Healthy Eating</title>
     <link rel="stylesheet" href="global.css" />
 
     <style>
-      .healthcare-page {
-        max-width: 1300px;
-        margin: auto;
-        padding: 40px;
-      }
+      .content-page { max-width: 1300px; margin: auto; padding: 40px; }
 
       .hero-section {
-        text-align: center;
-        padding: 60px 30px;
+        text-align: center; padding: 80px 40px;
         border-radius: 30px;
         background: linear-gradient(135deg, #e8f5e9, #f5fff7);
-        margin-bottom: 50px;
+        margin-bottom: 40px;
+        position: relative; overflow: hidden;
       }
-
+      .hero-section::before {
+        content: ''; position: absolute; inset: 0;
+        background: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1400&q=80') center/cover no-repeat;
+        opacity: 0.12; z-index: 0;
+      }
+      .hero-content { position: relative; z-index: 1; }
       .tag {
-        display: inline-block;
-        background: #4c9f38;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 30px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        font-weight: 600;
+        display: inline-block; background: #4c9f38; color: white;
+        padding: 8px 16px; border-radius: 30px;
+        margin-bottom: 20px; font-size: 14px; font-weight: 600;
       }
+      .hero-section h1 { font-size: 56px; color: #07424d; margin-bottom: 20px; }
+      .hero-section p { font-size: 18px; max-width: 900px; margin: auto; color: #444; }
 
-      .hero-section h1 {
-        font-size: 60px;
-        color: #07424d;
-        margin-bottom: 20px;
+      .content-nav {
+        background: white; border-radius: 16px; padding: 20px 30px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;
       }
-
-      .hero-section p {
-        font-size: 18px;
-        max-width: 900px;
-        margin: auto;
+      .content-nav ul {
+        list-style: none; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center;
       }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 25px;
-        margin-bottom: 50px;
-      }
-
-      .stat-card {
-        background: white;
-        border-radius: 25px;
-        padding: 30px;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        transition: 0.3s;
-      }
-
-      .stat-card:hover {
-        transform: translateY(-8px);
-      }
-
-      .stat-card h2 {
-        font-size: 45px;
-      }
-
-      .info-section {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 30px;
-        margin-bottom: 50px;
-      }
-
-      .info-card {
-        background: white;
-        padding: 35px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      }
-
-      .info-card h2 {
-        color: #07424d;
-        margin-bottom: 20px;
-      }
-
-      .info-card ul {
-        margin-top: 20px;
-        padding-left: 25px;
-      }
-
-      .info-card li {
-        margin-bottom: 10px;
-      }
-
-      .process-section {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .process-section h2 {
-        color: #07424d;
-        margin-bottom: 35px;
-      }
-
-      .process-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-      }
-
-      .process-step {
-        background: white;
-        border-radius: 25px;
-        padding: 30px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      }
-
-      .process-step span {
-        width: 60px;
-        height: 60px;
-        background: #4c9f38;
-        color: white;
-        border-radius: 50%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
-
-      .sdg-section {
-        background: linear-gradient(135deg, #4c9f38, #63b851);
-        color: white;
-        border-radius: 30px;
-        padding: 50px;
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      .sdg-section h2,
-      .sdg-section p {
-        color: white;
-      }
-
-      .cta-section {
-        text-align: center;
-        background: white;
-        border-radius: 25px;
-        padding: 50px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      }
-
-      .cta-btn {
-        display: inline-block;
-        margin-top: 20px;
-        background: #4c9f38;
-        color: white;
-        padding: 14px 28px;
-        border-radius: 30px;
-        font-weight: 600;
+      .content-nav a {
+        color: #4c9f38; font-weight: 600; font-size: 14px;
+        padding: 6px 14px; border-radius: 20px; transition: 0.3s;
         text-decoration: none;
-        transition: 0.3s;
       }
+      .content-nav a:hover { background: #e8f5e9; color: #2e7d32; }
 
-      .cta-btn:hover {
-        background: #3a7a2c;
-        color: white;
+      .section-title {
+        font-size: 32px; color: #07424d; margin-bottom: 30px; text-align: center;
       }
+      .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
 
-      @media (max-width: 768px) {
-        .hero-section h1 {
-          font-size: 40px;
-        }
-
-        .info-section {
-          grid-template-columns: 1fr;
-        }
-
-        .healthcare-page {
-          padding: 20px;
-        }
+      .cards-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;
       }
-
-      .info-card,
-      .process-step,
-      .stat-card,
-      .cta-section {
-        transition: all 0.3s ease;
+      .card-item {
+        background: white; border-radius: 20px; overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
       }
+      .card-item:hover { transform: translateY(-6px); box-shadow: 0 14px 35px rgba(0,0,0,0.12); }
+      .card-item img { width: 100%; height: 200px; object-fit: cover; }
+      .card-item .card-body { padding: 22px; }
+      .card-item h3 { color: #07424d; margin-bottom: 10px; font-size: 18px; }
+      .card-item p { font-size: 14px; color: #555; line-height: 1.7; }
 
-      .info-card:hover,
-      .process-step:hover,
-      .stat-card:hover,
-      .cta-section:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      .content-block {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+        align-items: center; margin-bottom: 50px;
       }
+      .content-block img {
+        width: 100%; border-radius: 20px; height: 350px; object-fit: cover;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      }
+      .content-block .text h3 { font-size: 26px; color: #07424d; margin-bottom: 16px; }
+      .content-block .text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+      .content-block .text ul { list-style: none; padding: 0; }
+      .content-block .text li {
+        padding: 6px 0 6px 28px; position: relative; font-size: 14px; color: #555;
+      }
+      .content-block .text li::before {
+        content: "✓"; position: absolute; left: 0; color: #4c9f38; font-weight: bold;
+      }
+      @media (max-width: 768px) { .content-block { grid-template-columns: 1fr; } }
 
-      .info-card ul {
-        list-style: none;
-        padding-left: 0;
+      .articles-section { margin-bottom: 50px; }
+      .articles-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
       }
+      .article-card {
+        background: white; border-radius: 20px; overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
+      }
+      .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+      .article-card img { width: 100%; height: 180px; object-fit: cover; }
+      .article-card .article-body { padding: 20px; }
+      .article-card h4 { color: #07424d; margin-bottom: 10px; font-size: 16px; }
+      .article-card a {
+        display: inline-block; color: #4c9f38; font-weight: 600; font-size: 13px;
+        text-decoration: none; transition: 0.3s;
+      }
+      .article-card a:hover { color: #2e7d32; text-decoration: underline; }
 
-      .info-card li {
-        position: relative;
-        padding-left: 25px;
-        margin-bottom: 12px;
+      .sdg-highlight {
+        background: linear-gradient(135deg, #4c9f38, #63b851); color: white;
+        border-radius: 30px; padding: 50px; text-align: center; margin-bottom: 40px;
       }
-
-      .info-card li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #4c9f38;
-        font-weight: bold;
-      }
-
-      .hero-content {
-        max-width: 900px;
-        margin: auto;
-      }
-
-      .process-step h3,
-      .stat-card h3 {
-        color: #07424d;
-      }
-
-      .process-step p,
-      .stat-card p {
-        font-size: 15px;
-      }
-
-      .tag {
-        letter-spacing: 0.5px;
-      }
-
-      .hero-section {
-        box-shadow: 0 15px 35px rgba(76, 159, 56, 0.1);
-      }
+      .sdg-highlight h2, .sdg-highlight p { color: white; }
+      .sdg-highlight h2 { font-size: 30px; margin-bottom: 16px; }
+      .sdg-highlight p { font-size: 16px; max-width: 800px; margin: auto; }
 
       .page-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 50px;
+        display: flex; justify-content: center; gap: 20px; margin-top: 40px;
       }
-
       .nav-btn {
-        background: #47676e;
-        color: white;
-        padding: 10px 28px;
-        border-radius: 50px;
-        margin: 0px 150px;
-        font-weight: 600;
-        text-decoration: none;
+        background: #4c9f38; color: white; padding: 12px 32px;
+        border-radius: 50px; font-weight: 600; text-decoration: none;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(76, 159, 56, 0.2);
       }
+      .nav-btn:hover { background: #3a7a2c; transform: translateY(-3px); color: white; }
 
-      .nav-btn:hover {
-        transform: translateY(-4px);
-        background: #4bc6c0;
-        color: rgb(5, 62, 9);
+      .go-to-top {
+        position: fixed; bottom: 30px; right: 30px;
+        background: #4c9f38; color: white; width: 50px; height: 50px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 20px; text-decoration: none; box-shadow: 0 4px 15px rgba(76,159,56,0.3);
+        transition: 0.3s; z-index: 99;
+      }
+      .go-to-top:hover { background: #2e7d32; transform: translateY(-4px); }
+
+      @media (max-width: 768px) {
+        .hero-section h1 { font-size: 36px; }
+        .content-page { padding: 20px; }
+        .hero-section { padding: 50px 20px; }
       }
     </style>
   </head>
   <body>
-    <!-- ================================================
-         HEADER & NAVIGATION
-         DO NOT MODIFY: This is part of the shared template
-         ================================================ -->
     <header>
       <div class="logo">
-        <!-- Logo: Replace src with your logo image path -->
-        <img
-          src="./images/logo.jpeg"
-          alt="PULSE Logo - Good Health and Well-Being"
-          class="logo-image"
-        />
+        <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image" />
         <div class="logo-text">
           <h1>PULSE</h1>
           <p>Good Health & Well-Being</p>
         </div>
       </div>
-
-      <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
-        <a href="./home.html" class="nav-link active">Home</a>
+        <a href="./home.html" class="nav-link">Home</a>
         <a href="./gallery.html" class="nav-link">Gallery</a>
         <a href="./ais.html" class="nav-link">AIS</a>
         <a href="./feedback.html" class="nav-link">Feedback</a>
@@ -303,168 +157,174 @@
       </nav>
     </header>
 
-    <!-- ================================================
-         MAIN CONTENT AREA
-         Students add their page content here
-         Keep this structure intact
-         ================================================ -->
-
     <main>
-      <section class="healthcare-page">
+      <section class="content-page">
         <div class="hero-section">
           <div class="hero-content">
-            <span class="tag">SDG 3 • Good Health & Well-Being</span>
-
             <h1>Nutrition, Diet and Healthy Eating</h1>
-
-            <p>
-              Good nutrition provides the nutrients necessary for growth,
-              energy, disease prevention, and overall health throughout life.
-            </p>
+            <p>Good nutrition provides the essential nutrients your body needs for growth, energy, disease prevention, and overall well-being throughout every stage of life.</p>
           </div>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h2>🥗</h2>
-            <h3>Balanced Diet</h3>
-            <p>Healthy diets support physical and mental well-being.</p>
-          </div>
+        <nav class="content-nav">
+          <ul>
+            <li><a href="#importance">Why Nutrition Matters</a></li>
+            <li><a href="#nutrients">Essential Nutrients</a></li>
+            <li><a href="#tips">Healthy Eating Tips</a></li>
+            <li><a href="#planning">Meal Planning</a></li>
+            <li><a href="#articles">Articles</a></li>
+          </ul>
+        </nav>
 
-          <div class="stat-card">
-            <h2>🍎</h2>
-            <h3>Healthy Choices</h3>
-            <p>Nutritious foods contribute to long-term health.</p>
-          </div>
-
-          <div class="stat-card">
-            <h2>🌾</h2>
-            <h3>Essential Nutrients</h3>
-            <p>Vitamins and minerals support body functions.</p>
+        <h2 id="importance" class="section-title">Why Nutrition Matters</h2>
+        <div class="content-block">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop" alt="Fresh vegetables being prepared">
+          <div class="text">
+            <h3>The Foundation of Good Health</h3>
+            <p>Nutrition is the cornerstone of health. What we eat directly affects our energy levels, immune system, mental clarity, and long-term disease risk. A balanced diet provides the body with the fuel and nutrients it needs to function at its best.</p>
+            <ul>
+              <li>Supports healthy growth and development in children</li>
+              <li>Strengthens the immune system against illnesses</li>
+              <li>Provides sustained energy throughout the day</li>
+              <li>Reduces the risk of heart disease, diabetes and obesity</li>
+              <li>Improves concentration, mood and mental performance</li>
+            </ul>
           </div>
         </div>
 
-        <section class="info-section">
-          <div class="info-card">
-            <h2>Why Nutrition Matters</h2>
+        <h2 id="nutrients" class="section-title">Essential Nutrients for Your Body</h2>
+        <p class="section-subtitle">A balanced diet includes a variety of nutrients that work together to keep you healthy.</p>
+        <div class="cards-grid">
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=250&fit=crop" alt="Fruits and vegetables">
+            <div class="card-body">
+              <h3>Vitamins & Minerals</h3>
+              <p>Found in fruits, vegetables, and whole grains. They support immune function, bone health, and hundreds of bodily processes essential for life.</p>
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=250&fit=crop" alt="Protein sources">
+            <div class="card-body">
+              <h3>Protein</h3>
+              <p>Essential for building and repairing tissues. Good sources include lean meat, fish, eggs, beans, lentils, tofu, and dairy products.</p>
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=250&fit=crop" alt="Whole grains">
+            <div class="card-body">
+              <h3>Carbohydrates & Fibre</h3>
+              <p>Whole grains, oats, brown rice, and legumes provide sustained energy and support healthy digestion and heart health.</p>
+            </div>
+          </div>
+        </div>
 
+        <h2 id="tips" class="section-title">Healthy Eating Tips</h2>
+        <div class="content-block">
+          <div class="text">
+            <h3>Build Healthier Eating Habits</h3>
+            <p>Making small, sustainable changes to your diet can have a big impact on your health. Focus on whole foods, variety, and balance.</p>
             <ul>
-              <li>Supports healthy growth</li>
-              <li>Strengthens immunity</li>
-              <li>Provides energy</li>
-              <li>Improves concentration</li>
-              <li>Reduces disease risk</li>
+              <li>Eat a rainbow of fruits and vegetables every day</li>
+              <li>Choose whole grains over refined grains</li>
+              <li>Limit processed foods, added sugars, and unhealthy fats</li>
+              <li>Drink plenty of water — aim for 8 glasses daily</li>
+              <li>Read nutrition labels to make informed choices</li>
+              <li>Practice mindful eating — slow down and enjoy your meals</li>
+              <li>Cook at home more often to control ingredients</li>
             </ul>
           </div>
+          <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&h=400&fit=crop" alt="Healthy eating">
+        </div>
 
-          <div class="info-card">
-            <h2>Nutrition Challenges</h2>
-
-            <ul>
-              <li>Food insecurity</li>
-              <li>High food prices</li>
-              <li>Unhealthy eating habits</li>
-              <li>Limited nutrition education</li>
-              <li>Reduced access to fresh food</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="process-section">
-          <h2>Promoting Healthy Eating</h2>
-
-          <div class="process-grid">
-            <div class="process-step">
-              <span>1</span>
-              <h3>Education</h3>
-              <p>Teach healthy dietary habits.</p>
-            </div>
-
-            <div class="process-step">
-              <span>2</span>
-              <h3>Accessibility</h3>
-              <p>Ensure affordable healthy food options.</p>
-            </div>
-
-            <div class="process-step">
-              <span>3</span>
-              <h3>Healthy Choices</h3>
-              <p>Promote nutritious meals and snacks.</p>
-            </div>
-
-            <div class="process-step">
-              <span>4</span>
-              <h3>Sustainability</h3>
-              <p>Encourage long-term healthy eating habits.</p>
+        <h2 id="planning" class="section-title">Meal Planning for a Balanced Diet</h2>
+        <p class="section-subtitle">Plan ahead to make healthy eating easy and consistent.</p>
+        <div class="cards-grid">
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=250&fit=crop" alt="Breakfast">
+            <div class="card-body">
+              <h3>Start with Breakfast</h3>
+              <p>A nutritious breakfast with protein, fibre, and healthy fats provides energy for the day ahead and helps maintain focus and concentration.</p>
             </div>
           </div>
-        </section>
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop" alt="Lunch">
+            <div class="card-body">
+              <h3>Balanced Lunch & Dinner</h3>
+              <p>Fill half your plate with vegetables, a quarter with lean protein, and a quarter with whole grains for balanced, satisfying meals.</p>
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400&h=250&fit=crop" alt="Healthy snacks">
+            <div class="card-body">
+              <h3>Smart Snacking</h3>
+              <p>Choose nutrient-dense snacks like nuts, fruit, yoghurt, or vegetable sticks instead of processed, high-sugar options.</p>
+            </div>
+          </div>
+        </div>
 
-        <section class="sdg-section">
+        <h2 id="articles" class="section-title">Articles & Resources</h2>
+        <div class="articles-section">
+          <div class="articles-grid">
+            <div class="article-card">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=250&fit=crop" alt="Healthy eating guide">
+              <div class="article-body">
+                <h4>WHO Healthy Diet Recommendations</h4>
+                <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank">Read Article →</a>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&h=250&fit=crop" alt="Nutrition tips">
+              <div class="article-body">
+                <h4>How to Build a Balanced Diet</h4>
+                <a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/" target="_blank">Read Article →</a>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=250&fit=crop" alt="Nutrition facts">
+              <div class="article-body">
+                <h4>Understanding Nutrition Labels</h4>
+                <a href="https://www.fda.gov/food/new-nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank">Read Article →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sdg-highlight">
           <h2>Nutrition and SDG 3</h2>
+          <p>Proper nutrition supports healthier populations, reduces malnutrition, and plays a vital role in achieving SDG 3. Access to nutritious food is a fundamental human right.</p>
+        </div>
 
-          <p>
-            Proper nutrition supports healthier populations, reduces
-            malnutrition, and plays a vital role in achieving SDG 3.
-          </p>
-        </section>
+        <div class="page-navigation">
+          <a href="./content_ST2.html" class="nav-btn">← Previous: Physical Activity</a>
+          <a href="./content_ST4.html" class="nav-btn">Next: Healthcare Access →</a>
+        </div>
       </section>
-
-      <div class="page-navigation">
-        <a href="./content_ST2.html" class="nav-btn"> ← Previous Page </a>
-        <a href="./content_ST4.html" class="nav-btn"> Next Page → </a>
-      </div>
     </main>
 
-    <!-- ================================================
-         FOOTER
-         DO NOT MODIFY: Keep this structure for consistency
-         ================================================ -->
     <footer>
       <div class="footer-content">
-        <!-- Footer Section 1: Logo & Description -->
         <div class="footer-section">
           <div class="footer-logo">
-            <img
-              src="./images/logo.jpeg"
-              alt="PULSE Logo"
-              class="footer-logo-image"
-            />
+            <img src="./images/logo.jpeg" alt="PULSE Logo" class="footer-logo-image" />
             <span class="footer-brand">PULSE</span>
           </div>
-          <p>
-            A student project promoting SDG 3 — Good Health and Well-Being at
-            the University of Westminster.
-          </p>
+          <p>A student project promoting SDG 3 — Good Health and Well-Being at the University of Westminster.</p>
         </div>
-
-        <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
-          <p class="student-info">
-            Developed by: <strong>[Student Name]</strong>
-          </p>
+          <p class="student-info">Developed by: <strong>Thisumi Dahamsa</strong></p>
           <nav class="footer-links">
-            <!-- EACH STUDENT: Update these links to your own pages -->
-            <a href="page-editor.html" class="footer-link">Page Editor ↗</a>
-            <a
-              href="https://validator.w3.org/"
-              class="footer-link"
-              target="_blank"
-              >Validation ↗</a
-            >
-            <a href="accessibility.html" class="footer-link"
-              >Accessibility Statement ↗</a
-            >
+            <a href="pageEditor_ST3.html" class="footer-link">Page Editor ↗</a>
+            <a href="validation_ST3.html" class="footer-link">Validation ↗</a>
           </nav>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <span>© 2026 PULSE — University of Westminster Group Project</span>
+        <span>&copy; 2026 PULSE — University of Westminster Group Project</span>
         <span>SDG 3: Good Health and Well-Being</span>
       </div>
     </footer>
+
+    <a href="#" class="go-to-top">↑</a>
   </body>
 </html>
