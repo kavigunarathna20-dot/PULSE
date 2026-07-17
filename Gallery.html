@@ -9,38 +9,34 @@
     />
     <title>PULSE - Gallery</title>
     <link rel="icon" type="image/png" href="./images/favicon.png" />
-
     <link rel="stylesheet" href="./global.css" />
-
     <style>
       /* ============================================================
          NOTE: Styles below are ordered to match the order elements
-         appear in <body>/<main>:
-         1. .gallery-hero (intro text under the page heading)
-         2. .filter-bar / .filter-btn (category filter buttons)
-         3. #gallery-grid (grid wrapper for all cards)
-         4. .gallery-card and its children in DOM order:
-            .gallery-thumb -> .gallery-overlay/.gallery-category -> .gallery-info
-         5. .modal-overlay / .modal-content (the popup that opens on card click)
-         Responsive rules are grouped at the end.
-         ============================================================ */
-
+         appear in 
+   <body>/<main>:
+   1. .gallery-hero (intro text under the page heading)
+   2. .filter-bar / .filter-btn (category filter buttons)
+   3. #gallery-grid (grid wrapper for all cards)
+   4. .gallery-card and its children in DOM order:
+   .gallery-thumb -> .gallery-overlay/.gallery-category -> .gallery-info
+   5. .modal-overlay / .modal-content (the popup that opens on card click)
+   Responsive rules are grouped at the end.
+   ============================================================ */
       /* ------------------------------------------------------------
-         1. GALLERY HERO — intro heading + description text at the
-         top of the page
-         ------------------------------------------------------------ */
+   1. GALLERY HERO — intro heading + description text at the
+   top of the page
+   ------------------------------------------------------------ */
       .gallery-hero {
         text-align: center;
         font-size: 18px;
         padding: 20px 30px;
       }
-
       .gallery-hero h2 {
         font-size: 30px;
         color: var(--dark-text, #222);
         margin-bottom: 10px;
       }
-
       .gallery-hero p {
         max-width: 600px;
         margin: 0 auto;
@@ -48,10 +44,9 @@
         line-height: 1.6;
         color: var(--medium-text, #666);
       }
-
       /* ------------------------------------------------------------
-         2. FILTER BAR — row of category buttons used to filter cards
-         ------------------------------------------------------------ */
+   2. FILTER BAR — row of category buttons used to filter cards
+   ------------------------------------------------------------ */
       .filter-bar {
         display: flex;
         justify-content: center;
@@ -59,7 +54,6 @@
         gap: 10px;
         padding: 20px 40px 30px;
       }
-
       .filter-btn {
         background: rgba(255, 255, 255, 0.25);
         border: 1px solid rgba(76, 159, 56, 0.3);
@@ -73,23 +67,20 @@
         -webkit-backdrop-filter: blur(10px);
         transition: all 0.3s ease;
       }
-
       .filter-btn:hover {
         background: rgba(76, 159, 56, 0.15);
         border-color: var(--primary-color, #4c9f38);
       }
-
       /* Currently-selected filter button, toggled by JS below */
       .filter-btn.active {
         background: var(--primary-color, #4c9f38);
         color: #fff;
         border-color: var(--primary-color, #4c9f38);
       }
-
       /* ------------------------------------------------------------
-         3. GALLERY GRID — responsive grid container holding all
-         gallery cards
-         ------------------------------------------------------------ */
+   3. GALLERY GRID — responsive grid container holding all
+   gallery cards
+   ------------------------------------------------------------ */
       #gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -98,43 +89,37 @@
         margin: 0 auto;
         padding: 20px;
       }
-
       /* ------------------------------------------------------------
-         4. GALLERY CARD — one clickable card per gallery item
-         ------------------------------------------------------------ */
+   4. GALLERY CARD — one clickable card per gallery item
+   ------------------------------------------------------------ */
       .gallery-card {
         background: rgba(255, 255, 255, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.35);
         border-radius: 16px;
         overflow: hidden;
         cursor: pointer;
-
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-
         /* scroll-reveal starting state (see reveal() script below) */
         opacity: 0;
         transform: translateY(30px);
-
         transition:
           opacity 0.8s ease,
           transform 0.25s ease,
-          box-shadow 0.25s ease;
+          box-shadow 0.25s ease,
+          background 0.3s ease;
       }
-
       /* scroll-reveal end state, toggled on by JS when card scrolls into view */
       .gallery-card.visible {
         opacity: 1;
         transform: translateY(0);
       }
-
       .gallery-card:hover {
         transform: translateY(-10px) scale(1.03);
         box-shadow:
           0 20px 40px rgba(0, 0, 0, 0.15),
           0 0 20px rgba(76, 159, 56, 0.15);
       }
-
       /* -- 4a. Thumbnail image area inside each card -- */
       .gallery-thumb {
         position: relative;
@@ -142,27 +127,22 @@
         height: 220px;
         overflow: hidden;
       }
-
       .gallery-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-
         transition: transform 0.8s ease 0.15s;
       }
-
       /* zoom the thumbnail image slightly on card hover */
       .gallery-card:hover .gallery-thumb img {
         transform: scale(1.12);
       }
-
       /* -- 4b. Category badge positioned over the thumbnail -- */
       .gallery-overlay {
         position: absolute;
         top: 12px;
         right: 12px;
       }
-
       .gallery-category {
         background: rgba(76, 159, 56, 0.9);
         color: #fff;
@@ -171,29 +151,25 @@
         padding: 5px 14px;
         border-radius: 20px;
       }
-
       /* -- 4c. Text info block (title + short description) below the thumbnail -- */
       .gallery-info {
         padding: 18px;
       }
-
       .gallery-info h3 {
         font-size: 23px;
         text-align: center;
         margin-bottom: 8px;
         color: var(--dark-text, #222);
       }
-
       .gallery-info p {
         font-size: 17px;
         text-align: center;
         line-height: 1.6;
         color: var(--medium-text, #666);
       }
-
       /* ------------------------------------------------------------
-         5. MODAL — popup shown when a gallery card is clicked
-         ------------------------------------------------------------ */
+   5. MODAL — popup shown when a gallery card is clicked
+   ------------------------------------------------------------ */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -204,12 +180,10 @@
         align-items: center;
         padding: 30px;
       }
-
       /* shown when JS adds "active" (see script below) */
       .modal-overlay.active {
         display: flex;
       }
-
       .modal-content {
         position: relative;
         width: 100%;
@@ -220,75 +194,186 @@
         border: 1px solid rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(16px);
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        max-height: 90vh;
+        overflow-y: auto;
       }
-
       .modal-content img {
         width: 100%;
         display: block;
         max-height: 450px;
         object-fit: cover;
       }
-
       .modal-close {
         position: absolute;
-        top: 12px;
-        right: 16px;
-        width: 38px;
-        height: 38px;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
         border: none;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        font-size: 22px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 24px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        padding: 0;
         z-index: 10;
       }
-
       .modal-close:hover {
         background: rgba(0, 0, 0, 0.8);
       }
-
       .modal-text {
         padding: 24px 28px;
       }
-
       .modal-caption {
         font-size: 22px;
         font-weight: 700;
         margin-bottom: 8px;
       }
-
       .modal-description {
         font-size: 14px;
         line-height: 1.7;
       }
-
       /* ============================================================
-         RESPONSIVE / MEDIA QUERIES
-         ============================================================ */
+   RESPONSIVE / MEDIA QUERIES
+   ============================================================ */
       @media (max-width: 768px) {
         .gallery-hero h2 {
           font-size: 24px;
         }
-
         .filter-bar {
           padding: 10px 20px 20px;
         }
-
         #gallery-grid {
           grid-template-columns: 1fr;
           gap: 16px;
           padding: 20px;
         }
       }
+      /* ==========================
+   Theme Buttons
+   ========================== */
+      body {
+        transition: background-color 0.5s ease;
+      }
+      .theme-bar {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+      .theme-btn {
+        border: none;
+        padding: 12px 24px;
+        border-radius: 30px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .theme-btn:hover {
+        transform: translateY(-3px);
+      }
+      .ocean {
+        background: #2196f3;
+      }
+      .forest {
+        background: #4caf50;
+      }
+      .sunset {
+        background: #ff9800;
+      }
+      .lavender {
+        background: #9c27b0;
+      }
+      .reset {
+        background: #607d8b;
+      }
+      /* ==========================
+   Modal image
+   ========================== */
+      #modal-image {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        display: block;
+      }
+      /* ==========================
+   Modal customisation controls (theme + font buttons)
+   Positioned below the caption/description text.
+   ========================== */
+      .modal-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 24px 20px;
+      }
+      .control-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+      .control-label {
+        font-size: 13px;
+        font-weight: 700;
+        margin-right: 4px;
+      }
+      .theme-option-btn,
+      .font-option-btn {
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.05);
+        color: #222;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .theme-option-btn:hover,
+      .font-option-btn:hover {
+        background: rgba(76, 159, 56, 0.15);
+        border-color: var(--primary-color, #4c9f38);
+        color: #222;
+      }
+      .theme-option-btn.active,
+      .font-option-btn.active {
+        background: var(--primary-color, #4c9f38);
+        border-color: var(--primary-color, #4c9f38);
+        color: #fff;
+      }
+      /* Theme classes: applied to #modal-content by the theme buttons */
+      .theme-default {
+        background: rgba(255, 255, 255, 0.95);
+        color: #222;
+      }
+      .theme-green {
+        background: #e8f8e8;
+        color: #1b4332;
+      }
+      .theme-blue {
+        background: #e3f2fd;
+        color: #003566;
+      }
+      .theme-lavender {
+        background: #f3e8fd;
+        color: #4a2c6d;
+      }
+      .theme-sunrise {
+        background: #fff0e0;
+        color: #8a4a12;
+      }
     </style>
   </head>
-
   <body>
     <!-- ================================================
-         HEADER & NAVIGATION
-         DO NOT MODIFY: This is part of the shared template
-         ================================================ -->
+      HEADER & NAVIGATION
+      DO NOT MODIFY: This is part of the shared template
+      ================================================ -->
     <header>
       <div class="logo">
         <!-- Logo: Replace src with your logo image path -->
@@ -302,7 +387,6 @@
           <p>Good Health & Well-Being</p>
         </div>
       </div>
-
       <!-- Navigation Bar: All team members use these links -->
       <nav class="main-nav">
         <a href="./home.html" class="nav-link">Home</a>
@@ -314,11 +398,9 @@
         <a href="./sitemap.html" class="nav-link">Sitemap</a>
       </nav>
     </header>
-
     <main>
       <!-- Page heading -->
       <h2 class="Headings">Health & Well-Being Gallery</h2>
-
       <!-- Intro/description text under the heading -->
       <div class="gallery-hero">
         <p>
@@ -326,7 +408,6 @@
           nutrition, and community wellness.
         </p>
       </div>
-
       <!-- Category filter buttons: clicking one filters the grid below via JS -->
       <div class="filter-bar">
         <button class="filter-btn active" data-category="All">All</button>
@@ -342,10 +423,9 @@
           Healthcare
         </button>
       </div>
-
       <!-- Gallery grid: each .gallery-card carries data-* attributes
-           (category/title/desc/img) that the modal script reads when
-           the card is clicked -->
+      (category/title/desc/img) that the modal script reads when
+      the card is clicked -->
       <div id="gallery-grid">
         <!-- Card: Mindfulness & Mental Health -->
         <div
@@ -361,13 +441,11 @@
               <span class="gallery-category">Mental Health</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Mindfulness & Mental Health</h3>
             <p>Small daily habits that build resilience and calm.</p>
           </div>
         </div>
-
         <!-- Card: Active Living -->
         <div
           class="gallery-card reveal"
@@ -382,13 +460,11 @@
               <span class="gallery-category">Physical Fitness</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Active Living</h3>
             <p>Movement that strengthens body and mind alike.</p>
           </div>
         </div>
-
         <!-- Card: Nutrition & Hydration -->
         <div
           class="gallery-card reveal"
@@ -403,13 +479,11 @@
               <span class="gallery-category">Nutrition</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Nutrition & Hydration</h3>
             <p>Fuel that supports focus and long-term health.</p>
           </div>
         </div>
-
         <!-- Card: Community Support -->
         <div
           class="gallery-card reveal"
@@ -424,13 +498,11 @@
               <span class="gallery-category">Community</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Community Support</h3>
             <p>Connection as one of the strongest predictors of well-being.</p>
           </div>
         </div>
-
         <!-- Card: Sleep & Recovery -->
         <div
           class="gallery-card reveal"
@@ -445,13 +517,11 @@
               <span class="gallery-category">Mental Health</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Sleep & Recovery</h3>
             <p>Rest as the foundation everything else is built on.</p>
           </div>
         </div>
-
         <!-- Card: Hydration -->
         <div
           class="gallery-card reveal"
@@ -466,13 +536,11 @@
               <span class="gallery-category">Nutrition</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Hydration</h3>
             <p>A simple daily habit with an outsized impact.</p>
           </div>
         </div>
-
         <!-- Card: Preventive Healthcare -->
         <div
           class="gallery-card reveal"
@@ -487,13 +555,11 @@
               <span class="gallery-category">Healthcare</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Preventive Healthcare</h3>
             <p>Catching issues early through regular checkups.</p>
           </div>
         </div>
-
         <!-- Card: Immunization -->
         <div
           class="gallery-card reveal"
@@ -508,13 +574,11 @@
               <span class="gallery-category">Healthcare</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Immunization</h3>
             <p>A proven tool for protecting individual and public health.</p>
           </div>
         </div>
-
         <!-- Card: Daily Exercise -->
         <div
           class="gallery-card reveal"
@@ -524,18 +588,16 @@
           data-img="./images/exercise.jpg"
         >
           <div class="gallery-thumb">
-            <img src="./images/exercise.jpg" />
+            <img src="images/exercise.jpg" alt="Student exercising outdoors" />
             <div class="gallery-overlay">
               <span class="gallery-category">Physical Fitness</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Daily Exercise</h3>
             <p>Building strength and endurance through movement.</p>
           </div>
         </div>
-
         <!-- Card: Food Safety & Hygiene -->
         <div
           class="gallery-card reveal"
@@ -550,13 +612,11 @@
               <span class="gallery-category">Nutrition</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Food Safety & Hygiene</h3>
             <p>Safe food practices for healthier lives.</p>
           </div>
         </div>
-
         <!-- Card: Meditation Practice -->
         <div
           class="gallery-card reveal"
@@ -571,13 +631,11 @@
               <span class="gallery-category">Mental Health</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Meditation Practice</h3>
             <p>Creating calm and focus in everyday life.</p>
           </div>
         </div>
-
         <!-- Card: Healthcare Professionals -->
         <div
           class="gallery-card reveal"
@@ -592,13 +650,11 @@
               <span class="gallery-category">Healthcare</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Healthcare Professionals</h3>
             <p>Dedicated care that supports healthier communities.</p>
           </div>
         </div>
-
         <!-- Card: Team Sports -->
         <div
           class="gallery-card reveal"
@@ -613,13 +669,11 @@
               <span class="gallery-category">Physical Fitness</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Team Sports</h3>
             <p>Fitness, teamwork and social connection combined.</p>
           </div>
         </div>
-
         <!-- Card: Community Volunteering -->
         <div
           class="gallery-card reveal"
@@ -634,13 +688,11 @@
               <span class="gallery-category">Community</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Community Volunteering</h3>
             <p>Working together to create positive change.</p>
           </div>
         </div>
-
         <!-- Card: Fresh Fruits -->
         <div
           class="gallery-card reveal"
@@ -655,13 +707,11 @@
               <span class="gallery-category">Nutrition</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Fresh Fruits</h3>
             <p>Nature's source of vitamins and energy.</p>
           </div>
         </div>
-
         <!-- Card: Outdoor Wellness -->
         <div
           class="gallery-card reveal"
@@ -676,13 +726,11 @@
               <span class="gallery-category">Mental Health</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Outdoor Wellness</h3>
             <p>Improving health through nature and fresh air.</p>
           </div>
         </div>
-
         <!-- Card: Digital Well-Being -->
         <div
           class="gallery-card reveal"
@@ -697,13 +745,11 @@
               <span class="gallery-category">Mental Health</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Digital Well-Being</h3>
             <p>Creating healthier relationships with technology.</p>
           </div>
         </div>
-
         <!-- Card: Telemedicine -->
         <div
           class="gallery-card reveal"
@@ -718,13 +764,11 @@
               <span class="gallery-category">Healthcare</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Telemedicine</h3>
             <p>Healthcare support anytime, anywhere.</p>
           </div>
         </div>
-
         <!-- Card: Smart Health Technology -->
         <div
           class="gallery-card reveal"
@@ -739,13 +783,11 @@
               <span class="gallery-category">Healthcare</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Smart Health Technology</h3>
             <p>Using innovation to improve personal wellness.</p>
           </div>
         </div>
-
         <!-- Card: Mental Health Awareness -->
         <div
           class="gallery-card reveal"
@@ -760,32 +802,72 @@
               <span class="gallery-category">Community</span>
             </div>
           </div>
-
           <div class="gallery-info">
             <h3>Awareness</h3>
             <p>Breaking stigma through education and support.</p>
           </div>
         </div>
       </div>
+      <!-- Modal popup: hidden by default, shown when a gallery card is clicked
+           (see JS below). #modal-image, .modal-caption and .modal-description
+           are filled in dynamically with the clicked card's data-* values.
+           The Theme/Font buttons below the text let the visitor restyle
+           the modal on the fly. -->
+      <div class="modal-overlay" id="gallery-modal">
+        <div class="modal-content" id="modal-content">
+          <button class="modal-close" aria-label="Close">&times;</button>
+          <!-- Card image shown at the top of the modal -->
+          <img id="modal-image" src="" alt="" />
 
-      <!-- Modal popup: hidden by default (.modal-overlay), shown when a
-           card is clicked. JS fills in the caption/description/image
-           from the clicked card's data-* attributes -->
-      <div id="gallery-modal" class="modal-overlay">
-        <div class="modal-content">
-          <button class="modal-close">&times;</button>
           <div class="modal-text">
             <div class="modal-caption"></div>
             <div class="modal-description"></div>
           </div>
+
+          <!-- Theme & font controls, placed below the description -->
+          <div class="modal-controls">
+            <div class="control-group">
+              <span class="control-label">Theme:</span>
+              <button class="theme-option-btn active" data-theme="default">
+                Default
+              </button>
+              <button class="theme-option-btn" data-theme="green">
+                Green Wellness
+              </button>
+              <button class="theme-option-btn" data-theme="blue">
+                Blue Health
+              </button>
+              <button class="theme-option-btn" data-theme="lavender">
+                Lavender Calm
+              </button>
+              <button class="theme-option-btn" data-theme="sunrise">
+                Sunrise Vitality
+              </button>
+            </div>
+
+            <div class="control-group">
+              <span class="control-label">Font:</span>
+              <button class="font-option-btn active" data-font="Arial">
+                Arial
+              </button>
+              <button class="font-option-btn" data-font="Georgia">
+                Georgia
+              </button>
+              <button class="font-option-btn" data-font="Verdana">
+                Verdana
+              </button>
+              <button class="font-option-btn" data-font="Trebuchet MS">
+                Trebuchet MS
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
-
     <!-- ================================================
-         FOOTER
-         DO NOT MODIFY: Keep this structure for consistency
-         ================================================ -->
+      FOOTER
+      DO NOT MODIFY: Keep this structure for consistency
+      ================================================ -->
     <footer>
       <div class="footer-content">
         <!-- Footer Section 1: Logo & Description -->
@@ -803,7 +885,6 @@
             the University of Westminster.
           </p>
         </div>
-
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
           <h3>This Page</h3>
@@ -815,89 +896,162 @@
             <a href="./pageEditor_ST1.html" class="footer-link"
               >Page Editor ↗</a
             >
-
             <a href="./validation_ST1.html" class="footer-link" target="_blank"
               >Validation ↗</a
             >
             <!-- <a href="accessibility.html" class="footer-link"
-              >Accessibility Statement ↗</a
-            > -->
+      >Accessibility Statement ↗</a
+      > -->
           </nav>
         </div>
       </div>
-
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <span>© 2026 PULSE — University of Westminster Group Project</span>
       </div>
     </footer>
-
     <!-- ================================================
-         SCRIPTS: Scroll Reveal + Gallery Filter
-         ================================================ -->
+      SCRIPTS: Scroll Reveal + Gallery Filter + Modal + Theme/Font
+      ================================================ -->
     <script>
-      // Checks every gallery card and adds the "visible" class once
-      // it has scrolled far enough into the viewport, which triggers
-      // the fade/slide-in CSS transition defined for .gallery-card.
+      /* =========================
+   Scroll Reveal Animation
+========================= */
       function reveal() {
-        // Select all gallery cards
         const reveals = document.querySelectorAll(".gallery-card");
 
         reveals.forEach((item) => {
-          // Height of the visible browser window
           const windowHeight = window.innerHeight;
-          // Distance from the top of the viewport to the top of the card
           const elementTop = item.getBoundingClientRect().top;
-          // How many pixels of the card must be visible before it reveals
           const visiblePoint = 100;
 
-          // If the card has scrolled far enough up into view, reveal it
           if (elementTop < windowHeight - visiblePoint) {
             item.classList.add("visible");
           }
         });
       }
 
-      // Re-check on every scroll event
       window.addEventListener("scroll", reveal);
-      // Run once immediately on page load (in case cards are already in view)
       reveal();
 
       /* =========================
-         Gallery Filter
-         Filters the visible cards based on which category button
-         was clicked (or shows all cards if "All" is selected).
-      ========================= */
-
-      // All filter buttons (All / Mental Health / Physical Fitness / etc.)
+   Gallery Filter
+========================= */
       const filterBtns = document.querySelectorAll(".filter-btn");
-      // All gallery cards to be shown/hidden
       const cards = document.querySelectorAll(".gallery-card");
 
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-          // Active button styling: clear "active" from all buttons,
-          // then mark the clicked one as active
           filterBtns.forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
 
-          // Category encoded on the clicked button (e.g. "Nutrition")
           const selectedCategory = btn.dataset.category;
 
           cards.forEach((card) => {
-            // Show the card if "All" is selected or its category matches;
-            // otherwise hide it
             if (
               selectedCategory === "All" ||
               card.dataset.category === selectedCategory
             ) {
               card.style.display = "block";
-              card.style.opacity = "1";
-              card.style.transform = "translateY(0)";
             } else {
               card.style.display = "none";
             }
           });
+        });
+      });
+
+      /* =========================
+   Hover Interaction
+========================= */
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-10px) scale(1.03)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+
+      /* =========================
+   Modal Functionality
+   Populates the modal with the clicked card's image, title, and
+   description, taken from its data-* attributes.
+========================= */
+      const modal = document.getElementById("gallery-modal");
+      const modalImage = document.getElementById("modal-image");
+      const modalCaption = document.querySelector(".modal-caption");
+      const modalDescription = document.querySelector(".modal-description");
+      const modalClose = document.querySelector(".modal-close");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Reset display in case a previous image failed to load
+          modalImage.style.display = "block";
+          modalImage.src = card.dataset.img;
+          modalImage.alt = card.dataset.title;
+
+          modalCaption.textContent = card.dataset.title;
+          modalDescription.textContent = card.dataset.desc;
+
+          modal.classList.add("active");
+        });
+      });
+
+      // If the modal image fails to load, hide it instead of showing
+      // the browser's broken-image icon
+      modalImage.addEventListener("error", () => {
+        modalImage.style.display = "none";
+      });
+
+      modalClose.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+
+      /* =========================
+   Theme & Font Customisation (button-based)
+   Theme changes the modal's background/text colour via CSS classes.
+   Font changes only the typeface of the description text.
+========================= */
+      const themeButtons = document.querySelectorAll(".theme-option-btn");
+      const fontButtons = document.querySelectorAll(".font-option-btn");
+      const modalContent = document.getElementById("modal-content");
+
+      /* Default Theme */
+      modalContent.classList.add("theme-default");
+
+      /* Theme Buttons */
+      themeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Toggle "active" styling among the theme buttons
+          themeButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          // Swap the modal's theme class to the one clicked
+          modalContent.classList.remove(
+            "theme-default",
+            "theme-green",
+            "theme-blue",
+            "theme-lavender",
+            "theme-sunrise",
+          );
+          modalContent.classList.add(`theme-${btn.dataset.theme}`);
+        });
+      });
+
+      /* Font Buttons — applies only to the description text */
+      fontButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          fontButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          modalDescription.style.fontFamily = btn.dataset.font;
         });
       });
     </script>
