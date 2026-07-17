@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="global.css">
 
     <style>
-      body {
+      body.ais-page {
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -18,17 +18,17 @@
       body.impact-low {
         background-image:
           linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
-          url("images/AIS_impact_bg.jpeg");
+          url("images/AIS_bg.png");
       }
       body.impact-medium {
         background-image:
           linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-          url("images/AIS_impact_bg2.jpeg");
+          url("images/BackImg.png");
       }
       body.impact-high {
         background-image:
           linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
-          url("images/AIS_impact_bg3.jpeg");
+          url("images/fitness.jpg");
       }
       body.impact-low::before,
       body.impact-medium::before,
@@ -265,7 +265,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="ais-page">
     <!-- ================================================
          HEADER & NAVIGATION
          DO NOT MODIFY: This is part of the shared template

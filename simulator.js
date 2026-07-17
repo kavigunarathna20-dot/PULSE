@@ -88,12 +88,8 @@ function updateResults() {
 
 function updateBackground(level) {
     document.body.classList.remove('impact-low', 'impact-medium', 'impact-high');
-    if (level === 'low') {
-        document.body.classList.add('impact-low');
-    } else if (level === 'medium') {
-        document.body.classList.add('impact-medium');
-    } else if (level === 'high') {
-        document.body.classList.add('impact-high');
+    if (level !== 'none') {
+        document.body.classList.add('impact-' + level);
     }
 }
 
