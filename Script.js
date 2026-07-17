@@ -28,11 +28,11 @@ const steps = {
 ========================================== */
 
 function startProfile() {
-  if (completed < 3) {
+  if (!steps.basics) {
     step1();
-  } else if (completed < 6) {
+  } else if (!steps.interests) {
     step2();
-  } else if (completed < 9) {
+  } else if (!steps.actions) {
     step3();
   } else {
     alert("Your profile is already complete.");
@@ -67,6 +67,9 @@ function step1() {
   if (location !== null) {
     profile.location = location.trim();
   }
+
+  steps.basics =
+    profile.name !== "" || profile.username !== "" || profile.location !== "";
 
   updateProfile();
 }
@@ -103,6 +106,9 @@ function step2() {
     profile.preference = preference.trim();
   }
 
+  steps.interests =
+    profile.interest !== "" || profile.sdg !== "" || profile.preference !== "";
+
   updateProfile();
 }
 
@@ -138,6 +144,9 @@ function step3() {
     profile.commitment = commitment.trim();
   }
 
+  steps.actions =
+    profile.goal !== "" || profile.action !== "" || profile.commitment !== "";
+
   updateProfile();
 }
 
@@ -169,11 +178,11 @@ function updateProfile() {
       <p><strong>Commitment:</strong> ${profile.commitment || "-"}</p>
   `;
 
-  if (completed >= 3) {
+  if (steps.basics) {
     document.getElementById("interestBox").style.display = "block";
   }
 
-  if (completed >= 6) {
+  if (steps.interests) {
     document.getElementById("actionBox").style.display = "block";
   }
 
@@ -192,9 +201,7 @@ function updateProgress() {
   document.getElementById("progressText").textContent = percent + "% Complete";
 
   const step1Indicator = document.getElementById("step1Indicator");
-
   const step2Indicator = document.getElementById("step2Indicator");
-
   const step3Indicator = document.getElementById("step3Indicator");
 
   if (completed < 3) {
@@ -232,8 +239,14 @@ function updateProgress() {
     return;
   }
 
+  let completedSteps = 0;
+
+  if (steps.basics) completedSteps++;
+  if (steps.interests) completedSteps++;
+  if (steps.actions) completedSteps++;
+
   document.getElementById("motivationalText").textContent =
-    "Complete your profile to personalize your health journey.";
+    `Progress: ${completedSteps} of 3 profile sections completed`;
 
   document.getElementById("confirmation-card").style.display = "none";
 
@@ -259,6 +272,10 @@ function resetProfile() {
 
   completed = 0;
 
+  steps.basics = false;
+  steps.interests = false;
+  steps.actions = false;
+
   document.getElementById("basicBox").innerHTML = `
       <h3>📋 BASICS</h3>
       <p>Name: -</p>
@@ -281,18 +298,21 @@ function resetProfile() {
   `;
 
   document.getElementById("interestBox").style.display = "none";
+
   document.getElementById("actionBox").style.display = "none";
+
   document.getElementById("confirmation-card").style.display = "none";
 
   document.getElementById("healthInsights").style.display = "none";
 
   document.getElementById("progressFill").style.width = "0%";
+
   document.getElementById("progressText").textContent = "0% Complete";
 
   document.getElementById("currentStepTitle").textContent = "STEP 1: BASICS";
 
   document.getElementById("motivationalText").textContent =
-    "Complete your profile to personalize your health journey.";
+    "Progress: 0 of 3 profile sections completed";
 
   document.getElementById("step1Indicator").className = "step active";
 
@@ -330,7 +350,7 @@ function showInsights() {
       <div>
           <h3>🌟 Personalized Health Insights</h3>
           <br>
-
+        
           <p><strong>Name:</strong> ${profile.name || "Not Provided"}</p>
           <p><strong>Location:</strong> ${profile.location || "Not Provided"}</p>
           <p><strong>Main Goal:</strong> ${profile.goal || "Not Provided"}</p>
@@ -338,15 +358,13 @@ function showInsights() {
           <p><strong>Profile Completion:</strong> ${completionRate}%</p>
 
           <br>
-
           <h4>Recommended Health Tips</h4>
+          <br>
 
           <ul>
               ${tips.map((tip) => `<li>${tip}</li>`).join("")}
           </ul>
-
           <br>
-
           <p>
               🌍 Thank you for supporting SDG 3:
               Good Health and Well-Being.

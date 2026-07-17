@@ -41,7 +41,7 @@
          intro text, and SVG diagram
          ------------------------------------------------------------ */
       .sitemap-card {
-        background: rgb(231, 239, 243);
+        background: #f9fffb;
         border-radius: 25px;
         max-width: 1400px;
         margin: 0 auto;
@@ -67,6 +67,7 @@
       .sitemap-svg {
         width: 100%;
         display: block;
+        height: auto;
       }
 
       /* ------------------------------------------------------------
@@ -125,7 +126,7 @@
       /* -- 6a. Home node (top of the diagram) -- */
       .home-node rect {
         fill: #ffffff;
-        stroke: #26a69a;
+        stroke: #4c9f38;
         stroke-width: 4;
       }
 
@@ -134,14 +135,14 @@
       }
 
       .home-node:hover text {
-        fill: white;
+        fill: #004d40;
       }
 
       /* -- 6b. Content page nodes (Mental Health / Physical Activity /
          Nutrition / Healthcare) -- */
       .content-node rect {
         fill: #fdfdfd;
-        stroke: #66bb6a;
+        stroke: #4c9f38;
         stroke-width: 3;
       }
 
@@ -167,15 +168,6 @@
          ------------------------------------------------------------ */
       footer {
         margin-top: 0;
-      }
-
-      /* ============================================================
-         RESPONSIVE / MEDIA QUERIES
-         ============================================================ */
-      @media (max-width: 1200px) {
-        .sitemap-title-card h1 {
-          font-size: 30px;
-        }
       }
     </style>
   </head>
@@ -260,7 +252,7 @@
 
             <!-- ===== HOME ===== -->
 
-            <a href="./home.html">
+            <a href="./home.html" aria-label="Navigate to Home page">
               <g class="node home-node">
                 <title>Home Page</title>
 
@@ -275,8 +267,12 @@
             <!-- ===== CONTENT PAGES ===== -->
 
             <!-- Content page 1: Mental Health -->
-            <a href="./content_ST1.html">
+            <a
+              href="./content_ST1.html"
+              aria-label="Navigate to Student-1 content page"
+            >
               <g class="node content-node">
+                <title>Mental Health and Well Being</title>
                 <rect x="220" y="420" width="220" height="85" />
                 <text x="330" y="470" text-anchor="middle" class="main-text">
                   Mental Health
@@ -285,8 +281,12 @@
             </a>
 
             <!-- Content page 2: Physical Activity -->
-            <a href="./content_ST2.html">
+            <a
+              href="./content_ST2.html"
+              aria-label="Navigate to Student-2 content page"
+            >
               <g class="node content-node">
+                <title>Physical Activity and Exercise</title>
                 <rect x="500" y="420" width="220" height="85" />
                 <text x="610" y="470" text-anchor="middle" class="main-text">
                   Physical Activity
@@ -295,8 +295,12 @@
             </a>
 
             <!-- Content page 3: Nutrition -->
-            <a href="./content_ST3.html">
+            <a
+              href="./content_ST3.html"
+              aria-label="Navigate to Student-3 content page"
+            >
               <g class="node content-node">
+                <title>Nutrition, Diet and Healthy Eating</title>
                 <rect x="860" y="420" width="220" height="85" />
                 <text x="970" y="470" text-anchor="middle" class="main-text">
                   Nutrition
@@ -305,8 +309,12 @@
             </a>
 
             <!-- Content page 4: Healthcare -->
-            <a href="./content_ST4.html">
+            <a
+              href="./content_ST4.html"
+              aria-label="Navigate to Student-4 content page"
+            >
               <g class="node content-node">
+                <title>Access to Healthcare</title>
                 <rect x="1110" y="420" width="220" height="85" />
                 <text x="1220" y="470" text-anchor="middle" class="main-text">
                   Healthcare
@@ -317,7 +325,7 @@
             <!-- ===== NAVIGATION PAGES ===== -->
 
             <!-- Nav page: Gallery -->
-            <a href="./gallery.html">
+            <a href="./gallery.html" aria-label="Navigate to Gallery page">
               <g class="node nav-node">
                 <title>Gallery</title>
                 <rect x="80" y="670" width="220" height="75" />
@@ -328,7 +336,7 @@
             </a>
 
             <!-- Nav page: AIS (Action Impact Simulator) -->
-            <a href="./ais.html">
+            <a href="./ais.html" aria-label="Navigate to AIS page">
               <g class="node nav-node">
                 <title>Action Impact Simulator</title>
                 <rect x="330" y="670" width="220" height="75" />
@@ -339,7 +347,7 @@
             </a>
 
             <!-- Nav page: Feedback -->
-            <a href="./feedback.html">
+            <a href="./feedback.html" aria-label="Navigate to Feedback page">
               <g class="node nav-node">
                 <title>Feedback</title>
                 <rect x="580" y="670" width="220" height="75" />
@@ -350,7 +358,7 @@
             </a>
 
             <!-- Nav page: Team -->
-            <a href="./team.html">
+            <a href="./team.html" aria-label="Navigate to Team page">
               <g class="node nav-node">
                 <title>Team</title>
                 <rect x="830" y="670" width="220" height="75" />
@@ -361,7 +369,7 @@
             </a>
 
             <!-- Nav page: Profile -->
-            <a href="./profile.html">
+            <a href="./profile.html" aria-label="Navigate to Profile page">
               <g class="node nav-node">
                 <title>User Profile</title>
                 <rect x="1080" y="670" width="220" height="75" />
@@ -372,7 +380,7 @@
             </a>
 
             <!-- Nav page: Sitemap (this page) -->
-            <a href="./sitemap.html">
+            <a href="./sitemap.html" aria-label="Navigate to Sitemap page">
               <g class="node nav-node">
                 <title>Sitemap</title>
                 <rect x="1330" y="670" width="220" height="75" />
@@ -420,7 +428,7 @@
               >Page Editor ↗</a
             >
 
-            <a href="./pageEditor_ST4.html" class="footer-link" target="_blank"
+            <a href="./validation_ST4.html" class="footer-link" target="_blank"
               >Validation ↗</a
             >
           </nav>
