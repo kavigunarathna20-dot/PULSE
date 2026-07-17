@@ -5,19 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PULSE - Welcome</title>
     <link rel="stylesheet" href="global.css" />
+    <!-- Auto-redirects to home.html after 4 seconds -->
     <meta http-equiv="refresh" content="4; url=home.html" />
     <style>
+      /* ============================================================
+         NOTE: Styles below are ordered to match the order elements
+         appear in <body>:
+         1. body / body::before (full-screen background + dark overlay)
+         2. .splash-container (the centered white card)
+         3. .splash-container h1 (PULSE title)
+         4. .sdg-badge (SDG 3 pill label)
+         5. .mission (tagline text)
+         6. .team-section / .team-grid / .team-member (team credits)
+         7. .loader (spinning loading circle)
+         8. .countdown (redirect timer text)
+         9. .skip-btn ("Skip Intro" button)
+         Responsive rules are grouped at the end.
+         ============================================================ */
+
+      /* ------------------------------------------------------------
+         1. BODY — full-screen background image with a dark overlay,
+         centers the splash card both vertically and horizontally
+         ------------------------------------------------------------ */
       body {
         margin: 0;
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("./images/AIS_bg.png")
-          center/cover no-repeat;
+        background: url("./images/AIS_bg.png") center/cover no-repeat;
         font-family: var(--font-family);
         position: relative;
       }
+      /* Dark tint over the background image so the white card stands out */
       body::before {
         content: "";
         position: fixed;
@@ -25,6 +45,11 @@
         background: rgba(0, 0, 0, 0.35);
         z-index: 0;
       }
+
+      /* ------------------------------------------------------------
+         2. .splash-container — the centered frosted-glass card
+         holding all the splash screen content
+         ------------------------------------------------------------ */
       .splash-container {
         position: relative;
         z-index: 1;
@@ -39,6 +64,10 @@
         box-shadow: 0 15px 50px rgba(0, 77, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.3);
       }
+
+      /* ------------------------------------------------------------
+         3. "PULSE" title inside the splash card
+         ------------------------------------------------------------ */
       .splash-container h1 {
         color: #004d00;
         font-size: 3.8rem;
@@ -47,9 +76,15 @@
         font-family: "Poppins", sans-serif;
         font-weight: 700;
       }
+      /* Hides global.css's default underline/accent under headings,
+         since it doesn't suit this centered splash title */
       .splash-container h1::after {
         display: none;
       }
+
+      /* ------------------------------------------------------------
+         4. .sdg-badge — small green pill label under the title
+         ------------------------------------------------------------ */
       .sdg-badge {
         display: inline-block;
         background: linear-gradient(135deg, #2e7d32, #4c9f38);
@@ -62,6 +97,10 @@
         text-transform: uppercase;
         margin-bottom: 0.75rem;
       }
+
+      /* ------------------------------------------------------------
+         5. .mission — italic tagline paragraph
+         ------------------------------------------------------------ */
       .mission {
         color: #444;
         font-size: 1.05rem;
@@ -70,6 +109,10 @@
         font-family: Georgia, serif;
         font-style: italic;
       }
+
+      /* ------------------------------------------------------------
+         6. .team-section — "Our Team" credits block
+         ------------------------------------------------------------ */
       .team-section {
         margin-bottom: 1.5rem;
       }
@@ -81,11 +124,13 @@
         margin-bottom: 0.75rem;
         font-weight: 700;
       }
+      /* 2-column grid of team member cards */
       .team-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.5rem;
       }
+      /* Individual team member card (name + role) */
       .team-member {
         background: rgba(232, 245, 233, 0.6);
         border-radius: 8px;
@@ -96,6 +141,7 @@
         border-left: 3px solid #4caf50;
         text-align: left;
       }
+      /* Smaller, muted role text under each member's name */
       .team-member .role {
         display: block;
         font-size: 0.7rem;
@@ -103,6 +149,11 @@
         color: #666;
         margin-top: 0.15rem;
       }
+
+      /* ------------------------------------------------------------
+         7. .loader — spinning circle shown while the page counts
+         down to redirect
+         ------------------------------------------------------------ */
       .loader {
         width: 44px;
         height: 44px;
@@ -117,6 +168,11 @@
           transform: rotate(360deg);
         }
       }
+
+      /* ------------------------------------------------------------
+         8. .countdown — "Entering site in X..." text, updated by
+         the script below
+         ------------------------------------------------------------ */
       .countdown {
         color: #666;
         font-size: 1rem;
@@ -127,6 +183,11 @@
         font-weight: 700;
         font-size: 1.3rem;
       }
+
+      /* ------------------------------------------------------------
+         9. .skip-btn — lets the visitor jump straight to home.html
+         instead of waiting for the countdown
+         ------------------------------------------------------------ */
       .skip-btn {
         background: transparent;
         border: 2px solid #4c9f38;
@@ -145,6 +206,10 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 20px rgba(76, 159, 56, 0.35);
       }
+
+      /* ============================================================
+         RESPONSIVE / MEDIA QUERIES
+         ============================================================ */
       @media (max-width: 600px) {
         .splash-container {
           padding: 2rem 1.5rem;
@@ -159,8 +224,12 @@
     </style>
   </head>
   <body>
+    <!-- Centered splash card: logo/loader, title, mission, team
+         credits, countdown, and a manual skip button -->
     <div class="splash-container">
+      <!-- Spinning loader shown while the countdown runs -->
       <div class="loader"></div>
+
       <h1>PULSE</h1>
       <span class="sdg-badge">SDG 3 — Good Health & Well-Being</span>
       <p class="mission">
@@ -168,35 +237,45 @@
         action, and community — because every heartbeat matters.
       </p>
 
+      <!-- Team credits shown while the visitor waits for the redirect -->
       <div class="team-section">
         <h3>Our Team</h3>
         <div class="team-grid">
           <div class="team-member">
             Kavishka Gunarathna
-            <span class="role">Template &amp; Home Page</span>
+            <!-- <span class="role">Template &amp; Home Page</span> -->
           </div>
           <div class="team-member">
             Devindi Hansika
-            <span class="role">Splash Screen &amp; AIS</span>
+            <!-- <span class="role">Splash Screen &amp; AIS</span> -->
           </div>
           <div class="team-member">
             Thisumi Dahamsa
-            <span class="role">Feedback &amp; Team Page</span>
+            <!-- <span class="role">Feedback &amp; Team Page</span> -->
           </div>
           <div class="team-member">
             Chamindu Wijesinghe
-            <span class="role">User Profile &amp; Sitemap</span>
+            <!-- <span class="role">User Profile &amp; Sitemap</span> -->
           </div>
         </div>
       </div>
 
+      <!-- Live countdown text; #timer is updated every second by the script below -->
       <p class="countdown">Entering site in <span id="timer">4</span>...</p>
+
+      <!-- Lets the visitor skip straight to home.html -->
       <button class="skip-btn" onclick="skipIntro()">Skip Intro</button>
     </div>
 
     <script>
+      // Number of seconds shown in the countdown before auto-redirecting.
+      // Kept in sync with the <meta http-equiv="refresh" content="4; ...">
+      // tag above, which acts as a fallback redirect in case JS is disabled.
       let countdown = 4;
       const timerDisplay = document.getElementById("timer");
+
+      // Updates the on-screen countdown number each second, and
+      // redirects to home.html once it reaches 0.
       function updateTimer() {
         timerDisplay.textContent = countdown;
         if (countdown <= 0) {
@@ -205,8 +284,12 @@
         }
         countdown--;
       }
+
+      // Show the starting count immediately, then tick down once per second
       updateTimer();
       setInterval(updateTimer, 1000);
+
+      // Lets the visitor skip the countdown entirely via the "Skip Intro" button
       function skipIntro() {
         window.location.href = "home.html";
       }

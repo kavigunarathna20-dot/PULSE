@@ -1,233 +1,771 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Editor Student - provide your student name</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PULSE - A student project promoting SDG 3: Good Health and Well-Being"
+    />
+    <title>PULSE - Good Health & Well-Being</title>
+    <link rel="stylesheet" href="./global.css" />
 
-    <link rel="stylesheet" href="css/pageEditor_validator.css"> <!-- External CSS link -->
+    <style>
+      /* ==================================================
+   SECTION ANCHOR OFFSET
+================================================== */
 
-</head>
-<body>
-    
-    <!-- Update the header and the footer to be consistent with the rest of the pages you implemented Optional -->
+      #feedback,
+      #team,
+      #content,
+      #challenge,
+      #compliance,
+      #group,
+      #references {
+        scroll-margin-top: 100px;
+      }
 
-    <header id="top">
-        <h1>Replace this header with your teams' website header [this is optional]</h1>
+      /* ==================================================
+   PAGE LAYOUT
+================================================== */
+
+      .portfolio-container {
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+        background: #edf1ec;
+        padding: 20px;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      /* ==================================================
+   HERO SECTION
+================================================== */
+
+      .hero-section {
+        background: linear-gradient(135deg, #43a047, #66bb6a);
+        text-align: center;
+        color: #fff;
+        padding: 50px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .hero-section h1 {
+        margin: 0;
+        font-size: 2.2rem;
+      }
+
+      .hero-section p {
+        margin-top: 10px;
+        font-size: 1.6rem;
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      /* ==================================================
+   SIDEBAR NAVIGATION
+================================================== */
+
+      .sidebar {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        height: fit-content;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+
+        font-size: 20px;
+        font-family: "Gill Sans MT";
+        color: #333;
+        text-decoration: none;
+
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover,
+      .sidebar .active {
+        background: #8af3d0;
+      }
+
+      /* ==================================================
+   CONTENT CARDS
+================================================== */
+
+      .page-card,
+      .modern-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 6px solid #43a047;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      /* ==================================================
+   HEADINGS & TEXT
+================================================== */
+
+      .page-card h2,
+      .modern-card h2 {
+        color: #2e7d32;
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .page-card h3 {
+        margin-top: 25px;
+        font-size: 24px;
+        color: #1b4332;
+      }
+
+      .page-card p {
+        color: #000;
+        font-size: 18px;
+        line-height: 2;
+      }
+
+      .page-card a {
+        color: #2e7d32;
+        font-weight: 600;
+      }
+
+      /* ==================================================
+   CHALLENGES SECTION
+================================================== */
+
+      .challenge-item {
+        position: relative;
+        margin-bottom: 30px;
+        padding-left: 30px;
+        border-left: 4px solid #43a047;
+      }
+
+      .challenge-item::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: -10px;
+
+        width: 16px;
+        height: 16px;
+
+        background: #137718;
+        border-radius: 50%;
+      }
+
+      .challenge-item h3 {
+        color: #030627;
+        margin-bottom: 10px;
+      }
+
+      .challenge-item p {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      /* ==================================================
+   COMPLIANCE SECTION
+================================================== */
+
+      #compliance {
+        background: #fff;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      #compliance p {
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 18px;
+        text-align: justify;
+      }
+
+      /* ==================================================
+   CONTRIBUTION LOG TABLE
+================================================== */
+
+      .table-container {
+        overflow-x: auto;
+      }
+
+      .meeting-table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .meeting-table th {
+        background: #294f52;
+        color: #fff;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .meeting-table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        vertical-align: top;
+      }
+
+      .meeting-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+
+      .meeting-table tr:hover {
+        background: #f1f8e9;
+      }
+
+      /* ==================================================
+   REFERENCES SECTION
+================================================== */
+
+      .ref-list {
+        padding-left: 25px;
+        line-height: 1.8;
+      }
+
+      .ref-list li {
+        margin-bottom: 16px;
+        text-align: justify;
+      }
+
+      .ref-list a {
+        color: #2e7d32;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .ref-list a:hover {
+        text-decoration: underline;
+      }
+
+      /* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+      @media (max-width: 900px) {
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================================================
+         HEADER & NAVIGATION
+         DO NOT MODIFY: This is part of the shared template
+         ================================================ -->
+    <header>
+      <div class="logo">
+        <!-- Logo: Replace src with your logo image path -->
+        <img
+          src="./images/logo.jpeg"
+          alt="PULSE Logo - Good Health and Well-Being"
+          class="logo-image"
+        />
+        <div class="logo-text">
+          <h1>PULSE</h1>
+          <p>Good Health & Well-Being</p>
+        </div>
+      </div>
+
+      <!-- Navigation Bar: All team members use these links -->
+      <nav class="main-nav">
+        <a href="./home.html" class="nav-link">Home</a>
+        <a href="./gallery.html" class="nav-link">Gallery</a>
+        <a href="./ais.html" class="nav-link">AIS</a>
+        <a href="./feedback.html" class="nav-link">Feedback</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="./profile.html" class="nav-link">Profile</a>
+        <a href="./sitemap.html" class="nav-link">Sitemap</a>
+      </nav>
     </header>
 
-    <section class="stud">
-        <h2>Student name, team name, student role [this is required]</h2>
-    </section>
+    <!-- ================================================
+         MAIN CONTENT AREA
+         Students add their page content here
+         Keep this structure intact
+         ================================================ -->
+    <main>
+      <div class="portfolio-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <h1>Thisumi Dahamsa - PULSE</h1>
+          <p>Feedback, Team and Nutrition, Diet and Healthy Eating Page</p>
+        </section>
 
-    <div class="container">
-        <!-- Main content area -->
-        <main>
+        <div class="dashboard">
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <a href="#feedback"> Feedback </a>
+            <a href="#team"> Team </a>
+            <a href="#content"> Nutrition, Diet and Healthy Eating </a>
+            <a href="#challenge">Challenges & Lessons Learned</a>
+            <a href="#compliance">Compliance</a>
+            <a href="#group"> Group </a>
+            <a href="#references"> References </a>
+          </aside>
 
-            <!-- Update those first three sections for the pages you were responsible to implement -->
+          <!-- Main Content -->
 
-            <section>
-                <h2 id="home">Home page</h2>
-                    <h3>Technical Description</h3>
-                        <p>Explain the HTML structure, the CSS techniques used to implement this page, and how interactivity was integrated with JavaScript. Justify the logic and purpose of the key HTML tags, CSS styling choices, and JavaScript functionality, focusing on functionality and design without copying large code sections. Explain the purpose of the main HTML tags, CSS properties, and JavaScript features used. Specify the key HTML tags, CSS properties, and JavaScript elements that create the page structure, styling, and interactivity.</p> 
-                    
-                    <h3>Accessibility</h3>
-                        <p>Explain how you used to addressed accessibility in this particular page you implemented.</p>
-                    
-                    <h3>Link to the validation page</h3> <!-- Update the path to link the Page Editor with the splash page -->
-                        <p><a href="validation_ST0.html#splashVal">Include a link to the validation page</a>, use the marker to jump to the corresponding section of the validation page.</p> <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
+          <section class="content-grid">
+            <!-- USER PROFILE -->
+            <section class="page-card" id="feedback">
+              <h2>Feedback</h2>
 
-                    <h3>Link to the page</h3>
-                        <p><a href="splash.html">Include a link to the actual page you describe.</a></p>
+              <h3>Technical Description</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
+                quas sunt dolorem aliquam esse deleniti quis accusantium eos!
+                Nobis dolorem nisi vitae quis accusantium, iste recusandae
+                aliquam ducimus maiores aspernatur! Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Fuga, placeat blanditiis beatae
+                nobis earum omnis illum voluptatum exercitationem id laudantium
+                facilis saepe voluptate repellendus odio doloremque dignissimos
+                qui suscipit vitae. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Vitae officiis aspernatur nobis quod nostrum?
+                Beatae nesciunt quas molestiae dolore, quos molestias voluptatum
+                sapiente error at rem ratione? Odit, porro rerum.
+              </p>
+
+              <h3>Accessibility</h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Dignissimos, at, aperiam aut similique repudiandae consequatur
+                saepe officiis animi sunt sapiente esse, ex voluptas quos
+                blanditiis numquam eum. Quas, unde nisi! Lorem ipsum dolor sit,
+                amet consectetur adipisicing elit. Placeat harum architecto
+                dignissimos magni labore dolore, veritatis consequatur maiores
+                quidem ducimus ullam possimus dicta adipisci quibusdam minus et
+                quae sit earum. Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Doloremque est, officiis, sed ipsa illum
+                soluta nulla mollitia facilis esse autem quod reprehenderit
+                placeat ea blanditiis quam, labore hic ipsum asperiores!
+              </p>
+
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST3.html">View Validation Results</a>
+              </p>
+
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="./feedback.html" target="_blank">
+                  View Feedback Page
+                </a>
+              </p>
             </section>
 
-            <section>
-                <h2 id="gallery">Gallery Page</h2>
-                    <h3>Technical Description</h3>
-                        <p>Explain the HTML structure, the CSS techniques used to implement this page, and how interactivity was integrated with JavaScript. Justify the logic and purpose of the key HTML tags, CSS styling choices, and JavaScript functionality, focusing on functionality and design without copying large code sections. Explain the purpose of the main HTML tags, CSS properties, and JavaScript features used. Specify the key HTML tags, CSS properties, and JavaScript elements that create the page structure, styling, and interactivity.</p> 
+            <!-- TEAM -->
+            <section class="page-card" id="team">
+              <h2>Team</h2>
 
-                    <h3>Accessibility</h3>
-                        <p>Explain how you used to addressed accessibility in this particular page you implemented.</p>
+              <h3>Technical Description</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
+                asperiores perferendis. Sapiente eos facilis totam, vitae
+                consectetur delectus consequatur quisquam et, officiis ducimus
+                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
+                neque delectus perspiciatis? Eveniet dolorum quam maiores
+                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
+                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Necessitatibus eligendi totam minima
+                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
+                voluptatum quam eum voluptate esse aliquid consequatur, debitis
+                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
+                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
+                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+              </p>
 
-                    <h3>Link to the validation page</h3> <!-- Update the path to link the Page Editor with the splash page -->
-                        <p><a href="validation_ST0.html#volunteerVal">Include a link to the validation page</a>, use the marker to jump to the corresponding section of the validation page.</p> <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
+              <h3>Accessibility</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
+                asperiores perferendis. Sapiente eos facilis totam, vitae
+                consectetur delectus consequatur quisquam et, officiis ducimus
+                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
+                neque delectus perspiciatis? Eveniet dolorum quam maiores
+                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
+                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Necessitatibus eligendi totam minima
+                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
+                voluptatum quam eum voluptate esse aliquid consequatur, debitis
+                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
+                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
+                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+              </p>
 
-                        
-                    <h3>Link to the page</h3>
-                        <p><a href="volunteer.html">Include a link to the actual page you describe.</a></p>
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST3.html">View Validation Results</a>
+              </p>
+
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="./team.html" target="_blank"> View Team Page </a>
+              </p>
             </section>
 
-            <section>
-                <h2 id="content">Content Page</h2>
-                    <h3>Technical Description</h3>
-                        <p>Explain the HTML structure, the CSS techniques used to implement this page, and how interactivity was integrated with JavaScript. Justify the logic and purpose of the key HTML tags, CSS styling choices, and JavaScript functionality, focusing on functionality and design without copying large code sections. Explain the purpose of the main HTML tags, CSS properties, and JavaScript features used. Specify the key HTML tags, CSS properties, and JavaScript elements that create the page structure, styling, and interactivity.</p> 
+            <!-- CONTENT PAGE -->
+            <section class="page-card" id="content">
+              <h2>Nutrition, Diet and Healthy Eating</h2>
 
-                    <h3>Accessibility</h3>
-                        <p>Explain how you used to addressed accessibility in this particular page you implemented.</p>
+              <h3>Technical Description</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
+                asperiores perferendis. Sapiente eos facilis totam, vitae
+                consectetur delectus consequatur quisquam et, officiis ducimus
+                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
+                neque delectus perspiciatis? Eveniet dolorum quam maiores
+                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
+                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Necessitatibus eligendi totam minima
+                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
+                voluptatum quam eum voluptate esse aliquid consequatur, debitis
+                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
+                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
+                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+              </p>
 
-                    <h3>Link to the validation page</h3> <!-- Update the path to link the Page Editor with the splash page -->
-                        <p><a href="validation_ST0.html#contentVal">Include a link to the validation page</a>, use the marker to jump to the corresponding section of the validation page.</p> <!-- Update the path to link the Page Editor with the validation page and make it jump to the marker that contains a snapshot for the splash page -->
+              <h3>Accessibility</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
+                asperiores perferendis. Sapiente eos facilis totam, vitae
+                consectetur delectus consequatur quisquam et, officiis ducimus
+                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
+                neque delectus perspiciatis? Eveniet dolorum quam maiores
+                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
+                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Necessitatibus eligendi totam minima
+                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
+                voluptatum quam eum voluptate esse aliquid consequatur, debitis
+                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
+                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
+                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+              </p>
 
-                        
-                    <h3>Link to the page</h3>
-                        <p><a href="content.html">Include a link to the actual page you describe.</a></p>
+              <h3>Link to the Validation Page</h3>
+              <p>
+                <a href="./validation_ST3.html"> View Validation Results </a>
+              </p>
+
+              <h3>Link to the Page</h3>
+              <p>
+                <a href="content_ST3.html" target="_blank">
+                  View Nutrition, Diet and Healthy Eating Page
+                </a>
+              </p>
             </section>
 
-            <section>
-                <h2 id="challenge"> Challenges and Lessons Learned</h2>
-                    <p>Detail any challenges encountered during the implementation process and explain how they were resolved. Reflect on the lessons learned from overcoming these challenges.</p> 
+            <!-- CHALLENGES -->
+
+            <section class="modern-card" id="challenge">
+              <h2>Challenges & Lessons Learned</h2>
+
+              <div class="challenge-item">
+                <h3>Add own</h3>
+
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Animi, exercitationem tenetur molestias ex non impedit neque
+                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
+                  explicabo impedit quaerat in omnis numquam?
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Temporibus esse architecto delectus laborum vel unde optio
+                  recusandae, error, alias, fuga corrupti ullam explicabo
+                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
+                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
+                  quam suscipit? Fugiat.
+                </p>
+              </div>
+
+              <div class="challenge-item">
+                <h3>Add own</h3>
+
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Animi, exercitationem tenetur molestias ex non impedit neque
+                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
+                  explicabo impedit quaerat in omnis numquam?
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Temporibus esse architecto delectus laborum vel unde optio
+                  recusandae, error, alias, fuga corrupti ullam explicabo
+                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
+                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
+                  quam suscipit? Fugiat.
+                </p>
+              </div>
+
+              <div class="challenge-item">
+                <h3>Add own</h3>
+
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Animi, exercitationem tenetur molestias ex non impedit neque
+                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
+                  explicabo impedit quaerat in omnis numquam?
+                </p>
+                <p>
+                  <strong>Solution:</strong>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Temporibus esse architecto delectus laborum vel unde optio
+                  recusandae, error, alias, fuga corrupti ullam explicabo
+                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                </p>
+
+                <p>
+                  <strong>Lesson Learned:</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
+                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
+                  quam suscipit? Fugiat.
+                </p>
+              </div>
             </section>
 
-            <section>
-                <h2 id="compliance"> Compliance</h2>
-                    <p>Discuss how the pages you have created are compliant with Janet regulations governing web page publication. This includes demonstrating your understanding and application of these regulations. Be realistic and truthful. <a href="https://intranet.ecs.westminster.ac.uk/modules/4COSC011W/compliance.html" target="_blank">See the lecture notes for more details on compliance.</a></p> 
-
-                    
+            <!-- COMPLIANCE -->
+            <section class="page-card" id="compliance">
+              <h2>Compliance</h2>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
+              sint dolor, esse vero porro saepe quia corrupti blanditiis
+              quibusdam laboriosam ut eaque culpa ducimus corporis nulla,
+              voluptatum dolore officia dolorem? Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Vitae veritatis quaerat aliquam,
+              quos recusandae ad officiis sint tempora optio temporibus. Tempora
+              natus neque fugit consequuntur aliquam aperiam perferendis odit
+              assumenda? Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Iste, consequuntur fugit autem molestias alias veniam vero
+              aliquam esse placeat ad ex doloribus sequi explicabo dolorum
+              incidunt facilis harum voluptate vel. Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Quam placeat dolorem dicta explicabo
+              numquam inventore a, officiis consequuntur voluptatum debitis
+              corporis officia dolor. Similique, ullam! Consectetur suscipit
+              corporis debitis quae! Lorem, ipsum dolor sit amet consectetur
+              adipisicing elit.
             </section>
 
-            <section>
-                <h2 id="group"> Group Meetings and Individual Contribution Log</h2>
-                    <p>Include a Group Meetings and Contribution Log that documents your engagement with group work.</p> 
-                    Requirements:
-                        <ul> 
-                            <li>A minimum of six (6) group meetings must be recorded.</li>
-                            <li>Each student must provide their own account of the meetings.</li>
-                            <li>The log must focus on individual contribution, not just group activity.</li>
-                        </ul>
-                        <p>Feel free to follow the example table structure below:</p>
+            <!-- TIMELINE -->
+            <section class="page-card" id="group">
+              <h2>Group Meetings and Individual Contribution Log</h2>
 
-                        <table >
-    
-                            <thead>
-                                <tr>
-                                    <th colspan="6">Group Meetings and Contribution Log</th>
-                                </tr>
-                                <tr>
-                                    <th>Meeting</th>
-                                    <th>Date &amp; Time</th>
-                                    <th>Format</th>
-                                    <th>Objective</th>
-                                    <th>Attended</th>
-                                    <th>Your Individual Contribution</th>
-                                </tr>
-                            </thead>
-                        
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>3 Feb 2026</td>
-                                    <td>Face-to-face</td>
-                                    <td>Agree SDG and assign roles</td>
-                                    <td>Yes</td>
-                                    <td>I agreed to take responsibility for the Home Page and template.</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>2</td>
-                                    <td>17 Feb 2026</td>
-                                    <td>Online</td>
-                                    <td>Review Home Page design</td>
-                                    <td>Yes</td>
-                                    <td>I suggested the colour palette and card-based layout.</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>3</td>
-                                    <td>03 Mar 2026</td>
-                                    <td>Hybrid</td>
-                                    <td>Progress review</td>
-                                    <td>No</td>
-                                    <td>I reviewed meeting notes and followed up with tasks.</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>4</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>5</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>6</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                            </tbody>
-                        
-                        </table>
-                    
+              <p>
+                The following log records my participation in group meetings and
+                documents my individual contributions throughout the project.
+              </p>
+
+              <div class="table-container">
+                <table class="meeting-table">
+                  <thead>
+                    <tr>
+                      <th>Meeting</th>
+                      <th>Date & Time</th>
+                      <th>Format</th>
+                      <th>Objective</th>
+                      <th>Attended</th>
+                      <th>My Contribution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>08 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Project Kickoff</td>
+                      <td>Yes</td>
+                      <td>Proposed feedback form and team page concept</td>
+                    </tr>
+
+                    <tr>
+                      <td>2</td>
+                      <td>19 Jun 2026</td>
+                      <td>Online</td>
+                      <td>Template & Design Review</td>
+                      <td>Yes</td>
+                      <td>Tested template form styling</td>
+                    </tr>
+
+                    <tr>
+                      <td>3</td>
+                      <td>24 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Page Assignment & Content Planning</td>
+                      <td>Yes</td>
+                      <td>
+                        Assigned feedback form + team page + nutrition content
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>4</td>
+                      <td>30 Jun 2026</td>
+                      <td>Physical</td>
+                      <td>Technical Implementation Check-in</td>
+                      <td>Yes</td>
+                      <td>
+                        Showed form with fieldsets, flagged card overflow issue
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>5</td>
+                      <td>10 Jul 2026</td>
+                      <td>Online</td>
+                      <td>Content Development & Integration</td>
+                      <td>Yes</td>
+                      <td>
+                        Completed form validation, team page polish, nutrition
+                        page
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>6</td>
+                      <td>14 Jul 2026</td>
+                      <td>Physical</td>
+                      <td>Testing & Bug Fixes</td>
+                      <td>Yes</td>
+                      <td>
+                        Fixed CSS overflow on team cards, verified form
+                        validation
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>17 Jul 2026</td>
+                      <td>Physical</td>
+                      <td>Final Review & Submission Preparation</td>
+                      <td>Yes</td>
+                      <td>
+                        Demonstrated form validation & team card interactions
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
 
-            <section>
-                <h2 id="ref">References</h2>
-                <p>Provide links to resources you used following a consistent format (e.g., APA, MLA, or a simplified style). For example:<br><br>
-                    <ul class="ref">
-                        <li>iStock (2025) <i>iStock.</i> Available at: <a href="#">https://www.istockphoto.com/</a> (Last accessed: 11 Feb 2025).</li>
-                        <li>Duckett, J., 2011. HTML and CSS: Design and Build Websites,<i>John Willey&Sons. Inc. Indianappolis.</i></li>
-                    </ul>
+            <!-- REFERENCES -->
+
+            <section class="modern-card full-width" id="references">
+              <h2>References</h2>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum,
+              repellendus quia pariatur magni cumque error culpa eius doloribus
+              non quaerat eaque fugit a repudiandae exercitationem eos dolore
+              necessitatibus officia dignissimos. Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Eos nostrum ullam ratione? Illum
+              quia nihil optio, non facilis unde facere eveniet saepe neque
+              voluptates quos quam expedita sunt? Quibusdam, nobis. Lorem ipsum
+              dolor sit, amet consectetur adipisicing elit. Unde rem odio
+              inventore nostrum vero! Qui voluptas explicabo culpa maiores
+              itaque voluptatibus quod. Architecto hic tenetur nisi officia odit
+              porro maxime. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Recusandae incidunt totam, vitae reprehenderit dolorum eos
+              laborum culpa ex vero saepe fugit atque officiis ipsum reiciendis
+              voluptate, illo ab, quidem odit!
             </section>
-
-            <p class="top"><a href="#top">Go top</a></p>
-        </main>
-
-        <!-- Sidebar area -->
-        <aside>
-            <h3>Core pages developed:</h3>
-
-        <!-- Customize this to the role you undertook. Keep only the list items you were responsible to develop, delete the rest -->
-            <ul class="top-level-ul">
-                <!-- Keep only the list items you were responsible to develop, delete the rest and update the links to the corresponding markers -->
-                <li>Student 1</li>
-                <ul>
-                        <li><a href="#home">Home page </a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#content">Content</a></li>
-                    </ul>
-                <li>Student 2</li>
-                <ul> 
-                    <li><a href="#">Splash Screen</a></li>
-                    <li><a href="#">Action Impact Simulator</a></li>
-                    <li><a href="#">Content</a></li>
-                </ul>
-                    
-                <li>Student 3</li>
-                    <ul>
-                        <li><a href="#">Feedback</a> </li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Content</a></li>
-                    </ul>
-                <li>Student 4</li>
-                    <ul>
-                        <li><a href="#">User Profile </a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Content</a></li>
-                    </ul>
-                <li><a href="#challenge">Challenges and Lessons Learned</a></li>
-                <li><a href="#compliance">Compliance</a></li>
-                <li><a href="#group">Group Meetings and Individual Contribution Log</a></li>
-                <li><a href="#ref">References</a></li>
-            </ul>
-        </aside>
-    </div>
-
+            <br />
+          </section>
+        </div>
+      </div>
+    </main>
+    <!-- ================================================
+         FOOTER
+         DO NOT MODIFY: Keep this structure for consistency
+         ================================================ -->
     <footer>
-        <p>Replace this footer with your teams' website footer</p>
+      <div class="footer-content">
+        <!-- Footer Section 1: Logo & Description -->
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
+            <span class="footer-brand">PULSE</span>
+          </div>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
+        </div>
+
+        <!-- Footer Section 3: Student Information -->
+        <div class="footer-section">
+          <h3>This Page</h3>
+          <p class="student-info">
+            Developed by: <strong>Thisumi Dahamsa</strong>
+          </p>
+          <nav class="footer-links">
+            <!-- EACH STUDENT: Update these links to your own pages -->
+            <a href="./pageEditor_ST3.html" class="footer-link"
+              >Page Editor ↗</a
+            >
+            &nbsp;&nbsp;
+            <a href="./validation_ST3.html" class="footer-link"
+              >Validation Page ↗</a
+            >
+          </nav>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <span>© 2026 PULSE — University of Westminster Group Project</span>
+        <span>SDG 3: Good Health and Well-Being</span>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

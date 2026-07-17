@@ -223,11 +223,11 @@
 
       /* Individual content box (one per student) */
       .content-box {
-        min-height: auto;
+        min-height: 160px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        padding: 15px;
+        padding: 10px;
         transition: 0.3s ease;
         border: 5px solid #b3b3b3;
         border-radius: 30px;
@@ -269,24 +269,28 @@
 
       /* Thumbnail image inside each content box */
       .topic-image {
-        max-width: 340px;
-        object-fit: contain;
+        max-width: 360px;
+        width: 100%;
         height: auto;
       }
 
       /* Text/link wrapper inside each content box */
       .overlay {
+        width: 100%;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 8px;
+        gap: 5px;
       }
 
       .overlay a {
         color: rgb(28, 83, 62);
+        line-height: 1.6;
+        padding-top: 0px;
         margin-top: 5px;
-        font-size: 30px;
+        font-size: 25px;
         font-style: italic;
         font-family: "Franklin Gothic Medium";
       }
@@ -576,7 +580,7 @@
                 alt="Healthcare Access"
                 class="topic-image"
               />
-              <a href="./content_ST1.html">Mental Health and Well-being</a>
+              <a href="./content_ST1.html">Mental Health and<br />Well-being</a>
             </div>
           </div>
 
@@ -588,7 +592,10 @@
                 alt="Healthcare Access"
                 class="topic-image"
               />
-              <a href="./content_ST2.html">Physical Activity and Exercise</a>
+              <a href="./content_ST2.html"
+                >Physical Activity and <br />
+                Exercise</a
+              >
             </div>
           </div>
 
@@ -601,7 +608,10 @@
                 class="topic-image"
               />
 
-              <a href="./content_ST3.html">Nutrition,Diet and Healthy Eating</a>
+              <a href="./content_ST3.html"
+                >Nutrition, Diet and <br />
+                Healthy Eating</a
+              >
             </div>
           </div>
 
