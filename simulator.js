@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calculateBtn.addEventListener('click', updateResults);
     resetBtn.addEventListener('click', resetSimulator);
-
-    updateResults();
 });
 
 function toggleSelection(card) {
@@ -37,7 +35,6 @@ function toggleSelection(card) {
         selectedActions[id] = { title: title, points: points };
     }
 
-    updateResults();
 }
 
 function updateResults() {
@@ -107,5 +104,7 @@ function resetSimulator() {
         card.querySelector('.select-btn').textContent = 'Select Action';
     });
     document.body.classList.remove('impact-low', 'impact-medium', 'impact-high');
-    updateResults();
+    document.getElementById('selected-list').innerHTML = '<p>No actions selected yet. Choose actions above to see your impact.</p>';
+    document.getElementById('total-points').textContent = '0';
+    document.getElementById('impact-message').textContent = 'Select some actions to see your wellness impact.';
 }
