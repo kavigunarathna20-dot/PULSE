@@ -92,7 +92,8 @@ header {
   object-fit: cover;
 }
 
-.logo-text h1 {
+.logo-text h1,
+.logo-text h2 {
   font-size: 30px;
   font-weight: var(--font-weight-bold);
 
@@ -340,6 +341,30 @@ footer {
 }
 
 /* ================================================
+   FOOTER NAVIGATION
+================================================ */
+
+.footer-nav,
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--primary-color);
+
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary-dark);
+}
+
+/* ================================================
    FOOTER BOTTOM
 ================================================ */
 
@@ -355,6 +380,7 @@ footer {
   font-size: 10px;
   color: var(--medium-text);
 }
+
 
 /* ================================================
    IMAGES & MEDIA
@@ -432,7 +458,8 @@ img {
     padding: 0 16px;
   }
 
-  .logo-text h1 {
+  .logo-text h1,
+  .logo-text h2 {
     font-size: 14px;
   }
 

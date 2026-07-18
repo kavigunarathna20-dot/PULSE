@@ -12,28 +12,6 @@
     <link rel="icon" type="image/png" href="./images/favicon.png" />
 
     <style>
-      /* ============================================================
-         NOTE: Styles below are ordered to match the order elements
-         appear in <body>:
-         1. body.ais-page (page background + impact-level themes,
-            toggled via body class by simulator.js)
-         2. .sim-header (intro text)
-         3. .card-grid / .card (the 6 selectable action cards)
-         4. .selected-section (live list of chosen actions)
-         5. .selected-item / .item-title / .item-points — NOT present
-            in the static HTML below; these are almost certainly
-            built dynamically into #selected-list by simulator.js
-            (not yet shared), so they're kept rather than treated as
-            unused.
-         6. .sim-results (final score + Calculate/Reset controls)
-         Responsive rules are grouped at the end.
-         ============================================================ */
-
-      /* ------------------------------------------------------------
-         1. BODY — page background image, swapped between low/medium/
-         high "impact" themes by simulator.js as the user's score
-         changes
-         ------------------------------------------------------------ */
       body.ais-page {
         background-size: cover;
         background-position: center;
@@ -55,17 +33,12 @@
           linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
           url("images/AIS_impact_bg3.jpeg");
       }
-      /* Suppress global.css's default body::before overlay so the
-         impact background images show through cleanly */
       body.impact-low::before,
       body.impact-medium::before,
       body.impact-high::before {
         background-color: transparent !important;
       }
 
-      /* ------------------------------------------------------------
-         2. .sim-header — intro text explaining how the simulator works
-         ------------------------------------------------------------ */
       .sim-header {
         padding-top: 30px;
         text-align: center;
@@ -79,9 +52,6 @@
         line-height: 1.8;
       }
 
-      /* ------------------------------------------------------------
-         3. .card-grid — grid of the 6 selectable action cards
-         ------------------------------------------------------------ */
       .card-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -91,7 +61,6 @@
         padding: 0 40px;
       }
 
-      /* Individual action card */
       .card {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(14px);
@@ -108,7 +77,6 @@
         box-shadow: 0 8px 30px rgba(76, 159, 56, 0.15);
       }
 
-      /* Selected state, toggled by simulator.js when "Select Action" is clicked */
       .card.selected {
         border: 2px solid #2e7d32;
         box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
@@ -118,7 +86,6 @@
         background: #1b5e20;
       }
 
-      /* Points badge in the top-left of each card (e.g. "3 pts") */
       .impact-points {
         display: inline-block;
         background: linear-gradient(135deg, #2e7d32, #388e3c);
@@ -151,7 +118,6 @@
         flex: 1;
       }
 
-      /* "Select Action" button */
       .card .btn {
         width: 100%;
         background: rgba(255, 255, 255, 0.25);
@@ -171,10 +137,6 @@
         color: #fff;
       }
 
-      /* ------------------------------------------------------------
-         4. .selected-section — "Your Selected Actions" live list,
-         filled in by simulator.js as cards are selected
-         ------------------------------------------------------------ */
       .selected-section {
         max-width: 1100px;
         margin: 2rem auto;
@@ -199,19 +161,11 @@
         margin: 0;
         padding: 0;
       }
-      /* Placeholder/empty-state text (e.g. "No actions selected yet") */
       .selected-inner ul p {
         color: var(--medium-text);
         font-style: italic;
       }
 
-      /* -- 4a. One row per selected action.
-         NOTE: .selected-item, .item-title, and .item-points don't
-         appear in the static HTML — they're almost certainly built
-         dynamically into #selected-list by simulator.js (not yet
-         shared), one row per action the user selects. Kept rather
-         than removed as "unused" since they're most likely still
-         referenced by that external script. -- */
       .selected-item {
         display: flex;
         justify-content: space-between;
@@ -231,10 +185,6 @@
         font-weight: 700;
       }
 
-      /* ------------------------------------------------------------
-         5. .sim-results — final wellness score, feedback message,
-         and Calculate/Reset controls
-         ------------------------------------------------------------ */
       .sim-results {
         text-align: center;
         max-width: 1100px;
@@ -254,7 +204,6 @@
         color: var(--dark-text);
         margin-bottom: 10px;
       }
-      /* Big total-points number (#total-points) */
       .sim-results-inner h3 {
         font-size: 3rem;
         color: #1b5e20;
@@ -264,8 +213,6 @@
         color: var(--medium-text);
       }
 
-      /* Feedback text under the score (e.g. "Great job!"), filled in
-         by simulator.js when "Calculate Impact" is clicked */
       .impact-message {
         font-size: 1.2rem;
         font-weight: 600;
@@ -274,7 +221,6 @@
         color: var(--dark-text);
       }
 
-      /* Calculate Impact / Reset button row */
       .sim-actions {
         display: flex;
         gap: 1rem;
@@ -299,7 +245,6 @@
         background: var(--primary-color);
         color: #fff;
       }
-      /* Secondary/reset button gets a muted grey style instead of green */
       .sim-actions .btn-secondary {
         background: rgba(255, 255, 255, 0.15);
         border-color: rgba(100, 100, 100, 0.2);
@@ -311,31 +256,15 @@
         border-color: #666;
       }
 
-      /* ============================================================
-         RESPONSIVE / MEDIA QUERIES
-         ============================================================ */
       @media (max-width: 900px) {
-        .card-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .card-grid { grid-template-columns: repeat(2, 1fr); }
       }
       @media (max-width: 768px) {
-        .sim-header h1 {
-          font-size: 30px;
-        }
-        .card-grid {
-          grid-template-columns: 1fr;
-          padding: 0 20px;
-        }
-        .selected-section {
-          padding: 1.5rem 20px;
-        }
-        .sim-results {
-          padding: 2rem 20px;
-        }
-        .sim-header {
-          padding: 40px 20px 20px;
-        }
+        .sim-header h1 { font-size: 30px; }
+        .card-grid { grid-template-columns: 1fr; padding: 0 20px; }
+        .selected-section { padding: 1.5rem 20px; }
+        .sim-results { padding: 2rem 20px; }
+        .sim-header { padding: 40px 20px 20px; }
       }
     </style>
   </head>
@@ -349,8 +278,7 @@
         <img
           src="./images/logo.jpeg"
           alt="PULSE Logo - Good Health and Well-Being"
-          class="logo-image"
-        />
+          class="logo-image">
         <div class="logo-text">
           <h1>PULSE</h1>
           <p>Good Health & Well-Being</p>
@@ -376,7 +304,7 @@
          ================================================ -->
 
     <main>
-      <!-- Page heading (styled via global.css, no page-local rule) -->
+      <!-- Page heading -->
       <h1 class="Headings">Health Action Impact Simulator</h1>
 
       <!-- Intro text explaining how the simulator works -->
@@ -397,8 +325,7 @@
           <span class="impact-points">3 pts</span>
           <img
             src="images/AIS_img1.jpeg"
-            alt="Person walking briskly along a park path"
-          />
+            alt="Person walking briskly along a park path">
           <h2 class="item-title">Take a 30-Minute Walk</h2>
           <p>Category: Physical Activity</p>
           <p>
@@ -413,8 +340,7 @@
           <span class="impact-points">2 pts</span>
           <img
             src="images/AIS_img_Water.jpeg"
-            alt="Glass of water being poured on a table"
-          />
+            alt="Glass of water being poured on a table">
           <h2 class="item-title">Drink 8 Glasses of Water</h2>
           <p>Category: Nutrition</p>
           <p>
@@ -429,8 +355,7 @@
           <span class="impact-points">4 pts</span>
           <img
             src="images/AIS_img_cat.jpeg"
-            alt="Person sleeping peacefully in bed"
-          />
+            alt="Person sleeping peacefully in bed">
           <h2 class="item-title">Get 7–8 Hours of Sleep</h2>
           <p>Category: Rest &amp; Recovery</p>
           <p>
@@ -445,8 +370,7 @@
           <span class="impact-points">3 pts</span>
           <img
             src="images/AIS_img_meditation.jpeg"
-            alt="Person meditating cross-legged with eyes closed"
-          />
+            alt="Person meditating cross-legged with eyes closed">
           <h2 class="item-title">Practice 10 Minutes of Mindfulness</h2>
           <p>Category: Mental Health</p>
           <p>
@@ -461,8 +385,7 @@
           <span class="impact-points">3 pts</span>
           <img
             src="images/AIS_img_healthy.jpeg"
-            alt="Fresh vegetables being prepared on a chopping board"
-          />
+            alt="Fresh vegetables being prepared on a chopping board">
           <h2 class="item-title">Cook a Home-Made Healthy Meal</h2>
           <p>Category: Nutrition</p>
           <p>
@@ -477,8 +400,7 @@
           <span class="impact-points">5 pts</span>
           <img
             src="images/AIS_img_Checkup.jpeg"
-            alt="Doctor and patient during a routine health check-up"
-          />
+            alt="Doctor and patient during a routine health check-up">
           <h2 class="item-title">Schedule a Routine Health Check-Up</h2>
           <p>Category: Preventive Care</p>
           <p>
@@ -526,8 +448,7 @@
             <img
               src="./images/logo.jpeg"
               alt="PULSE Logo"
-              class="footer-logo-image"
-            />
+              class="footer-logo-image">
             <span class="footer-brand">PULSE</span>
           </div>
           <p>
@@ -538,7 +459,7 @@
 
         <!-- Footer Section 2: Student Information -->
         <div class="footer-section">
-          <h3>This Page</h3>
+          <h2>This Page</h2>
           <p class="student-info">
             Developed by: <strong>Devindi Hansika</strong>
           </p>
