@@ -23,26 +23,8 @@
          5. .feedback-form and its fields (feedback form section)
          Responsive rules are grouped at the end.
 
-         Also note: .section-title below is defined in this page's
-         <style> but none of the headings in the body actually use
-         it (they use class="Headings", styled in global.css) — it's
-         left in place in case a future page reuses it, but it isn't
-         currently applied to anything on this page.
          ============================================================ */
-
-      /* Leftover/unused on this page — see note above */
-      .section-title {
-        font-size: 75px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        color: #004d00;
-        text-align: center;
-        margin-bottom: 30px;
-        text-shadow:
-          0 0 5px rgba(255, 255, 255, 6.8),
-          6 0 0 10px rgba(255, 255, 255, 7.6);
-      }
-
+      
       /* ------------------------------------------------------------
          1. GENERIC SECTION PADDING — applies to all three <section>
          elements on this page (programs, ratings, feedback form)
@@ -105,8 +87,7 @@
       }
 
       /* ------------------------------------------------------------
-         3. PROGRAMS/OPPORTUNITIES CARDS — grid of program cards
-         (Mental Health Support, Fitness Initiative, etc.)
+         3. PROGRAMS CARDS — grid of program cards
          ------------------------------------------------------------ */
       .programs-container {
         display: grid;
@@ -307,7 +288,7 @@
       }
 
       .form-success.show {
-        display: block;
+        display: block !important;
       }
 
       /* Groups fields into "Personal Details" / "Feedback Details" */
@@ -516,7 +497,6 @@
   <body>
     <!-- ================================================
          HEADER & NAVIGATION
-         DO NOT MODIFY: This is part of the shared template
          ================================================ -->
     <header>
       <div class="logo">
@@ -544,7 +524,6 @@
 
     <!-- ================================================
          MAIN CONTENT AREA
-         Students add their page content here
          ================================================ -->
     <main>
       <!-- Page heading -->
@@ -791,7 +770,6 @@
 
     <!-- ================================================
          FOOTER
-         DO NOT MODIFY: Keep this structure for consistency
          ================================================ -->
     <footer>
       <div class="footer-content">
