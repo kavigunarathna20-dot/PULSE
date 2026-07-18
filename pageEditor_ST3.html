@@ -470,22 +470,22 @@
               <h2>Challenges & Lessons Learned</h2>
 
               <div class="challenge-item">
-                <h3>Team Card Details Not Expanding</h3>
+                <h3>Dual Form Validation</h3>
 
                 <p>
-                 Expandable team member details were clipped by CSS 
-                 overflow: hidden and overlapping on Firefox due to z-index issues.
+                 Form validation only worked on submit, not during typing. Users didn't know about
+                  errors until final submission.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Changed overflow: hidden to overflow: visible, used position: absolute; 
-                  top: 100% for details, and added z-index: 10 to ensure details float above neighboring cards.
+                  Added blur event listeners for real-time field validation, plus submit 
+                  event validation for final check. Errors clear as soon as user corrects them.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  overflow: hidden clips absolutely positioned elements. Understanding overflow, position, and 
-                  z-index relationships is crucial for layered UI components.
+                  Real-time feedback during form filling improves UX. Blur + submit approach 
+                  catches errors early while ensuring final safety check.
                 </p>
               </div>
 
