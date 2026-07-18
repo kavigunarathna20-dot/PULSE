@@ -12,129 +12,307 @@
     <link rel="icon" type="image/png" href="./images/favicon.png" />
 
     <style>
-      .content-page { max-width: 1300px; margin: auto; padding: 40px; }
+      .content-page {
+        max-width: 1300px;
+        margin: auto;
+        padding: 40px;
+      }
 
       .hero-section {
-        text-align: center; padding: 80px 40px;
+        text-align: center;
+        padding: 80px 40px;
         border-radius: 30px;
         background: linear-gradient(135deg, #e8f5e9, #f5fff7);
         margin-bottom: 40px;
-        position: relative; overflow: hidden;
+        position: relative;
+        overflow: hidden;
       }
       .hero-section::before {
-        content: ''; position: absolute; inset: 0;
-        background: url('./images/healthcare2.jpg') center/cover no-repeat;
-        opacity: 0.1; z-index: 0;
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("./images/healthcare2.jpg") center/cover no-repeat;
+        opacity: 0.12;
+        z-index: 0;
       }
-      .hero-content { position: relative; z-index: 1; }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
       .tag {
-        display: inline-block; background: #4c9f38; color: white;
-        padding: 8px 16px; border-radius: 30px;
-        margin-bottom: 20px; font-size: 14px; font-weight: 600;
+        display: inline-block;
+        background: #4c9f38;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
       }
-      .hero-section h1 { font-size: 56px; color: #07424d; margin-bottom: 20px; }
-      .hero-section p { font-size: 18px; max-width: 900px; margin: auto; color: #444; }
+      .hero-section h1 {
+        font-size: 56px;
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+      .hero-section p {
+        font-size: 18px;
+        max-width: 900px;
+        margin: auto;
+        color: #444;
+      }
 
       .content-nav {
-        background: white; border-radius: 16px; padding: 20px 30px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;
+        background: white;
+        border-radius: 16px;
+        padding: 20px 30px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        margin-bottom: 40px;
       }
       .content-nav ul {
-        list-style: none; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        justify-content: center;
       }
       .content-nav a {
-        color: #4c9f38; font-weight: 600; font-size: 14px;
-        padding: 6px 14px; border-radius: 20px; transition: 0.3s;
+        color: #4c9f38;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        transition: 0.3s;
         text-decoration: none;
       }
-      .content-nav a:hover { background: #e8f5e9; color: #2e7d32; }
+      .content-nav a:hover {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
 
       .section-title {
-        font-size: 32px; color: #07424d; margin-bottom: 30px; text-align: center;
+        font-size: 32px;
+        color: #07424d;
+        margin-bottom: 30px;
+        text-align: center;
       }
-      .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
+      .section-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 40px;
+      }
+      #importance,
+      #barriers,
+      #solutions,
+      #initiatives,
+      #articles {
+        scroll-margin-top: 100px;
+      }
 
       .cards-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
       }
       .card-item {
-        background: white; border-radius: 20px; overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        transition: 0.3s;
       }
-      .card-item:hover { transform: translateY(-6px); box-shadow: 0 14px 35px rgba(0,0,0,0.12); }
-      .card-item img { width: 100%; height: 200px; object-fit: cover; }
-      .card-item .card-body { padding: 22px; }
-      .card-item h3 { color: #07424d; margin-bottom: 10px; font-size: 18px; }
-      .card-item p { font-size: 14px; color: #555; line-height: 1.7; }
+      .card-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+      }
+      .card-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-item .card-body {
+        padding: 22px;
+      }
+      .card-item h3 {
+        color: #07424d;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      .card-item p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.7;
+      }
 
       .content-block {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-        align-items: center; margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 50px;
       }
       .content-block img {
-        width: 100%; border-radius: 20px; height: 350px; object-fit: cover;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        width: 100%;
+        border-radius: 20px;
+        height: 350px;
+        object-fit: cover;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       }
-      .content-block .text h3 { font-size: 26px; color: #07424d; margin-bottom: 16px; }
-      .content-block .text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
-      .content-block .text ul { list-style: none; padding: 0; }
+      .content-block .text h3 {
+        font-size: 26px;
+        color: #07424d;
+        margin-bottom: 16px;
+      }
+      .content-block .text p {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+      .content-block .text ul {
+        list-style: none;
+        padding: 0;
+      }
       .content-block .text li {
-        padding: 6px 0 6px 28px; position: relative; font-size: 14px; color: #555;
+        padding: 6px 0 6px 28px;
+        position: relative;
+        font-size: 14px;
+        color: #555;
       }
       .content-block .text li::before {
-        content: "✓"; position: absolute; left: 0; color: #4c9f38; font-weight: bold;
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4c9f38;
+        font-weight: bold;
       }
-      @media (max-width: 768px) { .content-block { grid-template-columns: 1fr; } }
+      @media (max-width: 768px) {
+        .content-block {
+          grid-template-columns: 1fr;
+        }
+      }
 
-      .articles-section { margin-bottom: 50px; }
+      .articles-section {
+        margin-bottom: 50px;
+      }
       .articles-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
       }
       .article-card {
-        background: white; border-radius: 20px; overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        transition: 0.3s;
       }
-      .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
-      .article-card img { width: 100%; height: 180px; object-fit: cover; }
-      .article-card .article-body { padding: 20px; }
-      .article-card h4 { color: #07424d; margin-bottom: 10px; font-size: 16px; }
+      .article-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+      .article-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .article-card .article-body {
+        padding: 20px;
+      }
+      .article-card h4 {
+        color: #07424d;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
       .article-card a {
-        display: inline-block; color: #4c9f38; font-weight: 600; font-size: 13px;
-        text-decoration: none; transition: 0.3s;
+        display: inline-block;
+        color: #4c9f38;
+        font-weight: 600;
+        font-size: 13px;
+        text-decoration: none;
+        transition: 0.3s;
       }
-      .article-card a:hover { color: #2e7d32; text-decoration: underline; }
+      .article-card a:hover {
+        color: #2e7d32;
+        text-decoration: underline;
+      }
 
       .sdg-highlight {
-        background: linear-gradient(135deg, #4c9f38, #63b851); color: white;
-        border-radius: 30px; padding: 50px; text-align: center; margin-bottom: 40px;
+        background: linear-gradient(135deg, #4c9f38, #63b851);
+        color: white;
+        border-radius: 30px;
+        padding: 50px;
+        text-align: center;
+        margin-bottom: 40px;
       }
-      .sdg-highlight h2, .sdg-highlight p { color: white; }
-      .sdg-highlight h2 { font-size: 30px; margin-bottom: 16px; }
-      .sdg-highlight p { font-size: 16px; max-width: 800px; margin: auto; }
+      .sdg-highlight h2,
+      .sdg-highlight p {
+        color: white;
+      }
+      .sdg-highlight h2 {
+        font-size: 30px;
+        margin-bottom: 16px;
+      }
+      .sdg-highlight p {
+        font-size: 16px;
+        max-width: 800px;
+        margin: auto;
+      }
 
       .page-navigation {
-        display: flex; justify-content: center; gap: 20px; margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
       }
       .nav-btn {
-        background: #4c9f38; color: white; padding: 12px 32px;
-        border-radius: 50px; font-weight: 600; text-decoration: none;
+        background: #4c9f38;
+        color: white;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
         transition: all 0.3s ease;
       }
-      .nav-btn:hover { background: #3a7a2c; transform: translateY(-3px); color: white; }
+      .nav-btn:hover {
+        background: #3a7a2c;
+        transform: translateY(-3px);
+        color: white;
+      }
 
       .go-to-top {
-        position: fixed; bottom: 30px; right: 30px;
-        background: #4c9f38; color: white; width: 50px; height: 50px;
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        font-size: 20px; text-decoration: none; box-shadow: 0 4px 15px rgba(76,159,56,0.3);
-        transition: 0.3s; z-index: 99;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #4c9f38;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(76, 159, 56, 0.3);
+        transition: 0.3s;
+        z-index: 99;
       }
-      .go-to-top:hover { background: #2e7d32; transform: translateY(-4px); }
+      .go-to-top:hover {
+        background: #2e7d32;
+        transform: translateY(-4px);
+      }
 
       @media (max-width: 768px) {
-        .hero-section h1 { font-size: 36px; }
-        .content-page { padding: 20px; }
-        .hero-section { padding: 50px 20px; }
+        .hero-section h1 {
+          font-size: 36px;
+        }
+        .content-page {
+          padding: 20px;
+        }
+        .hero-section {
+          padding: 50px 20px;
+        }
       }
     </style>
   </head>
@@ -163,7 +341,12 @@
         <div class="hero-section">
           <div class="hero-content">
             <h1>Access to Healthcare</h1>
-            <p>Access to healthcare is a fundamental human right. Ensuring everyone can obtain timely, affordable, and quality medical services is essential for building healthier communities worldwide.</p>
+            <p>
+              Access to healthcare is a fundamental human right. Ensuring
+              everyone can obtain timely, affordable, and quality medical
+              services is essential for building healthier communities
+              worldwide.
+            </p>
           </div>
         </div>
 
@@ -177,12 +360,19 @@
           </ul>
         </nav>
 
-        <h2 id="importance" class="section-title">Why Healthcare Access Matters</h2>
+        <h2 id="importance" class="section-title">
+          Why Healthcare Access Matters
+        </h2>
         <div class="content-block">
-          <img src="./images/doctor.jpg" alt="Doctor and patient">
+          <img src="./images/doctor.jpg" alt="Doctor and patient" />
           <div class="text">
             <h3>Healthcare is a Human Right</h3>
-            <p>Access to healthcare enables early diagnosis, effective treatment, disease prevention, and better management of chronic conditions. Communities with reliable healthcare systems experience improved life expectancy and higher standards of living.</p>
+            <p>
+              Access to healthcare enables early diagnosis, effective treatment,
+              disease prevention, and better management of chronic conditions.
+              Communities with reliable healthcare systems experience improved
+              life expectancy and higher standards of living.
+            </p>
             <ul>
               <li>Early disease detection and timely treatment</li>
               <li>Improved maternal and child health outcomes</li>
@@ -193,28 +383,48 @@
           </div>
         </div>
 
-        <h2 id="barriers" class="section-title">Barriers to Healthcare Access</h2>
-        <p class="section-subtitle">Millions of people worldwide still face significant obstacles when seeking medical care.</p>
+        <h2 id="barriers" class="section-title">
+          Barriers to Healthcare Access
+        </h2>
+        <p class="section-subtitle">
+          Millions of people worldwide still face significant obstacles when
+          seeking medical care.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/finance.jpg" alt="Financial barriers">
+            <img src="./images/finance.jpg" alt="Financial barriers" />
             <div class="card-body">
               <h3>Financial Barriers</h3>
-              <p>High costs of medical treatment, insurance premiums, and medications prevent many from seeking essential healthcare services when needed.</p>
+              <p>
+                High costs of medical treatment, insurance premiums, and
+                medications prevent many from seeking essential healthcare
+                services when needed.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/geographic.jpg" alt="Geographic barriers">
+            <img src="./images/geographic.jpg" alt="Geographic barriers" />
             <div class="card-body">
               <h3>Geographic Barriers</h3>
-              <p>Rural and remote communities often lack nearby hospitals, clinics, and healthcare professionals, requiring long-distance travel for care.</p>
+              <p>
+                Rural and remote communities often lack nearby hospitals,
+                clinics, and healthcare professionals, requiring long-distance
+                travel for care.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/infrastructure.jpg" alt="Healthcare infrastructure">
+            <img
+              src="./images/infrastructure.jpg"
+              alt="Healthcare infrastructure"
+            />
             <div class="card-body">
               <h3>Infrastructure Gaps</h3>
-              <p>Shortages of healthcare professionals, inadequate facilities, and limited medical equipment create significant barriers to quality care.</p>
+              <p>
+                Shortages of healthcare professionals, inadequate facilities,
+                and limited medical equipment create significant barriers to
+                quality care.
+              </p>
             </div>
           </div>
         </div>
@@ -223,7 +433,11 @@
         <div class="content-block">
           <div class="text">
             <h3>Building Better Healthcare Access</h3>
-            <p>Innovative solutions are helping bridge the healthcare access gap. From telemedicine to community health programs, progress is being made toward universal health coverage.</p>
+            <p>
+              Innovative solutions are helping bridge the healthcare access gap.
+              From telemedicine to community health programs, progress is being
+              made toward universal health coverage.
+            </p>
             <ul>
               <li>Telemedicine and digital health consultations</li>
               <li>Mobile health clinics serving remote communities</li>
@@ -233,31 +447,46 @@
               <li>Public-private partnerships for healthcare delivery</li>
             </ul>
           </div>
-          <img src="./images/digital.jpg" alt="Medical technology">
+          <img src="./images/digital.jpg" alt="Medical technology" />
         </div>
 
-        <h2 id="initiatives" class="section-title">Global Health Initiatives</h2>
-        <p class="section-subtitle">International efforts are driving progress toward healthcare for all.</p>
+        <h2 id="initiatives" class="section-title">
+          Global Health Initiatives
+        </h2>
+        <p class="section-subtitle">
+          International efforts are driving progress toward healthcare for all.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/WHO.jpg" alt="WHO">
+            <img src="./images/WHO.jpg" alt="WHO" />
             <div class="card-body">
               <h3>World Health Organization</h3>
-              <p>WHO leads global efforts to achieve universal health coverage, strengthen health systems, and respond to health emergencies worldwide.</p>
+              <p>
+                WHO leads global efforts to achieve universal health coverage,
+                strengthen health systems, and respond to health emergencies
+                worldwide.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/vaccine.jpg" alt="Vaccination programs">
+            <img src="./images/vaccine.jpg" alt="Vaccination programs" />
             <div class="card-body">
               <h3>Vaccination Programs</h3>
-              <p>Global vaccination initiatives have saved millions of lives by improving access to life-saving immunizations in underserved regions.</p>
+              <p>
+                Global vaccination initiatives have saved millions of lives by
+                improving access to life-saving immunizations in underserved
+                regions.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/community.jpg" alt="Community health">
+            <img src="./images/community.jpg" alt="Community health" />
             <div class="card-body">
               <h3>Community Health Programs</h3>
-              <p>Grassroots health programs bring basic medical services, health education, and preventive care directly to local communities.</p>
+              <p>
+                Grassroots health programs bring basic medical services, health
+                education, and preventive care directly to local communities.
+              </p>
             </div>
           </div>
         </div>
@@ -266,24 +495,36 @@
         <div class="articles-section">
           <div class="articles-grid">
             <div class="article-card">
-              <img src="./images/UHC.jpg" alt="UHC">
+              <img src="./images/UHC.jpg" alt="UHC" />
               <div class="article-body">
                 <h4>Universal Health Coverage: What You Need to Know</h4>
-                <a href="https://www.who.int/news-room/questions-answers/item/universal-health-coverage" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.who.int/news-room/questions-answers/item/universal-health-coverage"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/rural.jpg" alt="Rural healthcare">
+              <img src="./images/rural.jpg" alt="Rural healthcare" />
               <div class="article-body">
                 <h4>Improving Healthcare Access in Rural Communities</h4>
-                <a href="https://www.ruralhealthinfo.org/topics/access" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.ruralhealthinfo.org/topics/access"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/digital2.jpg" alt="Digital health">
+              <img src="./images/digital2.jpg" alt="Digital health" />
               <div class="article-body">
                 <h4>How Telemedicine is Transforming Healthcare Access</h4>
-                <a href="https://www.who.int/news-room/feature-stories/detail/digital-technologies-for-health" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.who.int/news-room/feature-stories/detail/digital-technologies-for-health"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
           </div>
@@ -291,7 +532,12 @@
 
         <div class="sdg-highlight">
           <h2>Healthcare Access and SDG 3</h2>
-          <p>Sustainable Development Goal 3 focuses on ensuring healthy lives and promoting well-being for all. Expanding healthcare access is a key step toward reducing inequalities and creating healthier societies worldwide.</p>
+          <p>
+            Sustainable Development Goal 3 focuses on ensuring healthy lives and
+            promoting well-being for all. Expanding healthcare access is a key
+            step toward reducing inequalities and creating healthier societies
+            worldwide.
+          </p>
         </div>
 
         <div class="page-navigation">
@@ -304,14 +550,23 @@
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="./images/logo.jpeg" alt="PULSE Logo" class="footer-logo-image" />
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
             <span class="footer-brand">PULSE</span>
           </div>
-          <p>A student project promoting SDG 3 — Good Health and Well-Being at the University of Westminster.</p>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
         </div>
         <div class="footer-section">
           <h3>This Page</h3>
-          <p class="student-info">Developed by: <strong>Chamindu Wijesinghe</strong></p>
+          <p class="student-info">
+            Developed by: <strong>Chamindu Wijesinghe</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST4.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST4.html" class="footer-link">Validation ↗</a>
