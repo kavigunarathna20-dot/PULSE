@@ -497,20 +497,17 @@
               <h2>Challenges & Lessons Learned</h2>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Dual Form Validation</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  Form validation only worked on submit, not during typing. 
+                  Users didn't know about errors until final submission.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  Added blur event listeners for real-time field 
+                  validation, plus submit event validation for final check. 
+                  Errors clear as soon as user corrects them.
                 </p>
 
                 <p>
@@ -521,54 +518,42 @@
               </div>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Character Counter Color Logic</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  Counter needed color changes at thresholds (gray → orange at 400 → red at 450), 
+                  but boundary values caused incorrect colors.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  Ordered if-else conditions checking highest threshold first : >450 red, 
+                  >400 orange, else gray. Added input event listener for paste/cut operations.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
-                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
-                  quam suscipit? Fugiat.
+                  Conditional logic order matters. Use input event for real-time character tracking, 
+                  not just change. Color feedback builds user trust in limits.
                 </p>
               </div>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Team Card Details Overlapping</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  Expandable details were clipped by overflow: hidden and overlapped neighboring cards on Firefox.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  : Changed overflow: visible, used position: absolute; top: 100% for details, 
+                  added z-index: 10 to float above cards.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
-                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
-                  quam suscipit? Fugiat.
+                  overflow: hidden clips absolutely positioned elements. Understanding overflow + 
+                  position + z-index is crucial for layered UI.
+                  
                 </p>
               </div>
             </section>
