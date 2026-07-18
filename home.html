@@ -23,7 +23,6 @@
          5. #mission
          6. #goals section (title, cards)
          7. #ind_content section (content boxes, overlay)
-         Footer and header have no custom rules here (see global.css).
          ============================================================ */
 
       /* ------------------------------------------------------------
@@ -133,16 +132,6 @@
         gap: 50px;
       }
 
-      /* Individual goal card.
-         NOTE: originally this selector was declared twice in the
-         source file — one block had the card's box styling
-         (background/border/shadow), the other had the scroll-reveal
-         starting state (opacity/transform) plus a second
-         "transition" declaration that overrides the first one's
-         transition value. They've been merged into a single rule
-         below; the merged "transition" value is the one that was
-         actually winning before (all 0.8s ease), so the visual
-         result is unchanged. */
       .card {
         background: #fff;
         border-radius: 18px;
@@ -663,7 +652,8 @@
             <a href="./pageEditor_ST1.html" class="footer-link"
               >Page Editor ↗</a
             >
-            &nbsp;
+            
+            
             <a href="./validation_ST1.html" class="footer-link" target="_blank"
               >Validation ↗</a
             >

@@ -23,13 +23,6 @@
          5. .modal-overlay / .modal-content (the popup that opens on card click),
             including the theme/font customisation controls inside it
          Responsive rules are grouped at the end.
-
-         REMOVED: an old "Theme Buttons" block (.theme-bar, .theme-btn,
-         .ocean, .forest, .sunset, .lavender, .reset) that didn't match
-         any element in the HTML. The modal's actual theme switcher uses
-         .theme-option-btn + .theme-green/.theme-blue/.theme-lavender/
-         .theme-sunrise instead, so that old block was dead code left
-         over from an earlier version and has been dropped.
          ============================================================ */
 
       /* ------------------------------------------------------------
@@ -204,7 +197,7 @@
         align-items: center;
         padding: 30px;
       }
-      /* shown when JS adds "active" (see script below) */
+      /* shown when JS adds "active" */
       .modal-overlay.active {
         display: flex;
       }
@@ -221,11 +214,6 @@
         max-height: 90vh;
         overflow-y: auto;
       }
-      /* NOTE: this generic "any img inside .modal-content" rule is
-         overridden by the more specific #modal-image rule right
-         below it (same element). Kept as-is since it still matches
-         a real element — just noting it's redundant, not removing
-         it, to avoid changing behavior. */
       .modal-content img {
         width: 100%;
         display: block;
@@ -796,11 +784,7 @@
           </div>
         </div>
       </div>
-      <!-- Modal popup: hidden by default, shown when a gallery card is clicked
-           (see JS below). #modal-image, .modal-caption and .modal-description
-           are filled in dynamically with the clicked card's data-* values.
-           The Theme/Font buttons below the text let the visitor restyle
-           the modal on the fly. -->
+      
       <div class="modal-overlay" id="gallery-modal">
         <div class="modal-content" id="modal-content">
           <button class="modal-close" aria-label="Close">&times;</button>
