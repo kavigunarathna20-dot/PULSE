@@ -23,7 +23,7 @@
       #compliance,
       #group,
       #references {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 80px;
       }
 
       /* ==================================================
@@ -85,6 +85,9 @@
         padding: 20px;
         height: fit-content;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 100px;
+        height: fit-content;
       }
 
       .sidebar a {
@@ -372,7 +375,7 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST3.html">View Validation Results</a>
+                <a href="./validation_ST3.html#feedbackVal">View Validation Results</a>
               </p>
 
               <h3>Link to the Page</h3>
@@ -427,7 +430,7 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST3.html">View Validation Results</a>
+                <a href="./validation_ST3.html#teamVal">View Validation Results</a>
               </p>
 
               <h3>Link to the Page</h3>
@@ -480,7 +483,7 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST3.html"> View Validation Results </a>
+                <a href="./validation_ST3.html#contentVal"> View Validation Results </a>
               </p>
 
               <h3>Link to the Page</h3>
@@ -500,20 +503,21 @@
                 <h3>Dual Form Validation</h3>
 
                 <p>
-                  Form validation only worked on submit, not during typing. 
+                  Form validation only worked on submit, not during typing.
                   Users didn't know about errors until final submission.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Added blur event listeners for real-time field 
-                  validation, plus submit event validation for final check. 
-                  Errors clear as soon as user corrects them.
+                  Added blur event listeners for real-time field validation,
+                  plus submit event validation for final check. Errors clear as
+                  soon as user corrects them.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Real-time feedback during form filling improves UX. Blur + submit approach 
-                  catches errors early while ensuring final safety check.
+                  Real-time feedback during form filling improves UX. Blur +
+                  submit approach catches errors early while ensuring final
+                  safety check.
                 </p>
               </div>
 
@@ -521,19 +525,22 @@
                 <h3>Character Counter Color Logic</h3>
 
                 <p>
-                  Counter needed color changes at thresholds (gray → orange at 400 → red at 450), 
-                  but boundary values caused incorrect colors.
+                  Counter needed color changes at thresholds (gray → orange at
+                  400 → red at 450), but boundary values caused incorrect
+                  colors.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Ordered if-else conditions checking highest threshold first : >450 red, 
-                  >400 orange, else gray. Added input event listener for paste/cut operations.
+                  Ordered if-else conditions checking highest threshold first :
+                  >450 red, >400 orange, else gray. Added input event listener
+                  for paste/cut operations.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Conditional logic order matters. Use input event for real-time character tracking, 
-                  not just change. Color feedback builds user trust in limits.
+                  Conditional logic order matters. Use input event for real-time
+                  character tracking, not just change. Color feedback builds
+                  user trust in limits.
                 </p>
               </div>
 
@@ -541,19 +548,20 @@
                 <h3>Team Card Details Overlapping</h3>
 
                 <p>
-                  Expandable details were clipped by overflow: hidden and overlapped neighboring cards on Firefox.
+                  Expandable details were clipped by overflow: hidden and
+                  overlapped neighboring cards on Firefox.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  : Changed overflow: visible, used position: absolute; top: 100% for details, 
-                  added z-index: 10 to float above cards.
+                  : Changed overflow: visible, used position: absolute; top:
+                  100% for details, added z-index: 10 to float above cards.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  overflow: hidden clips absolutely positioned elements. Understanding overflow + 
-                  position + z-index is crucial for layered UI.
-                  
+                  overflow: hidden clips absolutely positioned elements.
+                  Understanding overflow + position + z-index is crucial for
+                  layered UI.
                 </p>
               </div>
             </section>
@@ -737,9 +745,8 @@
             <a href="./pageEditor_ST3.html" class="footer-link"
               >Page Editor ↗</a
             >
-            &nbsp;&nbsp;
             <a href="./validation_ST3.html" class="footer-link"
-              >Validation Page ↗</a
+              >Validation ↗</a
             >
           </nav>
         </div>

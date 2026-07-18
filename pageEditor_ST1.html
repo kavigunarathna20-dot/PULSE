@@ -23,7 +23,7 @@
       #compliance,
       #group,
       #references {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 80px;
       }
 
       /* ==================================================
@@ -85,6 +85,9 @@
         padding: 20px;
         height: fit-content;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 100px;
+        height: fit-content;
       }
 
       .sidebar a {
@@ -326,7 +329,7 @@
           <aside class="sidebar">
             <a href="#home"> Home Page </a>
             <a href="#gallery"> Gallery </a>
-            <a href="#content"> Mental Health &<br>Well-Being </a>
+            <a href="#content"> Mental Health &<br />Well-Being </a>
             <a href="#challenge">Challenges & Lessons Learned</a>
             <a href="#compliance">Compliance</a>
             <a href="#group"> Group </a>
@@ -372,7 +375,9 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST1.html">View Validation Results</a>
+                <a href="./validation_ST1.html#homeVal"
+                  >View Validation Results</a
+                >
               </p>
 
               <h3>Link to the Page</h3>
@@ -425,7 +430,9 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST1.html">View Validation Results</a>
+                <a href="./validation_ST1.html#galleryVal"
+                  >View Validation Results</a
+                >
               </p>
 
               <h3>Link to the Page</h3>
@@ -478,13 +485,15 @@
 
               <h3>Link to the Validation Page</h3>
               <p>
-                <a href="./validation_ST1.html"> View Validation Results </a>
+                <a href="./validation_ST1.html#contentVal">
+                  View Validation Results
+                </a>
               </p>
 
               <h3>Link to the Page</h3>
               <p>
                 <a href="content_ST1.html" target="_blank">
-                  View Mental Health & Well-being Page
+                  View Mental Health & Well-Being Page
                 </a>
               </p>
             </section>
@@ -742,10 +751,7 @@
             <a href="./pageEditor_ST1.html" class="footer-link"
               >Page Editor ↗</a
             >
-            &nbsp;&nbsp;
-            <a href="./validation_ST1.html" class="footer-link"
-              >Validation Page ↗</a
-            >
+            <a href="./validation_ST1.html" class="footer-link">Validation ↗</a>
           </nav>
         </div>
       </div>
