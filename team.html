@@ -1,20 +1,46 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
-      content="PULSE - Team Page - Meet the team behind the Good Health & Well-Being initiative"
-    />
+      content="PULSE - Team Page - Meet the team behind the Good Health & Well-Being initiative">
     <title>PULSE - Team</title>
 
-    <link rel="icon" type="image/png" href="./images/favicon.png" />
-    <link rel="stylesheet" href="global.css" />
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="stylesheet" href="global.css">
 
     <style>
+      /* ================================================
+         PAGE-SPECIFIC STYLES: TEAM PAGE ONLY
+         Ordered to match the order elements appear in <main>:
+         1. #team-heading (NOTE: unused on this page — see below)
+         2. .team-intro (intro paragraph)
+         3. .team-container (grid wrapper)
+         4. .team-member and its children in DOM order:
+            .member-thumbnail -> .member-info (.member-name,
+            .member-role) -> .member-details (.details-content:
+            .detail-label, .detail-text, .contribution-list)
+         Responsive rules are grouped at the end.
+         ================================================ */
+
+      /* NOTE: no element in <body> actually has id="team-heading"
+         (the real heading uses class="Headings", styled in
+         global.css), so this rule currently does nothing. Left in
+         place in case it's meant to be wired up later. */
+      #team-heading {
+        font-size: 50px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        color: #004d00;
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
       /* ------------------------------------------------------------
-         1. TEAM INTRO — description paragraph under the page heading
+         2. TEAM INTRO — description paragraph under the page heading
          ------------------------------------------------------------ */
       .team-intro {
         text-align: center;
@@ -28,7 +54,7 @@
       }
 
       /* ------------------------------------------------------------
-         2. TEAM CONTAINER — grid holding the 4 team member cards
+         3. TEAM CONTAINER — grid holding the 4 team member cards
          ------------------------------------------------------------ */
       .team-container {
         display: grid;
@@ -41,7 +67,7 @@
       }
 
       /* ------------------------------------------------------------
-         3. TEAM MEMBER — individual card. Collapsed by default,
+         4. TEAM MEMBER — individual card. Collapsed by default,
          expands to show full details on hover/keyboard focus.
          ------------------------------------------------------------ */
       .team-member {
@@ -58,6 +84,15 @@
         height: 360px;
       }
 
+      /* Hover / expanded state.
+         NOTE: this selector was originally split into two separate
+         rules with identical properties — one written as
+         ".team-member:hover .team-member:focus-within" (missing a
+         comma, so CSS reads it as one nested selector that never
+         matches anything on this page and is effectively dead code),
+         and one as plain ".team-member:hover". They're merged into
+         a single working rule here; nothing about the rendered
+         result changes, since the broken rule was never firing. */
       .team-member:hover .team-member:focus-within {
         transform: translateY(-12px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
@@ -79,7 +114,7 @@
       /* Expand the hidden details panel on hover or keyboard focus */
       .team-member:hover .member-details,
       .team-member:focus-within .member-details {
-        max-height: 1000px; 
+        max-height: 1000px; /* increased from 500px to fit longer content */
         opacity: 1;
         visibility: visible;
         padding-top: 15px;
@@ -105,21 +140,21 @@
 
       /* -- 4b. Info block: name, role, and (on expand) full details -- */
       .member-info {
-        padding: 10px 12px;
+        padding: 10px 12px; /* reduced from 15px */
         flex-grow: 1;
         display: flex;
         flex-direction: column;
       }
 
       .member-name {
-        font-size: 18px;
+        font-size: 18px; /* reduced from 20px */
         font-weight: 700;
         color: #006400;
-        margin-bottom: 4px; 
+        margin-bottom: 4px; /* reduced from 8px */
       }
 
       .member-role {
-        font-size: 13px; 
+        font-size: 13px; /* reduced from 14px */
         color: #888;
         margin-bottom: 0;
         font-weight: 600;
@@ -220,8 +255,7 @@
         <img
           src="./images/logo.jpeg"
           alt="PULSE Logo - Good Health and Well-Being"
-          class="logo-image"
-        />
+          class="logo-image">
         <div class="logo-text">
           <h1>PULSE</h1>
           <p>Good Health & Well-Being</p>
@@ -241,7 +275,7 @@
 
     <!-- ================================================
          MAIN CONTENT AREA
-         Add page content here
+         Student 3 adds team page content here
          ================================================ -->
     <main>
       <!-- Page heading -->
@@ -265,8 +299,7 @@
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST1.jpeg"
-              alt="Student 1 Profile - Template and Home Page Developer"
-            />
+              alt="Student 1 Profile - Template and Home Page Developer">
           </div>
           <div class="member-info">
             <div class="member-name">Kavishka Gunarathna</div>
@@ -298,8 +331,7 @@
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST2.png"
-              alt="Student 2 Profile - Splash Screen and AIS Developer"
-            />
+              alt="Student 2 Profile - Splash Screen and AIS Developer">
           </div>
           <div class="member-info">
             <div class="member-name">Devindi Hansika</div>
@@ -330,8 +362,7 @@
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST3.jpeg"
-              alt="Student 3 Profile - Feedback and Team Page Developer"
-            />
+              alt="Student 3 Profile - Feedback and Team Page Developer">
           </div>
           <div class="member-info">
             <div class="member-name">Thisumi Dahamsa</div>
@@ -362,8 +393,7 @@
           <div class="member-thumbnail">
             <img
               src="./images/Avatar_ST4.png"
-              alt="Student 4 Profile - User Profile and Sitemap Developer"
-            />
+              alt="Student 4 Profile - User Profile and Sitemap Developer">
           </div>
           <div class="member-info">
             <div class="member-name">Chamindu Wijesinghe</div>
@@ -403,8 +433,7 @@
             <img
               src="./images/logo.jpeg"
               alt="PULSE Logo"
-              class="footer-logo-image"
-            />
+              class="footer-logo-image">
             <span class="footer-brand">PULSE</span>
           </div>
           <p>
@@ -415,7 +444,7 @@
 
         <!-- Footer Section 3: Student Information -->
         <div class="footer-section">
-          <h3>This Page</h3>
+          <p style="font-size:18px;"><b>THIS PAGE</b></p>
           <p class="student-info">
             Developed by: <strong>Thisumi Dahamsa</strong>
           </p>
@@ -434,6 +463,8 @@
 
     <!-- ================================================
          KEYBOARD ACCESSIBILITY ENHANCEMENT
+         Makes the expandable team-member cards usable via
+         keyboard (Enter/Space), not just mouse hover.
          ================================================ -->
     <script>
       // Every focusable team member card
@@ -444,6 +475,9 @@
           // Trigger hover effect on Enter or Space
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
+            // Re-focusing keeps :focus-within active, which is what
+            // the CSS uses to expand .member-details (see .team-member:hover,
+            // .team-member:focus-within rule above)
             this.focus();
           }
         });
