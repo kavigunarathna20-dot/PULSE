@@ -306,8 +306,8 @@ footer {
   margin: 0;
 }
 
-.student-info {
-  font-size: 12px;
+.footer-section .student-info {
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
@@ -346,11 +346,11 @@ footer {
 
 .footer-nav,
 .footer-links {
-  display: flex;
+  display: inline;
   flex-direction: column;
-  gap: 6px;
+  margin-top: 8px;
+  gap: 10px;
 }
-
 .footer-link {
   font-size: 14px;
   color: var(--primary-color);
@@ -380,7 +380,6 @@ footer {
   font-size: 10px;
   color: var(--medium-text);
 }
-
 
 /* ================================================
    IMAGES & MEDIA
