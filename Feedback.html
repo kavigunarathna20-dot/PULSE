@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="global.css">
 
     <style>
+<<<<<<< Updated upstream
       /* ============================================================
          NOTE: Styles below are ordered to match the order elements
          appear in <main>:
@@ -40,6 +41,8 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
+=======
+>>>>>>> Stashed changes
       /* ------------------------------------------------------------
          1. GENERIC SECTION PADDING — applies to all three <section>
          elements on this page (programs, ratings, feedback form)
@@ -191,7 +194,7 @@
         margin-bottom: 30px;
       }
 
-      /* "4.2 / Overall Rating / Based on 87 reviews" row */
+      /* Overall Rating / Based on 87 reviews" row */
       .overall-rating {
         display: flex;
         align-items: center;
@@ -291,7 +294,7 @@
         margin: 0 auto;
       }
 
-      /* Success banner shown after a valid form submission (see script) */
+      /* Success banner shown after a valid form submission */
       .form-success {
         background: #c8e6c9;
         color: #1b5e20;
@@ -369,8 +372,7 @@
         background-color: rgba(76, 159, 56, 0.02);
       }
 
-      /* Extra focus glow specifically for text-like inputs (adds to the
-         generic :focus rule above rather than replacing it) */
+      /* Extra focus glow specifically for text-like inputs  */
       .form-group input[type="text"]:focus,
       .form-group input[type="email"]:focus,
       .form-group input[type="tel"]:focus,
@@ -428,7 +430,7 @@
         background: #b8b8b8;
       }
 
-      /* Per-field validation error message (see script's showError/clearError) */
+      /* Per-field validation error message */
       .form-error {
         color: #d32f2f;
         font-size: 12px;
@@ -703,7 +705,6 @@
       <section class="feedback-section">
         <h2 class="Headings">Share Your Feedback</h2>
         <div class="feedback-form">
-          <!-- Shown by JS after a successful, validated submission -->
           <div class="form-success" id="successMessage">
             ✓ Thank you for your feedback! We appreciate your input.
           </div>
@@ -806,7 +807,7 @@
           </p>
         </div>
 
-        <!-- Footer Section 3: Student Information -->
+        <!-- Footer Section 2: Student Information -->
         <div class="footer-section">
           <h2>This Page</h2>
           <p class="student-info">
@@ -832,12 +833,6 @@
          for the feedback form above.
          ================================================ -->
     <script>
-      // ============================================
-      // CHARACTER COUNTER - Live Update
-      // Updates the "x/500 characters" label as the user types
-      // in the feedback textarea, and changes its color as the
-      // user approaches the 500-character limit.
-      // ============================================
       const messageField = document.getElementById("message");
       const charCount = document.getElementById("charCount");
 
@@ -861,9 +856,6 @@
       const successMessage = document.getElementById("successMessage");
 
       // Shows a validation error message under the given field
-      // (fieldId matches the input's id, and the error div's id
-      // is expected to be `${fieldId}Error`), and highlights the
-      // input in red.
       function showError(fieldId, message) {
         const errorElement = document.getElementById(fieldId + "Error");
         const inputElement = document.getElementById(fieldId);
@@ -948,9 +940,6 @@
       });
 
       // Full validation pass run when the form is submitted.
-      // Re-checks every required field, shows/clears errors
-      // accordingly, and only shows the success message + resets
-      // the form if every field passes.
       feedbackForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -1027,7 +1016,6 @@
 
         // If all validations pass, show success message
         if (isValid) {
-          // Show success message with animation
           successMessage.classList.add("show");
           successMessage.scrollIntoView({
             behavior: "smooth",
@@ -1058,19 +1046,6 @@
         }
       });
 
-      // ============================================
-      // SORTING DROPDOWN INTERACTION
-      // Currently just logs the selected sort option;
-      // placeholder for future sorting logic on the
-      // .programs-container cards.
-      // ============================================
-      const sortDropdown = document.getElementById("sortDropdown");
-      if (sortDropdown) {
-        sortDropdown.addEventListener("change", function () {
-          console.log("Sorted by: " + this.options[this.selectedIndex].text);
-          // Placeholder for future functionality
-        });
-      }
     </script>
   </body>
 </html>
