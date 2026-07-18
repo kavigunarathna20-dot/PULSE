@@ -43,11 +43,12 @@
          2. TEAM INTRO — description paragraph under the page heading
          ------------------------------------------------------------ */
       .team-intro {
+        margin-top: 30px;
         text-align: center;
-        font-size: 16px;
+        font-size: 20px;
         color: #555;
         margin-bottom: 40px;
-        max-width: 700px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
         line-height: 1.8;
@@ -59,7 +60,9 @@
       .team-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 35px;
+
+        column-gap: 35px;
+        row-gap: 60px;
         padding: 40px;
         max-width: 800px;
         margin: 0 auto;
@@ -81,7 +84,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        height: 360px;
+        height: 410px;
       }
 
       /* Hover / expanded state.
@@ -93,6 +96,39 @@
          and one as plain ".team-member:hover". They're merged into
          a single working rule here; nothing about the rendered
          result changes, since the broken rule was never firing. */
+
+      .team-member {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Blurred background */
+      .team-member::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--member-bg);
+        background-size: cover;
+        background-position: center;
+        filter: blur(12px);
+        transform: scale(1.15);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .member-thumbnail,
+      .member-info,
+      .member-details {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Show on hover */
+      .team-member:hover::before {
+        opacity: 0.2;
+      }
+
       .team-member:hover .team-member:focus-within {
         transform: translateY(-12px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
@@ -101,24 +137,37 @@
 
       /* Keyboard focus outline, for accessibility (tab-focusing a card) */
       .team-member:focus {
-        outline: 3px solid #4c9f38;
         outline-offset: 2px;
       }
 
       /* Slight zoom + fade on the thumbnail image when the card is hovered */
       .team-member:hover .member-thumbnail img {
         transform: scale(1.08);
-        opacity: 0.85;
+        opacity: 0.8;
       }
 
       /* Expand the hidden details panel on hover or keyboard focus */
-      .team-member:hover .member-details,
-      .team-member:focus-within .member-details {
+      .team-member:hover .member-details {
         max-height: 1000px; /* increased from 500px to fit longer content */
         opacity: 1;
         visibility: visible;
         padding-top: 15px;
         margin-top: 10px;
+        padding-bottom: 40px;
+      }
+
+      .team-member:hover,
+      .team-member:focus-within {
+        border: 3px solid #28a745;
+        box-shadow:
+          0 0 10px rgba(40, 167, 69, 0.4),
+          0 12px 35px rgba(0, 0, 0, 0.18);
+      }
+
+      .team-member:hover,
+      .team-member:focus-within {
+        transform: scale(1.05) translateY(-12px);
+        border: 3px solid #28a745;
       }
 
       /* -- 4a. Thumbnail image container -- */
@@ -130,8 +179,8 @@
       }
 
       .member-thumbnail img {
-        width: 100%;
-        height: 230px;
+        width: 500px;
+        height: 130%;
         object-fit: cover;
         transition:
           transform 0.3s ease,
@@ -147,15 +196,18 @@
       }
 
       .member-name {
-        font-size: 18px; /* reduced from 20px */
+        font-size: 25px; /* reduced from 20px */
         font-weight: 700;
         color: #006400;
-        margin-bottom: 4px; /* reduced from 8px */
+        text-align: center;
+        margin-top: 10px; /* reduced from 8px */
       }
 
       .member-role {
-        font-size: 13px; /* reduced from 14px */
-        color: #888;
+        font-size: 18px; /* reduced from 14px */
+        margin-top: 8px;
+        text-align: center;
+        color: #505050;
         margin-bottom: 0;
         font-weight: 600;
       }
@@ -173,7 +225,7 @@
       }
 
       .details-content {
-        padding-bottom: 15px;
+        padding-bottom: 30px;
       }
 
       .detail-label {
@@ -186,16 +238,16 @@
       }
 
       .detail-text {
-        font-size: 13px;
-        color: #555;
+        font-size: 15px;
+        color: #0a0824;
         line-height: 1.6;
         margin-bottom: 12px;
       }
 
       /* "Pages Contributed" list */
       .contribution-list {
-        font-size: 13px;
-        color: #555;
+        font-size: 15px;
+        color: #333333;
         line-height: 1.7;
       }
 
@@ -295,7 +347,11 @@
            .member-details (handled by CSS + the keydown script below) -->
       <div class="team-container">
         <!-- Team member 1: Kavishka Gunarathna -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--member-bg: url(./images/Avatar_ST1.jpeg)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST1.jpeg"
@@ -327,7 +383,11 @@
         </div>
 
         <!-- Team member 2: Devindi Hansika -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--member-bg: url(./images/Avatar_ST2.png)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST2.png"
@@ -358,7 +418,11 @@
         </div>
 
         <!-- Team member 3: Thisumi Dahamsa -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--member-bg: url(./images/Avatar_ST3.jpeg)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST3.jpeg"
@@ -389,7 +453,11 @@
         </div>
 
         <!-- Team member 4: Chamindu Wijesinghe -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--member-bg: url(./images/Avatar_ST4.png)"
+        >
           <div class="member-thumbnail">
             <img
               src="./images/Avatar_ST4.png"
