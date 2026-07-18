@@ -1,88 +1,408 @@
+/* Page Editor CSS Section */
+
+/* ==================================================
+   PAGE LAYOUT
+================================================== */
+
+.portfolio-container {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  background: #edf1ec;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+}
+
+.content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ==================================================
+   HERO SECTION
+================================================== */
+
+.hero-section {
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  text-align: center;
+  color: #fff;
+  padding: 50px;
+  border-radius: 20px 20px 0 0;
+}
+
+.hero-section h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.hero-section p {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ==================================================
+   SIDEBAR NAVIGATION
+================================================== */
+
+.sidebar {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  height: fit-content;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  font-size: 20px;
+  font-family: "Gill Sans MT";
+  color: #333;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar .active {
+  background: #8af3d0;
+}
+
+/* ==================================================
+   CONTENT CARDS
+================================================== */
+
+.page-card,
+.modern-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 6px solid #43a047;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ==================================================
+   HEADINGS & TEXT
+================================================== */
+
+.page-card h2,
+.modern-card h2 {
+  color: #2e7d32;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.page-card h3 {
+  margin-top: 25px;
+  font-size: 24px;
+  color: #1b4332;
+}
+
+.page-card p {
+  color: #000;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.page-card a {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+/* ==================================================
+   CHALLENGES SECTION
+================================================== */
+
+.challenge-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  border-left: 4px solid #43a047;
+}
+
+.challenge-item::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -10px;
+
+  width: 16px;
+  height: 16px;
+
+  background: #137718;
+  border-radius: 50%;
+}
+
+.challenge-item h3 {
+  color: #030627;
+  margin-bottom: 10px;
+}
+
+.challenge-item p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* ==================================================
+   COMPLIANCE SECTION
+================================================== */
+
+#compliance {
+  background: #fff;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#compliance p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* ==================================================
+   CONTRIBUTION LOG TABLE
+================================================== */
+
+.table-container {
+  overflow-x: auto;
+}
+
+.meeting-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.meeting-table th {
+  background: #294f52;
+  color: #fff;
+  padding: 14px;
+  text-align: center;
+}
+
+.meeting-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.meeting-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.meeting-table tr:hover {
+  background: #f1f8e9;
+}
+
+/* ==================================================
+   REFERENCES SECTION
+================================================== */
+
+.ref-list {
+  padding-left: 25px;
+  line-height: 1.8;
+}
+
+.ref-list li {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.ref-list a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ref-list a:hover {
+  text-decoration: underline;
+}
+
+/* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Validation Page CSS Section  */
+
+.stud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 500px;
+
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #e7faed, #c8e6c9);
+}
+.stud img {
+  position: aob;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4c9f38;
+  z-index: 200;
+}
+
+#main {
+  border: 2px solid #4c9f38;
+  border-radius: 20px;
+  padding: 25px 35px;
+  background: rgba(241, 255, 239, 0.4);
+  min-width: 280px;
+}
+
+#main h2 {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.stud h2 {
+  margin: 0;
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: row-reverse;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 30px auto;
+  padding: 0 20px;
+  gap: 20px;
 }
+
 main {
   flex: 3;
 }
+
 aside {
   flex: 1;
-  background-color: #f4f4f4;
-  padding: 15px;
-  border: 1px solid #ddd;
-  margin-right: 20px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8f0eb;
+
+  position: sticky;
+  top: 100px;
+  height: fit-content;
 }
 
-h2 {
-  color: #333;
-}
-section {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  background-color: #fafafa;
+aside h3 {
+  color: #004d00;
+  font-size: 25px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #4c9f38;
 }
 
-.ref li {
+aside ul {
   list-style: none;
-  padding-bottom: 9px;
+  padding-left: 0;
 }
 
-aside a {
+aside ul li {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+aside ul li a {
+  color: #4c9f38;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-aside li {
-  padding-bottom: 4px;
+aside ul li a:hover {
+  text-decoration: underline;
 }
 
-.stud {
-  text-align: center;
-  line-height: 0;
-  background-color: #cbccc2ef;
-  color: white;
-  margin-top: 8px;
+section {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8f0eb;
+}
+
+section h2 {
+  color: #006400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 35px;
+  border-bottom: 2px solid #4c9f38;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+section p {
+  color: #555;
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+section img {
+  border: 2px solid black;
+  width: 100%;
+  border-radius: 8px;
+  margin: 30px 0 50px;
 }
 
 .top {
   position: fixed;
   bottom: 5%;
   right: 5%;
+  z-index: 100;
 }
 
 .top a {
-  padding: 10px 20px; /* Adds padding for button-like feel */
-  background-color: #007bff; /* Button color */
-  color: white; /* Text color */
-  text-decoration: none; /* Removes underline */
-  border-radius: 20px; /* Rounds the corners */
-  font-size: 12px; /* Adjust font size */
-  font-weight: bold; /* Make the text stand out */
+  padding: 10px 20px;
+  background: #4c9f38;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .top a:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  background: #3a7a2c;
 }
 
-img {
-  width: 90%;
-}
-
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 4px;
-  border: 1px solid black;
-}
-thead {
-  background-color: #333;
-  color: azure;
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 }
