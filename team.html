@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PULSE - Team Page - Meet the team behind the Good Health & Well-Being initiative">
+      content="PULSE - Team Page - Meet the team behind the Good Health & Well-Being initiative"
+    />
     <title>PULSE - Team</title>
 
-    <link rel="icon" type="image/png" href="./images/favicon.png">
-    <link rel="stylesheet" href="global.css">
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <link rel="stylesheet" href="global.css" />
 
     <style>
       /* ================================================
@@ -70,138 +71,184 @@
          4. TEAM MEMBER — individual card. Collapsed by default,
          expands to show full details on hover/keyboard focus.
          ------------------------------------------------------------ */
+      /* ------------------------------------------------------------
+   4. TEAM MEMBER — individual card
+   ------------------------------------------------------------ */
+      /* TEAM MEMBER CARD */
       .team-member {
-        background: #fff;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        outline: none;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        height: 360px;
+        overflow: hidden;
+
+        background: #fff;
+        border-radius: 20px;
+
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+        transition: all 0.4s ease;
+
+        height: fit-content;
       }
 
-      /* Hover / expanded state.
-         NOTE: this selector was originally split into two separate
-         rules with identical properties — one written as
-         ".team-member:hover .team-member:focus-within" (missing a
-         comma, so CSS reads it as one nested selector that never
-         matches anything on this page and is effectively dead code),
-         and one as plain ".team-member:hover". They're merged into
-         a single working rule here; nothing about the rendered
-         result changes, since the broken rule was never firing. */
-      .team-member:hover .team-member:focus-within {
-        transform: translateY(-12px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-        height: auto;
-      }
+      /* BLURRED THUMBNAIL BACKGROUND */
+      .team-member::before {
+        content: "";
+        position: absolute;
+        inset: 0;
 
-      /* Keyboard focus outline, for accessibility (tab-focusing a card) */
-      .team-member:focus {
-        outline: 3px solid #4c9f38;
-        outline-offset: 2px;
-      }
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-position: center;
 
-      /* Slight zoom + fade on the thumbnail image when the card is hovered */
-      .team-member:hover .member-thumbnail img {
+        filter: blur(8px);
         transform: scale(1.08);
-        opacity: 0.85;
+
+        opacity: 0;
+        transition: all 0.4s ease;
+
+        z-index: 0;
       }
 
-      /* Expand the hidden details panel on hover or keyboard focus */
-      .team-member:hover .member-details,
-      .team-member:focus-within .member-details {
-        max-height: 1000px; /* increased from 500px to fit longer content */
+      /* GLASS OVERLAY */
+      .team-member::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(8px);
+
+        opacity: 0;
+
+        transition: opacity 0.4s ease;
+
+        z-index: 1;
+      }
+
+      /* HOVER STATE */
+      .team-member:hover,
+      .team-member:focus-within {
+        transform: translateY(-10px);
+        border: 3px solid #2ea043;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .team-member:hover::before,
+      .team-member:focus-within::before {
         opacity: 1;
-        visibility: visible;
-        padding-top: 15px;
-        margin-top: 10px;
       }
 
-      /* -- 4a. Thumbnail image container -- */
+      .team-member:hover::after,
+      .team-member:focus-within::after {
+        opacity: 1;
+      }
+
+      /* THUMBNAIL */
       .member-thumbnail {
         width: 100%;
-        height: 200px;
+        height: 230px;
         overflow: hidden;
-        background: #f0f0f0;
+
+        transition: all 0.4s ease;
+
+        position: relative;
+        z-index: 2;
       }
 
       .member-thumbnail img {
-        width: 100%;
-        height: 230px;
+        width: 150%;
+        height: 270px;
         object-fit: cover;
-        transition:
-          transform 0.3s ease,
-          opacity 0.3s ease;
       }
 
-      /* -- 4b. Info block: name, role, and (on expand) full details -- */
+      /* HIDE IMAGE ON HOVER */
+      .team-member:hover .member-thumbnail,
+      .team-member:focus-within .member-thumbnail {
+        height: 0;
+        opacity: 0;
+      }
+
+      /* CONTENT */
       .member-info {
-        padding: 10px 12px; /* reduced from 15px */
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        z-index: 2;
+
+        padding: 18px;
+        transition: all 0.4s ease;
       }
 
+      /* MOVE CONTENT TO CENTER WHEN HOVERED */
+      .team-member:hover .member-info,
+      .team-member:focus-within .member-info {
+        padding: 20px 25px;
+      }
+
+      /* NAME */
       .member-name {
-        font-size: 18px; /* reduced from 20px */
+        font-size: 25px;
+        text-align: center;
         font-weight: 700;
-        color: #006400;
-        margin-bottom: 4px; /* reduced from 8px */
+        color: #057005;
+        margin-bottom: 10px;
       }
 
+      /* ROLE */
       .member-role {
-        font-size: 13px; /* reduced from 14px */
-        color: #888;
-        margin-bottom: 0;
+        font-size: 18px;
+        text-align: center;
         font-weight: 600;
+        color: #040935;
+        margin-bottom: 15px;
       }
 
-      /* -- 4c. Expandable details panel (hidden until hover/focus) -- */
+      /* DETAILS */
       .member-details {
         max-height: 0;
         opacity: 0;
-        visibility: hidden;
         overflow: hidden;
-        padding: 0 20px;
+
         transition: all 0.4s ease;
-        border-top: 2px solid #eaf6ee;
-        padding-top: 0;
+
+        border-top: 2px solid rgba(255, 255, 255, 0.8);
       }
 
-      .details-content {
-        padding-bottom: 15px;
+      /* SHOW DETAILS ON HOVER */
+      .team-member:hover .member-details,
+      .team-member:focus-within .member-details {
+        max-height: 600px;
+        opacity: 1;
+
+        margin-top: 15px;
+        padding-top: 15px;
       }
 
+      /* TEXT */
       .detail-label {
         font-size: 12px;
         font-weight: 700;
         color: #4c9f38;
+
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 5px;
+
+        margin-bottom: 8px;
       }
 
       .detail-text {
-        font-size: 13px;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 12px;
+        font-size: 17px;
+        line-height: 1.5;
+        color: #383838;
+
+        margin-bottom: 18px;
       }
 
-      /* "Pages Contributed" list */
       .contribution-list {
-        font-size: 13px;
-        color: #555;
-        line-height: 1.7;
+        color: #303030;
+        line-height: 1.5;
       }
 
       .contribution-list li {
-        margin-bottom: 6px;
+        font-size: 17px;
         margin-left: 18px;
+        margin-bottom: 6px;
       }
 
       /* ============================================================
@@ -255,7 +302,8 @@
         <img
           src="./images/logo.jpeg"
           alt="PULSE Logo - Good Health and Well-Being"
-          class="logo-image">
+          class="logo-image"
+        />
         <div class="logo-text">
           <h1>PULSE</h1>
           <p>Good Health & Well-Being</p>
@@ -295,11 +343,16 @@
            .member-details (handled by CSS + the keydown script below) -->
       <div class="team-container">
         <!-- Team member 1: Kavishka Gunarathna -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--bg-image: url(./images/Avatar_ST1.jpeg)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST1.jpeg"
-              alt="Student 1 Profile - Template and Home Page Developer">
+              alt="Student 1 Profile - Template and Home Page Developer"
+            />
           </div>
           <div class="member-info">
             <div class="member-name">Kavishka Gunarathna</div>
@@ -327,11 +380,16 @@
         </div>
 
         <!-- Team member 2: Devindi Hansika -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--bg-image: url(./images/Avatar_ST2.png)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST2.png"
-              alt="Student 2 Profile - Splash Screen and AIS Developer">
+              alt="Student 2 Profile - Splash Screen and AIS Developer"
+            />
           </div>
           <div class="member-info">
             <div class="member-name">Devindi Hansika</div>
@@ -358,11 +416,16 @@
         </div>
 
         <!-- Team member 3: Thisumi Dahamsa -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--bg-image: url(./images/Avatar_ST3.jpeg)"
+        >
           <div class="member-thumbnail">
             <img
               src="images/Avatar_ST3.jpeg"
-              alt="Student 3 Profile - Feedback and Team Page Developer">
+              alt="Student 3 Profile - Feedback and Team Page Developer"
+            />
           </div>
           <div class="member-info">
             <div class="member-name">Thisumi Dahamsa</div>
@@ -389,11 +452,16 @@
         </div>
 
         <!-- Team member 4: Chamindu Wijesinghe -->
-        <div class="team-member" tabindex="0">
+        <div
+          class="team-member"
+          tabindex="0"
+          style="--bg-image: url(./images/Avatar_ST4.png)"
+        >
           <div class="member-thumbnail">
             <img
               src="./images/Avatar_ST4.png"
-              alt="Student 4 Profile - User Profile and Sitemap Developer">
+              alt="Student 4 Profile - User Profile and Sitemap Developer"
+            />
           </div>
           <div class="member-info">
             <div class="member-name">Chamindu Wijesinghe</div>
@@ -433,7 +501,8 @@
             <img
               src="./images/logo.jpeg"
               alt="PULSE Logo"
-              class="footer-logo-image">
+              class="footer-logo-image"
+            />
             <span class="footer-brand">PULSE</span>
           </div>
           <p>
