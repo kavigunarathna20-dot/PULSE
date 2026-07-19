@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="global.css">
 
     <style>
+      /* Main content wrapper and layout width configurations */
       .content-page { max-width: 1300px; margin: auto; padding: 40px; }
 
+      /* Hero Banner Styles */
       .hero-section {
         text-align: center; padding: 80px 40px;
         border-radius: 30px;
@@ -32,7 +34,8 @@
       }
       .hero-section h1 { font-size: 56px; color: #07424d; margin-bottom: 20px; }
       .hero-section p { font-size: 18px; max-width: 900px; margin: auto; color: #444; }
-
+       
+      /* Page Anchor Navigation Menu Links */
       .content-nav {
         background: white; border-radius: 16px; padding: 20px 30px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;
@@ -46,12 +49,14 @@
         text-decoration: none;
       }
       .content-nav a:hover { background: #e8f5e9; color: #2e7d32; }
-
+      
+      /* Genaral Heading Styles */
       .section-title {
         font-size: 32px; color: #07424d; margin-bottom: 30px; text-align: center;
       }
       .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
 
+      /*Flexible Card Grid Layout */
       .cards-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;
       }
@@ -65,6 +70,7 @@
       .card-item h3 { color: #07424d; margin-bottom: 10px; font-size: 18px; }
       .card-item p { font-size: 14px; color: #555; line-height: 1.7; }
 
+      /* Split Column Media & Content Blocks */
       .content-block {
         display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
         align-items: center; margin-bottom: 50px;
@@ -82,8 +88,11 @@
       .content-block .text li::before {
         content: "✓"; position: absolute; left: 0; color: #4c9f38; font-weight: bold;
       }
+
+      /* Mobile Layout adjustment for 2-column blocks */
       @media (max-width: 768px) { .content-block { grid-template-columns: 1fr; } }
 
+      /* Resources & External Articles Link Grid */
       .articles-section { margin-bottom: 50px; }
       .articles-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
@@ -102,6 +111,7 @@
       }
       .article-card a:hover { color: #2e7d32; text-decoration: underline; }
 
+      /* Special SDG Highlight Feature Callout Box */
       .sdg-highlight {
         background: linear-gradient(135deg, #4c9f38, #63b851); color: white;
         border-radius: 30px; padding: 50px; text-align: center; margin-bottom: 40px;
@@ -110,6 +120,7 @@
       .sdg-highlight h2 { font-size: 30px; margin-bottom: 16px; }
       .sdg-highlight p { font-size: 16px; max-width: 800px; margin: auto; }
 
+      /* Bottom Sequence Page Navigation Buttons */
       .page-navigation {
         display: flex; justify-content: center; gap: 20px; margin-top: 40px;
       }
@@ -120,6 +131,7 @@
       }
       .nav-btn:hover { background: #3a7a2c; transform: translateY(-3px); color: white; }
 
+      /* Floating back to top anchor link */
       .go-to-top {
         position: fixed; bottom: 30px; right: 30px;
         background: #4c9f38; color: white; width: 50px; height: 50px;
@@ -129,6 +141,7 @@
       }
       .go-to-top:hover { background: #2e7d32; transform: translateY(-4px); }
 
+      /* General Responsive Typography & Spacing adjustments */
       @media (max-width: 768px) {
         .hero-section h1 { font-size: 36px; }
         .content-page { padding: 20px; }
@@ -137,6 +150,10 @@
     </style>
   </head>
   <body>
+    <!-- ================================================
+         HEADER & NAVIGATION
+         DO NOT MODIFY: This is part of the shared template
+         ================================================ -->
     <header>
       <div class="logo">
         <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image">
@@ -157,6 +174,7 @@
     </header>
 
     <main>
+      <!-- Page Content Wrapper Container -->
       <section class="content-page">
         <div class="hero-section">
           <div class="hero-content">
@@ -165,6 +183,7 @@
           </div>
         </div>
 
+        <!-- Section Navigation Anchor Jump Links -->
         <nav class="content-nav">
           <ul>
             <li><a href="#understanding">Understanding Mental Health</a></li>
@@ -175,6 +194,7 @@
           </ul>
         </nav>
 
+        <!-- Section 1: Definition and Introduction -->
         <h2 id="understanding" class="section-title">Understanding Mental Health</h2>
         <div class="content-block">
           <img src="./images/man.jpg" alt="Person meditating">
@@ -191,6 +211,7 @@
           </div>
         </div>
 
+        <!-- Section 2: Key Mental Health Challenges Grid -->
         <h2 id="challenges" class="section-title">Common Mental Health Challenges</h2>
         <p class="section-subtitle">Many individuals face mental health challenges that require awareness, support, and care.</p>
         <div class="cards-grid">
@@ -217,6 +238,7 @@
           </div>
         </div>
 
+        <!-- Section 3: Actionable Advice & Strategies -->
         <h2 id="self-care" class="section-title">Self-Care Tips for Better Mental Health</h2>
         <div class="content-block">
           <div class="text">
@@ -235,6 +257,7 @@
           <img src="./images/mindfulness.jpg" alt="Person practicing mindfulness">
         </div>
 
+        <!-- Section 4: External/Community Support Channels -->
         <h2 id="support" class="section-title">Support Resources</h2>
         <p class="section-subtitle">Help is available. You are not alone. Reach out to these support channels when needed.</p>
         <div class="cards-grid">
@@ -261,6 +284,7 @@
           </div>
         </div>
 
+        <!-- Section 5: Educational Links and Global Fact Sheets -->
         <h2 id="articles" class="section-title">Articles & Resources</h2>
         <div class="articles-section">
           <div class="articles-grid">
@@ -288,17 +312,20 @@
           </div>
         </div>
 
+        <!-- SDG 3 Mission Callout Box -->
         <div class="sdg-highlight">
           <h2>Mental Health and SDG 3</h2>
           <p>SDG 3 promotes well-being for all, including mental health awareness, prevention, and access to quality support services. Good mental health is essential for achieving sustainable development.</p>
         </div>
 
+        <!-- Bottom Page Pagination Interlinking Next Page -->
         <div class="page-navigation">
           <a href="./content_ST2.html" class="nav-btn">Next: Physical Activity →</a>
         </div>
       </section>
     </main>
 
+    <!-- Footer Bottom -->
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -323,6 +350,7 @@
       </div>
     </footer>
 
+    <!-- Fixed Scroll-to-Top Backlink Component -->
     <a href="#" class="go-to-top">↑</a>
   </body>
 </html>
