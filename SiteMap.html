@@ -8,7 +8,6 @@
       content="PULSE - Sitemap - A student project promoting SDG 3: Good Health and Well-Being"
     />
     <title>PULSE - Sitemap</title>
-
     <link rel="icon" type="image/png" href="./images/favicon.png" />
     <link rel="stylesheet" href="global.css" />
 
@@ -120,6 +119,11 @@
         stroke-width: 5;
       }
 
+      svg a:focus-visible rect {
+        stroke: #ff0000;
+        stroke-width: 6;
+      }
+
       /* -- 6a. Home node (top of the diagram) -- */
       .home-node rect {
         fill: #ffffff;
@@ -157,11 +161,6 @@
 
       .nav-node:hover rect {
         fill: #e3f2fd;
-      }
-
-      svg a:focus-visible rect {
-        stroke: #ff0000;
-        stroke-width: 6;
       }
 
       /* ------------------------------------------------------------
