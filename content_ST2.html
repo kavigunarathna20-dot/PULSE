@@ -2,174 +2,365 @@
 <html lang="en">
   <head>
     <!-- ============ META TAGS ============ -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PULSE - Physical Activity and Exercise: Benefits, types, barriers and tips to stay active.">
+      content="PULSE - Physical Activity and Exercise: Benefits, types, barriers and tips to stay active."
+    />
     <title>PULSE - Physical Activity & Exercise</title>
 
     <!-- ============ STYLESHEETS ============ -->
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="global.css" />
 
     <!-- ============ PAGE-SPECIFIC STYLES ============ -->
     <style>
       /* ==========================================
          CONTENT PAGE WRAPPER
          ========================================== */
-      .content-page { max-width: 1300px; margin: auto; padding: 40px; }
+      .content-page {
+        max-width: 1300px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      #benefits,
+      #types,
+      #barriers,
+      #tips,
+      #articles {
+        scroll-margin-top: 100px;
+      }
 
       /* ==========================================
          HERO BANNER
          ========================================== */
       .hero-section {
-        text-align: center; padding: 80px 40px;
+        text-align: center;
+        padding: 80px 40px;
         border-radius: 30px;
         background: linear-gradient(135deg, #e8f5e9, #f5fff7);
         margin-bottom: 40px;
-        position: relative; overflow: hidden;
+        position: relative;
+        overflow: hidden;
       }
       .hero-section::before {
-        content: ''; position: absolute; inset: 0;
-        background: url('./images/physical.jpg') center/cover no-repeat;
-        opacity: 0.12; z-index: 0;
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("./images/physical.jpg") center/cover no-repeat;
+        opacity: 0.12;
+        z-index: 0;
       }
-      .hero-content { position: relative; z-index: 1; }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
       .tag {
-        display: inline-block; background: #4c9f38; color: white;
-        padding: 8px 16px; border-radius: 30px;
-        margin-bottom: 20px; font-size: 14px; font-weight: 600;
+        display: inline-block;
+        background: #4c9f38;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
       }
-      .hero-section h1 { font-size: 56px; color: #07424d; margin-bottom: 20px; }
-      .hero-section p { font-size: 18px; max-width: 900px; margin: auto; color: #444; }
+      .hero-section h1 {
+        font-size: 56px;
+        color: #07424d;
+        margin-bottom: 20px;
+      }
+      .hero-section p {
+        font-size: 18px;
+        max-width: 900px;
+        margin: auto;
+        color: #444;
+      }
 
       /* ==========================================
          IN-PAGE NAVIGATION MENU
          ========================================== */
       .content-nav {
-        background: white; border-radius: 16px; padding: 20px 30px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;
+        background: white;
+        border-radius: 16px;
+        padding: 20px 30px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        margin-bottom: 40px;
       }
       .content-nav ul {
-        list-style: none; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        justify-content: center;
       }
       .content-nav a {
-        color: #4c9f38; font-weight: 600; font-size: 14px;
-        padding: 6px 14px; border-radius: 20px; transition: 0.3s;
+        color: #4c9f38;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        transition: 0.3s;
         text-decoration: none;
       }
-      .content-nav a:hover { background: #e8f5e9; color: #2e7d32; }
+      .content-nav a:hover {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
 
       /* ==========================================
          SECTION HEADINGS
          ========================================== */
       .section-title {
-        font-size: 32px; color: #07424d; margin-bottom: 30px; text-align: center;
+        font-size: 32px;
+        color: #07424d;
+        margin-bottom: 30px;
+        text-align: center;
       }
-      .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
+      .section-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 40px;
+      }
+
+      /* ==========================================
+         SCROLL OFFSET — prevents header overlap
+         ========================================== */
+      #benefits,
+      #types,
+      #barriers,
+      #tips,
+      #articles {
+        scroll-margin-top: 100px;
+      }
 
       /* ==========================================
          CARD GRID — reusable card layout
          ========================================== */
       .cards-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
       }
       .card-item {
-        background: white; border-radius: 20px; overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        transition: 0.3s;
       }
-      .card-item:hover { transform: translateY(-6px); box-shadow: 0 14px 35px rgba(0,0,0,0.12); }
-      .card-item img { width: 100%; height: 200px; object-fit: cover; }
-      .card-item .card-body { padding: 22px; }
-      .card-item h3 { color: #07424d; margin-bottom: 10px; font-size: 18px; }
-      .card-item p { font-size: 14px; color: #555; line-height: 1.7; }
+      .card-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+      }
+      .card-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-item .card-body {
+        padding: 22px;
+      }
+      .card-item h3 {
+        color: #07424d;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      .card-item p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.7;
+      }
 
       /* ==========================================
          CONTENT BLOCK — text + image side-by-side
          ========================================== */
       .content-block {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-        align-items: center; margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 50px;
       }
       .content-block img {
-        width: 100%; border-radius: 20px; height: 350px; object-fit: cover;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        width: 100%;
+        border-radius: 20px;
+        height: 350px;
+        object-fit: cover;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       }
-      .content-block .text h3 { font-size: 26px; color: #07424d; margin-bottom: 16px; }
-      .content-block .text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
-      .content-block .text ul { list-style: none; padding: 0; }
+      .content-block .text h3 {
+        font-size: 26px;
+        color: #07424d;
+        margin-bottom: 16px;
+      }
+      .content-block .text p {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+      .content-block .text ul {
+        list-style: none;
+        padding: 0;
+      }
       .content-block .text li {
-        padding: 6px 0 6px 28px; position: relative; font-size: 14px; color: #555;
+        padding: 6px 0 6px 28px;
+        position: relative;
+        font-size: 14px;
+        color: #555;
       }
       .content-block .text li::before {
-        content: "✓"; position: absolute; left: 0; color: #4c9f38; font-weight: bold;
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4c9f38;
+        font-weight: bold;
       }
-      @media (max-width: 768px) { .content-block { grid-template-columns: 1fr; } }
+      @media (max-width: 768px) {
+        .content-block {
+          grid-template-columns: 1fr;
+        }
+      }
 
       /* ==========================================
          ARTICLES SECTION
          ========================================== */
-      .articles-section { margin-bottom: 50px; }
+      .articles-section {
+        margin-bottom: 50px;
+      }
       .articles-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
       }
       .article-card {
-        background: white; border-radius: 20px; overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        transition: 0.3s;
       }
-      .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
-      .article-card img { width: 100%; height: 180px; object-fit: cover; }
-      .article-card .article-body { padding: 20px; }
-      .article-card h4 { color: #07424d; margin-bottom: 10px; font-size: 16px; }
+      .article-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+      .article-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .article-card .article-body {
+        padding: 20px;
+      }
+      .article-card h4 {
+        color: #07424d;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
       .article-card a {
-        display: inline-block; color: #4c9f38; font-weight: 600; font-size: 13px;
-        text-decoration: none; transition: 0.3s;
+        display: inline-block;
+        color: #4c9f38;
+        font-weight: 600;
+        font-size: 13px;
+        text-decoration: none;
+        transition: 0.3s;
       }
-      .article-card a:hover { color: #2e7d32; text-decoration: underline; }
+      .article-card a:hover {
+        color: #2e7d32;
+        text-decoration: underline;
+      }
 
       /* ==========================================
          SDG 3 HIGHLIGHT BANNER
          ========================================== */
       .sdg-highlight {
-        background: linear-gradient(135deg, #4c9f38, #63b851); color: white;
-        border-radius: 30px; padding: 50px; text-align: center; margin-bottom: 40px;
+        background: linear-gradient(135deg, #4c9f38, #63b851);
+        color: white;
+        border-radius: 30px;
+        padding: 50px;
+        text-align: center;
+        margin-bottom: 40px;
       }
-      .sdg-highlight h2, .sdg-highlight p { color: white; }
-      .sdg-highlight h2 { font-size: 30px; margin-bottom: 16px; }
-      .sdg-highlight p { font-size: 16px; max-width: 800px; margin: auto; }
+      .sdg-highlight h2,
+      .sdg-highlight p {
+        color: white;
+      }
+      .sdg-highlight h2 {
+        font-size: 30px;
+        margin-bottom: 16px;
+      }
+      .sdg-highlight p {
+        font-size: 16px;
+        max-width: 800px;
+        margin: auto;
+      }
 
       /* ==========================================
          PAGE PREV / NEXT NAVIGATION
          ========================================== */
       .page-navigation {
-        display: flex; justify-content: center; gap: 20px; margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
       }
       .nav-btn {
-        background: #4c9f38; color: white; padding: 12px 32px;
-        border-radius: 50px; font-weight: 600; text-decoration: none;
+        background: #4c9f38;
+        color: white;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
         transition: all 0.3s ease;
       }
-      .nav-btn:hover { background: #3a7a2c; transform: translateY(-3px); color: white; }
+      .nav-btn:hover {
+        background: #3a7a2c;
+        transform: translateY(-3px);
+        color: white;
+      }
 
       /* ==========================================
          FLOATING BACK-TO-TOP BUTTON
          ========================================== */
       .go-to-top {
-        position: fixed; bottom: 30px; right: 30px;
-        background: #4c9f38; color: white; width: 50px; height: 50px;
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        font-size: 20px; text-decoration: none; box-shadow: 0 4px 15px rgba(76,159,56,0.3);
-        transition: 0.3s; z-index: 99;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #4c9f38;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(76, 159, 56, 0.3);
+        transition: 0.3s;
+        z-index: 99;
       }
-      .go-to-top:hover { background: #2e7d32; transform: translateY(-4px); }
+      .go-to-top:hover {
+        background: #2e7d32;
+        transform: translateY(-4px);
+      }
 
       /* ==========================================
          RESPONSIVE — tablet / mobile
          ========================================== */
       @media (max-width: 768px) {
-        .hero-section h1 { font-size: 36px; }
-        .content-page { padding: 20px; }
-        .hero-section { padding: 50px 20px; }
+        .hero-section h1 {
+          font-size: 36px;
+        }
+        .content-page {
+          padding: 20px;
+        }
+        .hero-section {
+          padding: 50px 20px;
+        }
       }
     </style>
   </head>
@@ -179,7 +370,7 @@
          ============================================= -->
     <header>
       <div class="logo">
-        <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image">
+        <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image" />
         <div class="logo-text">
           <h2>PULSE</h2>
           <p>Good Health & Well-Being</p>
@@ -201,12 +392,14 @@
          ============================================= -->
     <main>
       <section class="content-page">
-
-        
         <div class="hero-section">
           <div class="hero-content">
             <h1>Physical Activity and Exercise</h1>
-            <p>Regular physical activity strengthens the body, improves mental well-being, and reduces the risk of chronic diseases. Moving your body is one of the best things you can do for your health.</p>
+            <p>
+              Regular physical activity strengthens the body, improves mental
+              well-being, and reduces the risk of chronic diseases. Moving your
+              body is one of the best things you can do for your health.
+            </p>
           </div>
         </div>
 
@@ -220,18 +413,27 @@
             <li><a href="#articles">Articles</a></li>
           </ul>
         </nav>
-
         <!-- ======== SECTION: BENEFITS ======== -->
-        <h2 id="benefits" class="section-title">Benefits of Regular Exercise</h2>
+        <h2 id="benefits" class="section-title">
+          Benefits of Regular Exercise
+        </h2>
         <div class="content-block">
-          <img src="./images/walk.jpg" alt="Person walking outdoors">
+          <img src="./images/walk.jpg" alt="Person walking outdoors" />
           <div class="text">
             <h3>Why Exercise Matters</h3>
-            <p>Physical activity is essential for maintaining good health. Regular exercise helps prevent chronic diseases, improves mental health, and enhances overall quality of life.</p>
+            <p>
+              Physical activity is essential for maintaining good health.
+              Regular exercise helps prevent chronic diseases, improves mental
+              health, and enhances overall quality of life.
+            </p>
             <ul>
-              <li>Improves cardiovascular health and reduces heart disease risk</li>
+              <li>
+                Improves cardiovascular health and reduces heart disease risk
+              </li>
               <li>Strengthens muscles, bones, and joints</li>
-              <li>Boosts mood and reduces symptoms of anxiety and depression</li>
+              <li>
+                Boosts mood and reduces symptoms of anxiety and depression
+              </li>
               <li>Helps maintain a healthy body weight</li>
               <li>Increases energy levels and improves sleep quality</li>
               <li>Reduces the risk of type 2 diabetes and certain cancers</li>
@@ -241,27 +443,38 @@
 
         <!-- ======== SECTION: TYPES OF ACTIVITY ======== -->
         <h2 id="types" class="section-title">Types of Physical Activity</h2>
-        <p class="section-subtitle">There are many ways to stay active. Find what works best for you.</p>
+        <p class="section-subtitle">
+          There are many ways to stay active. Find what works best for you.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/run.jpg" alt="Walking and running">
+            <img src="./images/run.jpg" alt="Walking and running" />
             <div class="card-body">
               <h3>Aerobic Exercise</h3>
-              <p>Activities like walking, running, swimming, and cycling that increase your heart rate and improve cardiovascular endurance.</p>
+              <p>
+                Activities like walking, running, swimming, and cycling that
+                increase your heart rate and improve cardiovascular endurance.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/strength.jpg" alt="Strength training">
+            <img src="./images/strength.jpg" alt="Strength training" />
             <div class="card-body">
               <h3>Strength Training</h3>
-              <p>Weight lifting, resistance band exercises, and bodyweight movements that build muscle strength and bone density.</p>
+              <p>
+                Weight lifting, resistance band exercises, and bodyweight
+                movements that build muscle strength and bone density.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/yoga.jpg" alt="Yoga and stretching">
+            <img src="./images/yoga.jpg" alt="Yoga and stretching" />
             <div class="card-body">
               <h3>Flexibility & Balance</h3>
-              <p>Yoga, stretching, and tai chi improve flexibility, balance, and posture while reducing the risk of injury.</p>
+              <p>
+                Yoga, stretching, and tai chi improve flexibility, balance, and
+                posture while reducing the risk of injury.
+              </p>
             </div>
           </div>
         </div>
@@ -271,41 +484,70 @@
         <div class="content-block">
           <div class="text">
             <h3>Overcoming Obstacles</h3>
-            <p>Many people struggle to stay active due to various barriers. Identifying these challenges is the first step toward overcoming them.</p>
+            <p>
+              Many people struggle to stay active due to various barriers.
+              Identifying these challenges is the first step toward overcoming
+              them.
+            </p>
             <ul>
-              <li>Lack of time — try short 10-minute workouts throughout the day</li>
-              <li>Low motivation — set small achievable goals and track progress</li>
-              <li>Limited access to facilities — explore home workouts and outdoor activities</li>
-              <li>Physical limitations — consult a professional for adapted exercises</li>
-              <li>Cost — many effective exercises require no equipment at all</li>
+              <li>
+                Lack of time — try short 10-minute workouts throughout the day
+              </li>
+              <li>
+                Low motivation — set small achievable goals and track progress
+              </li>
+              <li>
+                Limited access to facilities — explore home workouts and outdoor
+                activities
+              </li>
+              <li>
+                Physical limitations — consult a professional for adapted
+                exercises
+              </li>
+              <li>
+                Cost — many effective exercises require no equipment at all
+              </li>
             </ul>
           </div>
-          <img src="./images/barriers.jpg" alt="Overcoming exercise barriers">
+          <img src="./images/barriers.jpg" alt="Overcoming exercise barriers" />
         </div>
 
         <!-- ======== SECTION: TIPS ======== -->
         <h2 id="tips" class="section-title">Tips to Stay Active</h2>
-        <p class="section-subtitle">Build sustainable habits that keep you moving throughout your life.</p>
+        <p class="section-subtitle">
+          Build sustainable habits that keep you moving throughout your life.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/goals.jpg" alt="Setting goals">
+            <img src="./images/goals.jpg" alt="Setting goals" />
             <div class="card-body">
               <h3>Set Realistic Goals</h3>
-              <p>Start small and gradually increase intensity. Aim for at least 150 minutes of moderate activity per week as recommended by health authorities.</p>
+              <p>
+                Start small and gradually increase intensity. Aim for at least
+                150 minutes of moderate activity per week as recommended by
+                health authorities.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/friends.jpg" alt="Exercise with friends">
+            <img src="./images/friends.jpg" alt="Exercise with friends" />
             <div class="card-body">
               <h3>Exercise with Others</h3>
-              <p>Working out with friends or joining group classes makes exercise more enjoyable and helps you stay accountable.</p>
+              <p>
+                Working out with friends or joining group classes makes exercise
+                more enjoyable and helps you stay accountable.
+              </p>
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/fun.jpg" alt="Fun activities">
+            <img src="./images/fun.jpg" alt="Fun activities" />
             <div class="card-body">
               <h3>Make it Fun</h3>
-              <p>Choose activities you enjoy — dancing, hiking, sports, or swimming. When exercise is fun, you are more likely to stick with it.</p>
+              <p>
+                Choose activities you enjoy — dancing, hiking, sports, or
+                swimming. When exercise is fun, you are more likely to stick
+                with it.
+              </p>
             </div>
           </div>
         </div>
@@ -315,24 +557,39 @@
         <div class="articles-section">
           <div class="articles-grid">
             <div class="article-card">
-              <img src="./images/guide.jpg" alt="Exercise guidelines">
+              <img src="./images/guide.jpg" alt="Exercise guidelines" />
               <div class="article-body">
                 <h3>WHO Physical Activity Guidelines for All Ages</h3>
-                <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.who.int/news-room/fact-sheets/detail/physical-activity"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/mentalhealth.jpg" alt="Exercise and mental health">
+              <img
+                src="./images/mentalhealth.jpg"
+                alt="Exercise and mental health"
+              />
               <div class="article-body">
                 <h3>How Exercise Boosts Mental Health</h3>
-                <a href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/exercise-for-depression/" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/exercise-for-depression/"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/walking.jpg" alt="Walking benefits">
+              <img src="./images/walking.jpg" alt="Walking benefits" />
               <div class="article-body">
                 <h3>The Health Benefits of Walking Every Day</h3>
-                <a href="https://www.heart.org/en/healthy-living/fitness/walking/why-is-walking-the-most-popular-form-of-exercise" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.heart.org/en/healthy-living/fitness/walking/why-is-walking-the-most-popular-form-of-exercise"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
           </div>
@@ -341,12 +598,18 @@
         <!-- ======== SDG 3 HIGHLIGHT ======== -->
         <div class="sdg-highlight">
           <h2>Physical Activity and SDG 3</h2>
-          <p>Exercise promotes healthier lives and contributes directly to achieving SDG 3 through disease prevention, improved mental well-being, and enhanced overall quality of life.</p>
+          <p>
+            Exercise promotes healthier lives and contributes directly to
+            achieving SDG 3 through disease prevention, improved mental
+            well-being, and enhanced overall quality of life.
+          </p>
         </div>
 
         <!-- ======== PREV / NEXT PAGE NAVIGATION ======== -->
         <div class="page-navigation">
-          <a href="./content_ST1.html" class="nav-btn">← Previous: Mental Health</a>
+          <a href="./content_ST1.html" class="nav-btn"
+            >← Previous: Mental Health</a
+          >
           <a href="./content_ST3.html" class="nav-btn">Next: Nutrition →</a>
         </div>
       </section>
@@ -359,14 +622,23 @@
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="./images/logo.jpeg" alt="PULSE Logo" class="footer-logo-image">
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
             <span class="footer-brand">PULSE</span>
           </div>
-          <p>A student project promoting SDG 3 — Good Health and Well-Being at the University of Westminster.</p>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
         </div>
         <div class="footer-section">
-          <p style="font-size:18px;"><b>THIS PAGE</b></p>
-          <p class="student-info">Developed by: <strong>Devindi Hansika</strong></p>
+          <p style="font-size: 18px"><b>THIS PAGE</b></p>
+          <p class="student-info">
+            Developed by: <strong>Devindi Hansika</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST2.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST2.html" class="footer-link">Validation ↗</a>
