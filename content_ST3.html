@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="description"
-      content="PULSE - Nutrition, Diet and Healthy Eating: Importance, essential nutrients, tips and meal planning.">
+    <meta name="description" content="PULSE - Nutrition, Diet and Healthy Eating: Importance, essential nutrients, tips and meal planning.">
     <title>PULSE - Nutrition & Healthy Eating</title>
+    
     <link rel="stylesheet" href="global.css">
 
     <style>
+      /* Main container for content page */
       .content-page { max-width: 1300px; margin: auto; padding: 40px; }
 
+      /* Hero section with gradient background and image overlay */
       .hero-section {
         text-align: center; padding: 80px 40px;
         border-radius: 30px;
@@ -19,6 +20,7 @@
         margin-bottom: 40px;
         position: relative; overflow: hidden;
       }
+      /* Pseudo-element for background image with low opacity */
       .hero-section::before {
         content: "";
         position: absolute;
@@ -27,19 +29,22 @@
         opacity: 0.12;
         z-index: 0;
       }
+      /* Content positioned above background image */
       .hero-content {
         position: relative;
         z-index: 1;
       }
-      .hero-content { position: relative; z-index: 1; }
+      /* Styling for topic tag in hero section */
       .tag {
         display: inline-block; background: #4c9f38; color: white;
         padding: 8px 16px; border-radius: 30px;
         margin-bottom: 20px; font-size: 14px; font-weight: 600;
       }
+      /* Hero title and description styling */
       .hero-section h1 { font-size: 56px; color: #07424d; margin-bottom: 20px; }
       .hero-section p { font-size: 18px; max-width: 900px; margin: auto; color: #444; }
 
+      /* Internal navigation menu styling */
       .content-nav {
         background: white; border-radius: 16px; padding: 20px 30px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;
@@ -47,6 +52,7 @@
       .content-nav ul {
         list-style: none; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center;
       }
+      /* Navigation link styling with hover effect */
       .content-nav a {
         color: #4c9f38; font-weight: 600; font-size: 14px;
         padding: 6px 14px; border-radius: 20px; transition: 0.3s;
@@ -54,11 +60,13 @@
       }
       .content-nav a:hover { background: #e8f5e9; color: #2e7d32; }
 
+      /* Section headings and subtitles */
       .section-title {
         font-size: 32px; color: #07424d; margin-bottom: 30px; text-align: center;
       }
       .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
 
+      /* Scroll margin for anchor links */
       #importance,
       #nutrients,
       #tips,
@@ -67,9 +75,11 @@
         scroll-margin-top: 100px;
       }
 
+      /* Grid layout for content cards */
       .cards-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;
       }
+      /* Individual card styling with hover animation */
       .card-item {
         background: white; border-radius: 20px; overflow: hidden;
         box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
@@ -80,6 +90,7 @@
       .card-item h3 { color: #07424d; margin-bottom: 10px; font-size: 18px; }
       .card-item p { font-size: 14px; color: #555; line-height: 1.7; }
 
+      /* Two-column layout for text and images */
       .content-block {
         display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
         align-items: center; margin-bottom: 50px;
@@ -88,8 +99,11 @@
         width: 100%; border-radius: 20px; height: 350px; object-fit: cover;
         box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       }
+      /* Text content inside content blocks */
       .content-block .text h3 { font-size: 26px; color: #07424d; margin-bottom: 16px; }
       .content-block .text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+
+      /* Custom checkmark bullets for lists */
       .content-block .text ul { list-style: none; padding: 0; }
       .content-block .text li {
         padding: 6px 0 6px 28px; position: relative; font-size: 14px; color: #555;
@@ -97,12 +111,15 @@
       .content-block .text li::before {
         content: "✓"; position: absolute; left: 0; color: #4c9f38; font-weight: bold;
       }
+      /* Mobile responsive layout */
       @media (max-width: 768px) { .content-block { grid-template-columns: 1fr; } }
 
+      /* Articles/Resources section styling */
       .articles-section { margin-bottom: 50px; }
       .articles-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
       }
+      /* Individual article card styling */
       .article-card {
         background: white; border-radius: 20px; overflow: hidden;
         box-shadow: 0 8px 25px rgba(0,0,0,0.07); transition: 0.3s;
@@ -111,12 +128,15 @@
       .article-card img { width: 100%; height: 180px; object-fit: cover; }
       .article-card .article-body { padding: 20px; }
       .article-card h4 { color: #07424d; margin-bottom: 10px; font-size: 16px; }
+
+      /* Article link styling */
       .article-card a {
         display: inline-block; color: #4c9f38; font-weight: 600; font-size: 13px;
         text-decoration: none; transition: 0.3s;
       }
       .article-card a:hover { color: #2e7d32; text-decoration: underline; }
 
+      /* SDG 3 highlight section with green gradient */
       .sdg-highlight {
         background: linear-gradient(135deg, #4c9f38, #63b851); color: white;
         border-radius: 30px; padding: 50px; text-align: center; margin-bottom: 40px;
@@ -125,6 +145,7 @@
       .sdg-highlight h2 { font-size: 30px; margin-bottom: 16px; }
       .sdg-highlight p { font-size: 16px; max-width: 800px; margin: auto; }
 
+      /* Navigation buttons for previous/next pages */
       .page-navigation {
         display: flex; justify-content: center; gap: 20px; margin-top: 40px;
       }
@@ -135,6 +156,7 @@
       }
       .nav-btn:hover { background: #3a7a2c; transform: translateY(-3px); color: white; }
 
+      /* Floating "Go to Top" button */
       .go-to-top {
         position: fixed; bottom: 30px; right: 30px;
         background: #4c9f38; color: white; width: 50px; height: 50px;
@@ -144,15 +166,17 @@
       }
       .go-to-top:hover { background: #2e7d32; transform: translateY(-4px); }
 
+      /* Mobile responsive adjustments */
       @media (max-width: 768px) {
         .hero-section h1 { font-size: 36px; }
         .content-page { padding: 20px; }
         .hero-section { padding: 50px 20px; }
       }
-      </style>
+    </style>
   </head>
   
   <body>
+    <!-- Header with logo and navigation -->
     <header>
       <div class="logo">
         <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image">
@@ -161,6 +185,7 @@
           <p>Good Health & Well-Being</p>
         </div>
       </div>
+      <!-- Main navigation menu linking to all pages -->
       <nav class="main-nav">
         <a href="./home.html" class="nav-link">Home</a>
         <a href="./gallery.html" class="nav-link">Gallery</a>
@@ -172,8 +197,10 @@
       </nav>
     </header>
 
+    <!-- Main content area -->
     <main>
       <section class="content-page">
+        <!-- Hero section with page title and introduction -->
         <div class="hero-section">
           <div class="hero-content">
             <h1>Nutrition, Diet and Healthy Eating</h1>
@@ -182,6 +209,7 @@
           </div>
         </div>
 
+        <!-- Internal navigation menu with anchor links to sections -->
         <nav class="content-nav">
           <ul>
             <li><a href="#importance">Why Nutrition Matters</a></li>
@@ -192,6 +220,7 @@
           </ul>
         </nav>
 
+        <!-- Section 1: Why Nutrition Matters -->
         <h2 id="importance" class="section-title">Why Nutrition Matters</h2>
         <div class="content-block">
           <img src="./images/vegetable.jpg" alt="Fresh vegetables being prepared">
@@ -202,6 +231,7 @@
 			   immune system, mental clarity, and long-term disease risk. 
 			   A balanced diet provides the body with the fuel and nutrients 
 			   it needs to function at its best.</p>
+            <!-- Bulleted list with checkmark styling -->
             <ul>
               <li>Supports healthy growth and development in children</li>
               <li>Strengthens the immune system against illnesses</li>
@@ -212,9 +242,12 @@
           </div>
         </div>
 
+        <!-- Section 2: Essential Nutrients -->
         <h2 id="nutrients" class="section-title">Essential Nutrients for Your Body</h2>
         <p class="section-subtitle">A balanced diet includes a variety of nutrients that work together to keep you healthy.</p>
+        <!-- Grid of nutrient cards -->
         <div class="cards-grid">
+          <!-- Card 1: Vitamins & Minerals -->
           <div class="card-item">
             <img src="./images/fandv.jpg" alt="Fruits and vegetables">
             <div class="card-body">
@@ -224,16 +257,17 @@
 			  of bodily processes essential for life.</p>
             </div>
           </div>
+          <!-- Card 2: Protein -->
           <div class="card-item">
             <img src="./images/protein.jpg" alt="Protein sources">
             <div class="card-body">
               <h3>Protein</h3>
               <p>Essential for building and repairing tissues. 
 			  Good sources include lean meat, fish, eggs, beans, 
-			  lentils, tofu, and dairy products.
-			  </p>
+			  lentils, tofu, and dairy products.</p>
             </div>
           </div>
+          <!-- Card 3: Carbohydrates & Fiber -->
           <div class="card-item">
             <img src="./images/grains.jpg" alt="Whole grains">
             <div class="card-body">
@@ -243,6 +277,7 @@
           </div>
         </div>
 
+        <!-- Section 3: Healthy Eating Tips -->
         <h2 id="tips" class="section-title">Healthy Eating Tips</h2>
         <div class="content-block">
           <div class="text">
@@ -261,9 +296,12 @@
           <img src="./images/eat.jpg" alt="Healthy eating">
         </div>
 
+        <!-- Section 4: Meal Planning -->
         <h2 id="planning" class="section-title">Meal Planning for a Balanced Diet</h2>
         <p class="section-subtitle">Plan ahead to make healthy eating easy and consistent.</p>
+        <!-- Grid of meal planning cards -->
         <div class="cards-grid">
+          <!-- Breakfast card -->
           <div class="card-item">
             <img src="./images/breakfast.jpg" alt="Breakfast">
             <div class="card-body">
@@ -271,6 +309,7 @@
               <p>A nutritious breakfast with protein, fibre, and healthy fats provides energy for the day ahead and helps maintain focus and concentration.</p>
             </div>
           </div>
+          <!-- Lunch & Dinner card -->
           <div class="card-item">
             <img src="./images/lunch.jpg" alt="Lunch">
             <div class="card-body">
@@ -278,6 +317,7 @@
               <p>Fill half your plate with vegetables, a quarter with lean protein, and a quarter with whole grains for balanced, satisfying meals.</p>
             </div>
           </div>
+          <!-- Snacking card -->
           <div class="card-item">
             <img src="./images/snack.jpg" alt="Healthy snacks">
             <div class="card-body">
@@ -287,69 +327,97 @@
           </div>
         </div>
 
+        <!-- Section 5: Articles & Resources -->
         <h2 id="articles" class="section-title">Articles & Resources</h2>
         <div class="articles-section">
+          <!-- Grid of article cards with external links -->
           <div class="articles-grid">
+            <!-- Article card 1: WHO -->
             <div class="article-card">
               <img src="./images/eatguide.jpg" alt="Healthy eating guide">
               <div class="article-body">
                 <h3>WHO Healthy Diet Recommendations</h3>
+                <!-- External link to WHO website -->
                 <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank">Read Article →</a>
               </div>
             </div>
+            <!-- Article card 2: NHS -->
             <div class="article-card">
               <img src="./images/tips.jpg" alt="Nutrition tips">
               <div class="article-body">
                 <h3>How to Build a Balanced Diet</h3>
+                <!-- External link to NHS website -->
                 <a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/" target="_blank">Read Article →</a>
               </div>
             </div>
+            <!-- Article card 3: FDA -->
             <div class="article-card">
               <img src="./images/nutritionfacts.jpg" alt="Nutrition facts">
               <div class="article-body">
                 <h3>Understanding Nutrition Labels</h3>
+                <!-- External link to FDA website -->
                 <a href="https://www.fda.gov/food/new-nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank">Read Article →</a>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- SDG 3 Highlight Section -->
         <div class="sdg-highlight">
           <h2>Nutrition and SDG 3</h2>
           <p>Proper nutrition supports healthier populations, reduces malnutrition, and plays a vital role in achieving SDG 3. Access to nutritious food is a fundamental human right.</p>
         </div>
 
+        <!-- Navigation to previous/next content pages -->
         <div class="page-navigation">
           <a href="./content_ST2.html" class="nav-btn">← Previous: Physical Activity</a>
           <a href="./content_ST4.html" class="nav-btn">Next: Healthcare Access →</a>
         </div>
       </section>
     </main>
-
+    
+    <!-- ================================================
+         FOOTER
+         DO NOT MODIFY: Keep this structure for consistency
+         ================================================ -->
     <footer>
       <div class="footer-content">
+        <!-- Footer Section 1: Logo & Description -->
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="./images/logo.jpeg" alt="PULSE Logo" class="footer-logo-image">
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
             <span class="footer-brand">PULSE</span>
           </div>
-          <p>A student project promoting SDG 3 — Good Health and Well-Being at the University of Westminster.</p>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
         </div>
+
+        <!-- Footer Section 2: Student Information -->
         <div class="footer-section">
-          <p style="font-size:18px;"><b>THIS PAGE</b></p>
-          <p class="student-info">Developed by: <strong>Thisumi Dahamsa</strong></p>
+          <h3>This Page</h3>
+          <p class="student-info">
+            Developed by: <strong>Thisumi Dahamsa</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST3.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST3.html" class="footer-link">Validation ↗</a>
           </nav>
         </div>
       </div>
+
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <span>&copy; 2026 PULSE — University of Westminster Group Project</span>
-        <span>SDG 3: Good Health and Well-Being</span>
+        <span>© 2026 PULSE — University of Westminster Group Project</span>
       </div>
     </footer>
-
+    
+    <!-- Floating "Go to Top" button for easy navigation back to top -->
     <a href="#" class="go-to-top">↑</a>
   </body>
 </html>
