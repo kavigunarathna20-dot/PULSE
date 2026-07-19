@@ -88,32 +88,27 @@
 
               <h3>Technical Description</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                quas sunt dolorem aliquam esse deleniti quis accusantium eos!
-                Nobis dolorem nisi vitae quis accusantium, iste recusandae
-                aliquam ducimus maiores aspernatur! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Fuga, placeat blanditiis beatae
-                nobis earum omnis illum voluptatum exercitationem id laudantium
-                facilis saepe voluptate repellendus odio doloremque dignissimos
-                qui suscipit vitae. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Vitae officiis aspernatur nobis quod nostrum?
-                Beatae nesciunt quas molestiae dolore, quos molestias voluptatum
-                sapiente error at rem ratione? Odit, porro rerum.
+                The Home page was developed using HTML5, CSS3, and JavaScript to create an interactive, 
+                scroll-reveal driven landing experience. Semantic HTML elements such as <code>header, nav, main, 
+                section, and footer</code> structure the page, with the hero area (heading, subtitle, and 
+                call-to-action link), the "Mission and Goals" section, and the "Explore Our Content Pages" 
+                section organised as separate <code>&lt;section&gt;</code> elements inside <code>&lt;main&gt;</code>. 
+                CSS Grid lays out the three mission cards and four content boxes responsively, while a small 
+                JavaScript <code>reveal()</code> function checks each element against 
+                <code>getBoundingClientRect()</code> on every scroll event, adding an <code>active</code> class 
+                that triggers a fade-and-slide-in transition as the user scrolls.
               </p>
 
               <h3>Accessibility</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Dignissimos, at, aperiam aut similique repudiandae consequatur
-                saepe officiis animi sunt sapiente esse, ex voluptas quos
-                blanditiis numquam eum. Quas, unde nisi! Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Placeat harum architecto
-                dignissimos magni labore dolore, veritatis consequatur maiores
-                quidem ducimus ullam possimus dicta adipisci quibusdam minus et
-                quae sit earum. Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Doloremque est, officiis, sed ipsa illum
-                soluta nulla mollitia facilis esse autem quod reprehenderit
-                placeat ea blanditiis quam, labore hic ipsum asperiores!
+                Accessibility on the Home page was addressed by giving every image — including the main 
+                logo, the three mission-card images, and the four content-page thumbnails — descriptive 
+                <code>alt</code> text, and by using a single <code>&lt;h1&gt;</code> for the page's main 
+                heading followed by <code>&lt;h2&gt;</code> elements for each section title, so screen reader 
+                users can navigate the page by heading level. Interactive elements such as the "Explore More" 
+                call-to-action and each content-box link are implemented as native <code>&lt;a&gt;</code> 
+                elements rather than clickable <code>&lt;div&gt;</code>s, ensuring they are reachable and 
+                operable via keyboard by default.
               </p>
 
               <h3>Link to the Validation Page</h3>
@@ -135,40 +130,28 @@
 
               <h3>Technical Description</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
-                asperiores perferendis. Sapiente eos facilis totam, vitae
-                consectetur delectus consequatur quisquam et, officiis ducimus
-                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
-                neque delectus perspiciatis? Eveniet dolorum quam maiores
-                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
-                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Necessitatibus eligendi totam minima
-                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
-                voluptatum quam eum voluptate esse aliquid consequatur, debitis
-                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
-                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
-                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+                The Gallery page was developed using HTML5, CSS3, and JavaScript to create an interactive, 
+                filterable image gallery with a fully custom modal. Semantic HTML elements such as 
+                <code>header, nav, main, and footer</code> provide the page's overall structure, while the 
+                gallery itself is built from repeatable card elements inside a CSS Grid container, each 
+                carrying <code>data-category, data-title, data-desc, and data-img</code> attributes that 
+                JavaScript reads to drive its behaviour. Category filtering compares each card's dataset 
+                against the selected filter button, and a single reusable modal is populated dynamically 
+                from whichever card was clicked, keeping the DOM lightweight rather than duplicating a modal 
+                per image. The modal also includes button-based theme and font customisation, implemented by 
+                toggling CSS classes and inline font-family styles.
               </p>
 
               <h3>Accessibility</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
-                asperiores perferendis. Sapiente eos facilis totam, vitae
-                consectetur delectus consequatur quisquam et, officiis ducimus
-                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
-                neque delectus perspiciatis? Eveniet dolorum quam maiores
-                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
-                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Necessitatibus eligendi totam minima
-                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
-                voluptatum quam eum voluptate esse aliquid consequatur, debitis
-                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
-                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
-                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+                Accessibility on the Gallery page was addressed by giving every thumbnail and modal image 
+                descriptive <code>alt</code> text drawn from each item's title, and by implementing the 
+                modal's close control as a real <code>&lt;button&gt;</code> element rather than a styled 
+                <code>&lt;div&gt;</code>, so it is reachable and operable via keyboard and announced correctly 
+                by screen readers. Category filter buttons and the theme/font customisation controls are also 
+                built as native <code>&lt;button&gt;</code> elements, giving them built-in keyboard focus and 
+                activation support without any custom key-handling code. Clicking outside the modal content 
+                area closes it, giving keyboard and mouse users an additional way to dismiss the popup.
               </p>
 
               <h3>Link to the Validation Page</h3>
@@ -190,40 +173,27 @@
 
               <h3>Technical Description</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
-                asperiores perferendis. Sapiente eos facilis totam, vitae
-                consectetur delectus consequatur quisquam et, officiis ducimus
-                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
-                neque delectus perspiciatis? Eveniet dolorum quam maiores
-                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
-                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Necessitatibus eligendi totam minima
-                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
-                voluptatum quam eum voluptate esse aliquid consequatur, debitis
-                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
-                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
-                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+                The Content Page was developed using HTML5 and CSS3, with an emphasis on structured, 
+                accessible long-form content. Semantic HTML elements such as <code>header, nav, main, section, 
+                and footer</code> organise the page, and heading levels follow a strict hierarchy, with each 
+                major topic beginning at <code>&lt;h2&gt;</code> and card or content-block subheadings using 
+                <code>&lt;h3&gt;</code>. An in-page navigation menu provides jump links to each section using 
+                anchor targets matched to section <code>id</code> attributes, paired with a 
+                <code>scroll-margin-top</code> rule so jumping to a section doesn't hide it behind the sticky 
+                header. A fixed-position "Go to Top" link remains visible throughout the page using pure CSS, 
+                requiring no JavaScript.
               </p>
 
               <h3>Accessibility</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil,
-                asperiores perferendis. Sapiente eos facilis totam, vitae
-                consectetur delectus consequatur quisquam et, officiis ducimus
-                maiores facere dolore vel nihil accusantium nesciunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Iste saepe
-                neque delectus perspiciatis? Eveniet dolorum quam maiores
-                aliquam suscipit, quae cum aperiam ab dolore ex odit molestias
-                ipsam provident omnis. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Necessitatibus eligendi totam minima
-                architecto sequi delectus deserunt porro. Rerum fugiat quaerat,
-                voluptatum quam eum voluptate esse aliquid consequatur, debitis
-                voluptas reprehenderit. Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Itaque, temporibus inventore eum, iusto vitae
-                adipisci sequi iure fugiat aspernatur quisquam nemo excepturi,
-                aliquid explicabo minima sit. At dolor deserunt quibusdam.
+                Accessibility on the Content Page was addressed primarily through structure: heading 
+                levels are used consistently and in order rather than being chosen for visual size, so the 
+                page's outline remains meaningful to screen reader users navigating by heading. Every image 
+                across the page includes descriptive <code>alt</code> text specific to its content, rather 
+                than generic placeholders. The in-page navigation menu and "Go to Top" link are both 
+                implemented as ordinary <code>&lt;a&gt;</code> elements, meaning they are keyboard-focusable 
+                by default, and <code>scroll-margin-top</code> ensures anchor-link jumps don't land content 
+                behind the sticky header.
               </p>
 
               <h3>Link to the Validation Page</h3>
@@ -247,80 +217,62 @@
               <h2>Challenges & Lessons Learned</h2>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Duplicated Shared Template Code</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  Every page carried its own copy of the shared header, nav, and footer, since there were no 
+                  server-side includes keeping them identical across pages was easy to get wrong.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  Treated <code>template.html</code> as the single source of truth and copied directly from 
+                  it for every new page, rather than editing an existing page's copy.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
-                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
-                  quam suscipit? Fugiat.
+                  Static HTML without includes needs stricter manual discipline than a framework would 
+                  enforce automatically.           
                 </p>
               </div>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Duplicate Modal IDs</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  An early Gallery version used a separate modal for every image, all sharing the same 
+                  <code>id</code> , so only the first was ever addressable, and all four stayed visible 
+                  permanently.</p>
                 </p>
                 <p>
-                  <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  Refactored to one reusable modal populated dynamically via <code>data-*</code> attributes, 
+                  with visibility controlled by a JavaScript-toggled <code>active</code> class.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
-                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
-                  quam suscipit? Fugiat.
+                  Interactive components need to be clicked through and tested early duplicate IDs and 
+                  always-visible overlays are easy to miss otherwise.
                 </p>
               </div>
 
               <div class="challenge-item">
-                <h3>Add own</h3>
+                <h3>Inconsistent Class Naming</h3>
 
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, exercitationem tenetur molestias ex non impedit neque
-                  deserunt. Ad mollitia vitae enim architecto doloribus, qui,
-                  explicabo impedit quaerat in omnis numquam?
+                  Class naming drifted across pages, Home used <code>.card</code>, Gallery used 
+                  <code>.gallery-card</code> making the code harder to read consistently.
                 </p>
                 <p>
                   <strong>Solution:</strong>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Temporibus esse architecto delectus laborum vel unde optio
-                  recusandae, error, alias, fuga corrupti ullam explicabo
-                  sapiente aut quas adipisci laboriosam voluptatem quod.
+                  Prefixed page-specific classes clearly and added a comment block at the top of each 
+                  <code>&lt;style&gt;</code> explaining its structure.
                 </p>
 
                 <p>
                   <strong>Lesson Learned:</strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  quisquam quasi doloribus explicabo amet adipisci, porro nulla
-                  id ea sequi aliquid aliquam nisi saepe ab. Praesentium laborum
-                  quam suscipit? Fugiat.
+                  Agreeing on naming conventions before development starts saves time versus reconciling 
+                  them afterward.
                 </p>
               </div>
             </section>
@@ -328,22 +280,28 @@
             <!-- COMPLIANCE -->
             <section class="page-card" id="compliance">
               <h2>Compliance</h2>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-              sint dolor, esse vero porro saepe quia corrupti blanditiis
-              quibusdam laboriosam ut eaque culpa ducimus corporis nulla,
-              voluptatum dolore officia dolorem? Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Vitae veritatis quaerat aliquam,
-              quos recusandae ad officiis sint tempora optio temporibus. Tempora
-              natus neque fugit consequuntur aliquam aperiam perferendis odit
-              assumenda? Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Iste, consequuntur fugit autem molestias alias veniam vero
-              aliquam esse placeat ad ex doloribus sequi explicabo dolorum
-              incidunt facilis harum voluptate vel. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Quam placeat dolorem dicta explicabo
-              numquam inventore a, officiis consequuntur voluptatum debitis
-              corporis officia dolor. Similique, ullam! Consectetur suscipit
-              corporis debitis quae! Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit.
+              <p>All content across the Home, Gallery, and Content pages is original and truthful, with no 
+                material copied from external sources such as the UN SDG website. Card descriptions, gallery 
+                captions, and the mental health content are written specifically for this project. No 
+                misleading or inappropriate content has been included.</p>
+
+                <p>All images are sourced from royalty-free platforms such as iStockPhoto, with appropriate 
+                alt text included for accessibility. No copyrighted or trademarked material has been used. 
+                A small number of article thumbnails on the Content Page still link directly to Unsplash and 
+                will be downloaded into the local <code>images</code> folder before submission.</p>
+
+                <p>All HTML, CSS, and JavaScript across these three pages was written without plagiarism or 
+                uncredited code copying. Each footer correctly attributes the work to Student 1. External 
+                articles linked from the Content Page point to their original sources (WHO, NIH, NCCIH) and 
+                are clearly marked as external links.</p>
+
+                <p>None of these pages collect or store user data no forms, cookies, analytics, or external 
+                data transmission are implemented. All interactivity (filtering, modal display, scroll-reveal, 
+                theme/font customisation) runs client-side only.</p>
+
+                <p>All three pages use valid HTML5 compliant with W3C standards, are responsive across screen 
+                sizes, and have been tested across major browsers including Chrome, Safari, and Edge. This 
+                satisfies JANET regulations for responsible web publishing at UK educational institutions.</p>
             </section>
 
             <!-- TIMELINE -->
@@ -441,20 +399,43 @@
 
             <section class="modern-card full-width" id="references">
               <h2>References</h2>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum,
-              repellendus quia pariatur magni cumque error culpa eius doloribus
-              non quaerat eaque fugit a repudiandae exercitationem eos dolore
-              necessitatibus officia dignissimos. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Eos nostrum ullam ratione? Illum
-              quia nihil optio, non facilis unde facere eveniet saepe neque
-              voluptates quos quam expedita sunt? Quibusdam, nobis. Lorem ipsum
-              dolor sit, amet consectetur adipisicing elit. Unde rem odio
-              inventore nostrum vero! Qui voluptas explicabo culpa maiores
-              itaque voluptatibus quod. Architecto hic tenetur nisi officia odit
-              porro maxime. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Recusandae incidunt totam, vitae reprehenderit dolorum eos
-              laborum culpa ex vero saepe fugit atque officiis ipsum reiciendis
-              voluptate, illo ab, quidem odit!
+              <ul>
+                <li>Mozilla Developer Network (MDN). (2026). <em>CSS Grid Layout</em>. 
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank">
+                https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout</a> - used for the 
+                responsive grid layouts on the Home and Gallery pages.</li>
+
+                <li>Mozilla Developer Network (MDN). (2025). <em>Element.getBoundingClientRect()</em>. 
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank">
+                https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a> - used to 
+                build the scroll-reveal animation function.</li>
+
+                <li>W3C. <em>Markup Validation Service</em>. 
+                <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a> - used to 
+                validate all HTML pages against W3C standards.</li>
+
+                <li>iStockPhoto. <em>Royalty-free stock images</em>. 
+                <a href="https://www.istockphoto.com/" target="_blank">https://www.istockphoto.com/</a> - 
+                source for images used across the Home, Gallery, and Content pages.</li>
+
+                <li>World Health Organization. <em>Mental health: Strengthening our response</em>. 
+                <a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response" target="_blank">
+                https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response</a> 
+                - external article linked from the Content Page's Articles &amp; Resources section.</li>
+
+                <li>National Center for Complementary and Integrative Health. <em>Meditation and 
+                mindfulness: What you need to know</em>. 
+                <a href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" target="_blank">
+                https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know</a> - 
+                external article linked from the Content Page.</li>
+
+                <li>National Institute of Mental Health. <em>Find help</em>. 
+                <a href="https://www.nimh.nih.gov/health/find-help" target="_blank">
+                https://www.nimh.nih.gov/health/find-help</a> - external article linked from the Content Page.</li>
+
+
+              </ul>
+              
             </section>
             <br />
           </section>
