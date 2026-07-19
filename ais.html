@@ -9,12 +9,19 @@
     <link rel="stylesheet" href="global.css">
 
     <style>
+      /* ==========================================
+         AIS BODY — dynamic background classes
+         ========================================== */
       body.ais-page {
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         transition: background-image 0.6s ease-in-out;
       }
+
+      /* ==========================================
+         IMPACT LEVEL BACKGROUNDS
+         ========================================== */
       body.impact-low {
         background-image:
           linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
@@ -30,12 +37,16 @@
           linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
           url("images/AIS_impact_bg3.jpeg");
       }
+      /* Override the global body::before white overlay */
       body.impact-low::before,
       body.impact-medium::before,
       body.impact-high::before {
         background-color: transparent !important;
       }
 
+      /* ==========================================
+         SIMULATOR HEADER
+         ========================================== */
       .sim-header {
         padding-top: 30px;
         text-align: center;
@@ -49,6 +60,9 @@
         line-height: 1.8;
       }
 
+      /* ==========================================
+         ACTION CARDS GRID
+         ========================================== */
       .card-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -58,6 +72,9 @@
         padding: 0 40px;
       }
 
+      /* ==========================================
+         INDIVIDUAL CARD
+         ========================================== */
       .card {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(14px);
@@ -74,6 +91,7 @@
         box-shadow: 0 8px 30px rgba(76, 159, 56, 0.15);
       }
 
+      /* Selected state */
       .card.selected {
         border: 2px solid #2e7d32;
         box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
@@ -83,6 +101,7 @@
         background: #1b5e20;
       }
 
+      /* Point badge */
       .impact-points {
         display: inline-block;
         background: linear-gradient(135deg, #2e7d32, #388e3c);
@@ -94,6 +113,7 @@
         margin-bottom: 0.75rem;
       }
 
+      /* Card image */
       .card img {
         width: 100%;
         height: 180px;
@@ -115,6 +135,7 @@
         flex: 1;
       }
 
+      /* Select/Remove button inside cards */
       .card .btn {
         width: 100%;
         background: rgba(255, 255, 255, 0.25);
@@ -134,6 +155,9 @@
         color: #fff;
       }
 
+      /* ==========================================
+         SELECTED ACTIONS PANEL
+         ========================================== */
       .selected-section {
         max-width: 1100px;
         margin: 2rem auto;
@@ -182,6 +206,9 @@
         font-weight: 700;
       }
 
+      /* ==========================================
+         WELLNESS SCORE / RESULTS
+         ========================================== */
       .sim-results {
         text-align: center;
         max-width: 1100px;
@@ -218,6 +245,9 @@
         color: var(--dark-text);
       }
 
+      /* ==========================================
+         CALCULATE / RESET BUTTONS
+         ========================================== */
       .sim-actions {
         display: flex;
         gap: 1rem;
@@ -253,6 +283,9 @@
         border-color: #666;
       }
 
+      /* ==========================================
+         RESPONSIVE — tablet / mobile
+         ========================================== */
       @media (max-width: 900px) {
         .card-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -294,17 +327,16 @@
       </nav>
     </header>
 
-    <!-- ================================================
-         MAIN CONTENT AREA
-         Students add their page content here
-         Keep this structure intact
-         ================================================ -->
+    <!-- =============================================
+         MAIN CONTENT
+         ============================================= -->
 
     <main>
-      <!-- Page heading -->
+
+      <!-- ======== PAGE HEADING ======== -->
       <h1 class="Headings">Health Action Impact Simulator</h1>
 
-      <!-- Intro text explaining how the simulator works -->
+      <!-- ======== SIMULATOR INTRO ======== -->
       <div class="sim-header">
         <p>
           Explore how different healthy actions contribute to your overall
@@ -313,9 +345,7 @@
         </p>
       </div>
 
-      <!-- Grid of selectable action cards. Each card carries
-           data-id/data-points attributes that simulator.js reads
-           when the user clicks "Select Action" -->
+      <!-- ======== ACTION CARDS GRID ======== -->
       <div class="card-grid" id="sim-grid">
         <!-- Action 1: Take a 30-Minute Walk (3 pts) -->
         <div class="card" data-id="1" data-points="3">
@@ -408,8 +438,7 @@
         </div>
       </div>
 
-      <!-- Live-updating list of the actions the user has selected so far,
-           populated by simulator.js -->
+      <!-- ======== SELECTED ACTIONS PANEL ======== -->
       <div class="selected-section">
         <h2>Your Selected Actions</h2>
         <div class="selected-inner">
@@ -417,8 +446,7 @@
         </div>
       </div>
 
-      <!-- Final results: total wellness score, feedback message,
-           and Calculate/Reset controls -->
+      <!-- ======== WELLNESS SCORE & RESULTS ======== -->
       <div class="sim-results">
         <div class="sim-results-inner">
           <h2>Your Wellness Score</h2>
@@ -473,8 +501,7 @@
       </div>
     </footer>
 
-    <!-- Impact Simulator logic (card selection, score calculation,
-         background theme, reset) lives in this external file -->
+    <!-- ======== JAVASCRIPT ======== -->
     <script src="simulator.js"></script>
   </body>
 </html>
