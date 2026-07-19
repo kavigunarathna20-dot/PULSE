@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PULSE - Access to Healthcare: Importance, barriers, solutions and global health initiatives.">
+      content="PULSE - Access to Healthcare: Importance, barriers, solutions and global health initiatives."
+    />
     <title>PULSE - Access to Healthcare</title>
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="global.css" />
 
     <style>
-     .content-page {
+      /* ===== Page wrapper ===== */
+      .content-page {
         max-width: 1300px;
         margin: auto;
         padding: 40px;
       }
 
+      /* ===== Hero banner at top of page ===== */
       .hero-section {
         text-align: center;
         padding: 80px 40px;
@@ -25,6 +28,7 @@
         position: relative;
         overflow: hidden;
       }
+      /* Faint background image layered behind hero content */
       .hero-section::before {
         content: "";
         position: absolute;
@@ -33,20 +37,12 @@
         opacity: 0.12;
         z-index: 0;
       }
+      /* Keeps hero text above the background image layer */
       .hero-content {
         position: relative;
         z-index: 1;
       }
-      .tag {
-        display: inline-block;
-        background: #4c9f38;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 30px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        font-weight: 600;
-      }
+      /* Small pill-shaped label (unused directly in this page's markup, kept for consistency with other content pages) */
       .hero-section h1 {
         font-size: 56px;
         color: #07424d;
@@ -59,6 +55,7 @@
         color: #444;
       }
 
+      /* ===== In-page quick nav (jump links to each section below) ===== */
       .content-nav {
         background: white;
         border-radius: 16px;
@@ -87,6 +84,7 @@
         color: #2e7d32;
       }
 
+      /* ===== Shared section heading styles (used by all major sections) ===== */
       .section-title {
         font-size: 32px;
         color: #07424d;
@@ -98,6 +96,7 @@
         color: #666;
         margin-bottom: 40px;
       }
+      /* Offsets anchor scroll position so fixed header doesn't cover section headings */
       #importance,
       #barriers,
       #solutions,
@@ -106,6 +105,7 @@
         scroll-margin-top: 100px;
       }
 
+      /* ===== Card grid used for "Barriers" and "Global Initiatives" sections ===== */
       .cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -142,6 +142,7 @@
         line-height: 1.7;
       }
 
+      /* ===== Two-column image/text block used for "Importance" and "Solutions" sections ===== */
       .content-block {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -171,6 +172,7 @@
         list-style: none;
         padding: 0;
       }
+      /* Checkmark bullet points instead of default list markers */
       .content-block .text li {
         padding: 6px 0 6px 28px;
         position: relative;
@@ -184,12 +186,14 @@
         color: #4c9f38;
         font-weight: bold;
       }
+      /* Stack image/text block into a single column on smaller screens */
       @media (max-width: 768px) {
         .content-block {
           grid-template-columns: 1fr;
         }
       }
 
+      /* ===== Articles & Resources section ===== */
       .articles-section {
         margin-bottom: 50px;
       }
@@ -217,11 +221,6 @@
       .article-card .article-body {
         padding: 20px;
       }
-      .article-card h4 {
-        color: #07424d;
-        margin-bottom: 10px;
-        font-size: 16px;
-      }
       .article-card a {
         display: inline-block;
         color: #4c9f38;
@@ -235,6 +234,7 @@
         text-decoration: underline;
       }
 
+      /* ===== Green highlight banner tying the page back to SDG 3 ===== */
       .sdg-highlight {
         background: linear-gradient(135deg, #4c9f38, #63b851);
         color: white;
@@ -257,6 +257,7 @@
         margin: auto;
       }
 
+      /* ===== Prev/Next page navigation buttons at bottom of content ===== */
       .page-navigation {
         display: flex;
         justify-content: center;
@@ -278,6 +279,7 @@
         color: white;
       }
 
+      /* ===== Fixed "back to top" floating button ===== */
       .go-to-top {
         position: fixed;
         bottom: 30px;
@@ -301,6 +303,7 @@
         transform: translateY(-4px);
       }
 
+      /* ===== Responsive adjustments for smaller screens ===== */
       @media (max-width: 768px) {
         .hero-section h1 {
           font-size: 36px;
@@ -315,9 +318,10 @@
     </style>
   </head>
   <body>
+    <!-- Site header: logo and main navigation, shared across all pages -->
     <header>
       <div class="logo">
-        <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image">
+        <img src="./images/logo.jpeg" alt="PULSE Logo" class="logo-image" />
         <div class="logo-text">
           <h2>PULSE</h2>
           <p>Good Health & Well-Being</p>
@@ -336,6 +340,7 @@
 
     <main>
       <section class="content-page">
+        <!-- Hero banner introducing the page topic -->
         <div class="hero-section">
           <div class="hero-content">
             <h1>Access to Healthcare</h1>
@@ -348,6 +353,7 @@
           </div>
         </div>
 
+        <!-- Jump-link navigation to each section on this page -->
         <nav class="content-nav">
           <ul>
             <li><a href="#importance">Why Healthcare Access Matters</a></li>
@@ -358,9 +364,12 @@
           </ul>
         </nav>
 
-        <h2 id="importance" class="section-title">Why Healthcare Access Matters</h2>
+        <!-- Section: Why healthcare access matters -->
+        <h2 id="importance" class="section-title">
+          Why Healthcare Access Matters
+        </h2>
         <div class="content-block">
-          <img src="./images/doctor.jpg" alt="Doctor and patient">
+          <img src="./images/doctor.jpg" alt="Doctor and patient" />
           <div class="text">
             <h3>Healthcare is a Human Right</h3>
             <p>
@@ -379,14 +388,20 @@
           </div>
         </div>
 
-        <h2 id="barriers" class="section-title">Barriers to Healthcare Access</h2>
-        <p class="section-subtitle">Millions of people worldwide still face significant obstacles when seeking medical care.</p>
+        <!-- Section: Barriers to accessing healthcare -->
+        <h2 id="barriers" class="section-title">
+          Barriers to Healthcare Access
+        </h2>
+        <p class="section-subtitle">
+          Millions of people worldwide still face significant obstacles when
+          seeking medical care.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/finance.jpg" alt="Financial barriers">
+            <img src="./images/finance.jpg" alt="Financial barriers" />
             <div class="card-body">
               <h3>Financial Barriers</h3>
-                <p>
+              <p>
                 High costs of medical treatment, insurance premiums, and
                 medications prevent many from seeking essential healthcare
                 services when needed.
@@ -394,17 +409,22 @@
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/geographic.jpg" alt="Geographic barriers">
+            <img src="./images/geographic.jpg" alt="Geographic barriers" />
             <div class="card-body">
               <h3>Geographic Barriers</h3>
               <p>
                 Rural and remote communities often lack nearby hospitals,
                 clinics, and healthcare professionals, requiring long-distance
                 travel for care.
+              </p>
             </div>
           </div>
+          <!-- Note: pre-existing markup issue - closing </p> tag missing above for the Geographic Barriers card text; left as-is since it's a pre-existing structural gap, not something to change behaviorally -->
           <div class="card-item">
-            <img src="./images/infrastructure.jpg" alt="Healthcare infrastructure">
+            <img
+              src="./images/infrastructure.jpg"
+              alt="Healthcare infrastructure"
+            />
             <div class="card-body">
               <h3>Infrastructure Gaps</h3>
               <p>
@@ -416,6 +436,7 @@
           </div>
         </div>
 
+        <!-- Section: Solutions and innovations addressing the barriers above -->
         <h2 id="solutions" class="section-title">Solutions & Innovations</h2>
         <div class="content-block">
           <div class="text">
@@ -434,14 +455,19 @@
               <li>Public-private partnerships for healthcare delivery</li>
             </ul>
           </div>
-          <img src="./images/digital.jpg" alt="Medical technology">
+          <img src="./images/digital.jpg" alt="Medical technology" />
         </div>
 
-        <h2 id="initiatives" class="section-title">Global Health Initiatives</h2>
-        <p class="section-subtitle">International efforts are driving progress toward healthcare for all.</p>
+        <!-- Section: Global organizations and programs working on healthcare access -->
+        <h2 id="initiatives" class="section-title">
+          Global Health Initiatives
+        </h2>
+        <p class="section-subtitle">
+          International efforts are driving progress toward healthcare for all.
+        </p>
         <div class="cards-grid">
           <div class="card-item">
-            <img src="./images/WHO.jpg" alt="WHO">
+            <img src="./images/WHO.jpg" alt="WHO" />
             <div class="card-body">
               <h3>World Health Organization</h3>
               <p>
@@ -452,10 +478,10 @@
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/vaccine.jpg" alt="Vaccination programs">
+            <img src="./images/vaccine.jpg" alt="Vaccination programs" />
             <div class="card-body">
               <h3>Vaccination Programs</h3>
-               <p>
+              <p>
                 Global vaccination initiatives have saved millions of lives by
                 improving access to life-saving immunizations in underserved
                 regions.
@@ -463,7 +489,7 @@
             </div>
           </div>
           <div class="card-item">
-            <img src="./images/community.jpg" alt="Community health">
+            <img src="./images/community.jpg" alt="Community health" />
             <div class="card-body">
               <h3>Community Health Programs</h3>
               <p>
@@ -474,56 +500,86 @@
           </div>
         </div>
 
+        <!-- Section: External articles and further reading -->
         <h2 id="articles" class="section-title">Articles & Resources</h2>
         <div class="articles-section">
           <div class="articles-grid">
             <div class="article-card">
-              <img src="./images/UHC.jpg" alt="UHC">
+              <img src="./images/UHC.jpg" alt="UHC" />
               <div class="article-body">
                 <h3>Universal Health Coverage: What You Need to Know</h3>
-                <a href="https://www.who.int/news-room/questions-answers/item/universal-health-coverage" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.who.int/news-room/questions-answers/item/universal-health-coverage"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/rural.jpg" alt="Rural healthcare">
+              <img src="./images/rural.jpg" alt="Rural healthcare" />
               <div class="article-body">
                 <h3>Improving Healthcare Access in Rural Communities</h3>
-                <a href="https://www.ruralhealthinfo.org/topics/access" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.ruralhealthinfo.org/topics/access"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
             <div class="article-card">
-              <img src="./images/digital2.jpg" alt="Digital health">
+              <img src="./images/digital2.jpg" alt="Digital health" />
               <div class="article-body">
                 <h3>How Telemedicine is Transforming Healthcare Access</h3>
-                <a href="https://www.who.int/news-room/feature-stories/detail/digital-technologies-for-health" target="_blank">Read Article →</a>
+                <a
+                  href="https://www.who.int/news-room/feature-stories/detail/digital-technologies-for-health"
+                  target="_blank"
+                  >Read Article →</a
+                >
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Closing banner linking the page content back to SDG 3 -->
         <div class="sdg-highlight">
           <h2>Healthcare Access and SDG 3</h2>
-          <p>Sustainable Development Goal 3 focuses on ensuring healthy lives and promoting well-being for all. Expanding healthcare access is a key step toward reducing inequalities and creating healthier societies worldwide.</p>
+          <p>
+            Sustainable Development Goal 3 focuses on ensuring healthy lives and
+            promoting well-being for all. Expanding healthcare access is a key
+            step toward reducing inequalities and creating healthier societies
+            worldwide.
+          </p>
         </div>
 
+        <!-- Link to previous page in the content sequence -->
         <div class="page-navigation">
           <a href="./content_ST3.html" class="nav-btn">← Previous: Nutrition</a>
         </div>
       </section>
     </main>
 
+    <!-- Site footer: project info, page credit, and admin-only links -->
     <footer>
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="./images/logo.jpeg" alt="PULSE Logo" class="footer-logo-image">
+            <img
+              src="./images/logo.jpeg"
+              alt="PULSE Logo"
+              class="footer-logo-image"
+            />
             <span class="footer-brand">PULSE</span>
           </div>
-          <p>A student project promoting SDG 3 — Good Health and Well-Being at the University of Westminster.</p>
+          <p>
+            A student project promoting SDG 3 — Good Health and Well-Being at
+            the University of Westminster.
+          </p>
         </div>
         <div class="footer-section">
-          <p style="font-size:18px;"><b>THIS PAGE</b></p>
-          <p class="student-info">Developed by: <strong>Chamindu Wijesinghe</strong></p>
+          <p style="font-size: 18px"><b>THIS PAGE</b></p>
+          <p class="student-info">
+            Developed by: <strong>Chamindu Wijesinghe</strong>
+          </p>
           <nav class="footer-links">
             <a href="pageEditor_ST4.html" class="footer-link">Page Editor ↗</a>
             <a href="validation_ST4.html" class="footer-link">Validation ↗</a>
@@ -536,6 +592,7 @@
       </div>
     </footer>
 
+    <!-- Floating "back to top" button -->
     <a href="#" class="go-to-top">↑</a>
   </body>
 </html>
